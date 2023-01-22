@@ -18,13 +18,15 @@
     <main id="main-container">
 
         <!-- inicio header -->
-        <nav id="nav-container">
+        <nav id="main-nav">
             <a href="index.html"><img src="./asset/logoportafolio.png" id="logo" alt="logo" srcset=""></a>
-
-            <ul class="ul-container">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="#portafolio">Portafolio</a></li>
-                <li><a href="#contacto">Contacteme</a></li>
+            <div id="toogle-menu" class="toggle-menu">
+                <img src="./asset/menu.png" alt="menu">
+            </div>
+            <ul id="main-menu" class="main-menu">
+                <li class="main-menu__item"><a href="index.html" class="main-menu__link">Acerca de mi</a></li>
+                <li class="main-menu__item"><a href="#portafolio" class="main-menu__link">Portafolio</a></li>
+                <li class="main-menu__item"><a href="#contacto" class="main-menu__link">Contacteme</a></li>
             </ul>
         </nav>
         <!-- fin inicio header -->
@@ -57,10 +59,12 @@
                     sociales,
                     manejo de
                     redes sociales, diseño web.
-
                 </p>
+                <div id="cv">
+                    <a href="src/Cristian Bolaños CV.pdf" target="_blank">VER CURRÍCULO</a>
+                </div>
             </article>
-
+            
         </section>
         <!-- fin section banner y saludo -->
 
@@ -183,6 +187,7 @@
         <!-- fin inicio footer -->
 
     </main>
+    <script src="js/scripsts.js"></script>
 </body>
 
 </html>
