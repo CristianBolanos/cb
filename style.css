@@ -46,9 +46,16 @@ body {
     background-color: #0e293c;
     min-height: 70px;
     justify-content: flex-end;
+
+
     /* transition: transform 0.3s; */
     /* transform: translateY(-100%); */
     /* transform: translateY(0) */
+}
+
+#main-nav {
+    position: fixed;
+    width: 100%;
 }
 
 .main-menu__item {
@@ -63,17 +70,19 @@ body {
 
 /* fin toggle menu icono */
 
-  /* section header menu enlazado con toggle menu */
+/* section header menu enlazado con toggle menu */
 #logo {
     width: 50px;
-    margin: 10px 30px;
     position: absolute;
+    left: 20px;
+    top: 10px;
 }
-  /* section header menu enlazado con toggle menu */
+
+/* section header menu enlazado con toggle menu */
 
 /* section banner y saludo */
 #banner-container {
-    /* margin-top: 68px; */
+    margin-top: 70px;
     background-color: red;
 }
 
@@ -164,6 +173,7 @@ body {
     /* section header menu enlazado con toggle menu */
     #logo {
         width: 40px;
+        top: 15px;
     }
 
     /* fin section header menu enlazado con toggle menu*/
@@ -182,5 +192,5 @@ body {
 }
 
 @media only screen and (max-width: 320px) {
-   
+    
 }
