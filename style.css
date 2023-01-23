@@ -123,9 +123,7 @@ img {
     font-size: 2rem;
 }
 
-.parrafo-historia {
-    font-weight: lighter;
-}
+
 
 #cv a {
     text-decoration: none;
@@ -197,8 +195,6 @@ img {
 
 
 @media only screen and (max-width: 768px) {
-
-
     /* menu toogle icono*/
     .main-menu {
         flex-direction: column;
@@ -207,7 +203,7 @@ img {
     }
 
     .main-menu__item {
-        padding: 1px;
+        padding: 0.1px;
     }
 
     .main-menu--show {
@@ -225,13 +221,6 @@ img {
 
     /* fin menu toogle icono */
 
-    /* section header menu enlazado con toggle menu */
-    #logo {
-        border-radius: 50%;
-
-    }
-
-    /* fin section header menu enlazado con toggle menu*/
 
     /* carruel */
     .w-100 {
