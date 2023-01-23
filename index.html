@@ -12,6 +12,10 @@
     <!-- Fuentes personalizadas para este tema -->
     <link rel="shortcut icon" href="./asset/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <!-- font family -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -37,14 +41,14 @@
             </ul>
         </nav>
         <!-- fin inicio header -->
-        
+
         <!-- carrusel -->
-    
+
         <section id="container-carrusel">
             <div id="carouselExampleIndicators" class="carousel slide">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
                         aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
@@ -75,9 +79,8 @@
         </section>
         <!-- fin carrrusel -->
         <!-- section banner y saludo -->
-
-        <section id="banner-container">
-            <h2 id="acercademi">ACERCA DE MI</h2>
+        <h2 id="acercademi" class="textos-sesiones">ACERCA DE MI</h2>
+        <section id="container-presentacion">
             <div class="container-saludo">
                 <p class="saludo">
                     Hola que tal te saluda <strong>Cristian Bolaños</strong> es un gusto, tenerte en mi portafolio,
@@ -87,25 +90,33 @@
 
 
             <article class="container-historia">
-                <p>
-                    <strong>PROPUESTA VALOR</strong>
+                <strong>PROPUESTA VALOR</strong><br><br>
+                <p class="parrafo-historia">
                     Tengo un gusto y curiosidad por aprendes cosas nuevas en el sector de la tecnología, soy una persona
                     que me gusta el autoaprendizaje, que busca la solución adecuada de acuerdo necesidad del problema
                     requerido.
-                    <br><br>
-                    <strong>PERFIL PROFESIONAL</strong>
+                </p>
+                <br><br>
+                <strong>PERFIL PROFESIONAL</strong><br><br>
+                <p class="parrafo-historia">
                     Tecnólogo en sistemas con 9 meses de experiencia, en el campo laboral por empresa, dedicado al
                     sector de la tecnología tanto por empresa como independiente, contando con experiencias y
                     conocimientos en computadores, programación, diseño, dando un manejo y aprendizaje adecuado, al uso
                     del software y hardware de acuerdo a la necesidad requerida.
                     <br><br>
-                    <strong>Skills:</strong> html5, css3, Photoshop, soporte de software y hardware, ventas por redes
+                </p>
+                <strong>Skills</strong>
+                <p class="parrafo-historia">
+                    html5, css3, Photoshop, soporte de software y hardware, ventas por redes
                     sociales,
                     manejo de
                     redes sociales, diseño web.
                 </p>
-                <div id="cv">
-                    <a href="src/Cristian Bolaños CV.pdf" target="_blank">VER CURRÍCULO</a>
+                <div class="text-center mt-4">
+                    <a class="btn btn-xl btn-outline-light" href="src/cv.pdf" download target="_blank">
+                        <i class="fas fa-download mr-2"></i>
+                        VER CURRÍCULO
+                    </a>
                 </div>
             </article>
 
@@ -113,8 +124,7 @@
         <!-- fin section banner y saludo -->
 
         <!-- section portafolio -->
-        <h2 class="title-section" id="portafolio">PORTAFOLIO</h2>
-
+        <h2 class="textos-sesiones" id="portafolio">PORTAFOLIO</h2>
         <section id="container-portafolio">
 
             <article class="cards-articulos">
@@ -184,7 +194,7 @@
         <!-- fin section portafolio -->
 
         <!-- section formulario -->
-        <h2 class="title-section" id="contacto">CONTACTAME</h2>
+        <h2 class="textos-sesiones" id="contacto">CONTACTAME</h2>
         <section id="container-formulario">
             <form action="" method="get">
                 <label for="nombre">Nombre</label>
