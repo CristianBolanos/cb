@@ -72,7 +72,7 @@ body {
 
 /* section header menu enlazado con toggle menu */
 #logo {
-    position:absolute;
+    position: absolute;
     width: 50px;
     clip-path: circle(50%);
     object-fit: cover;
@@ -104,7 +104,6 @@ img {
 .textos-sesiones {
     text-align: center;
     margin: 10px auto;
-    margin-top: 2rem;
     font-size: 2.25rem;
     font-weight: bold;
 
@@ -123,6 +122,17 @@ img {
     font-size: 2rem;
 }
 
+.title-strong {
+    background-color: #0e293cb9;
+    border-radius: 10px;
+    padding: 12px;
+
+}
+
+.parrafo-historia {
+    font-weight: 500;
+    padding-top: 20px;
+}
 
 
 #cv a {
@@ -193,6 +203,7 @@ img {
 
 
 @media only screen and (max-width: 768px) {
+
     /* menu toogle icono*/
     .main-menu {
         flex-direction: column;
@@ -251,4 +262,14 @@ img {
     }
 
     /*fin carruel */
+
+    /* section acerca de mi */
+    .title-strong {
+        padding: 0px;
+        font-size: 19px;
+    }
+
+    /* fin section acerca de mi */
+
+
 }
