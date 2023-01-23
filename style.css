@@ -181,9 +181,8 @@ body {
 
     }
     .main-menu__item {
-        padding: 1px;
-        
-      
+        padding: 0px;
+
      } 
 
     .main-menu--show {
@@ -196,9 +195,6 @@ body {
 
     #main-nav {
         background-color: #0e293c; 
-        
-       
-
     }
 
    
