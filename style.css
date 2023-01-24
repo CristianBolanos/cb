@@ -216,21 +216,14 @@ img {
         transition: transform 0.3s;
         transform: translateY(-100%);
         background-color: #0e293c;
-        /* height: auto; */
 
     }
 
-    /* .main-menu__item {
-        
-        padding: 10px;
-
-    } */
 
     .main-menu--show {
         transform: translateY(0);
         height: auto;
-        
-
+        padding: 0px;
     }
 
     /* menu oculto co checbok */
@@ -261,7 +254,6 @@ img {
     /* carruel */
     .w-100 {
         height: 21rem;
-
     }
 
     /* carruel */
