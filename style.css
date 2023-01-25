@@ -211,7 +211,7 @@ img {
     background-color: #1abc9c;
     display: flex;
     justify-content: center;
-    padding: 1rem;
+    padding: 1rem 0px;
 
 }
 
@@ -332,14 +332,8 @@ img {
 
     /* section formulario */
     
-    #form-container{
-        padding: 0.5rem;
-    }
-    #container-formulario {
-        width: 70%;
-        
-
-    }
+    
+   
 
     /* fin section formulario */
 }
@@ -441,7 +435,7 @@ img {
 
     /* section formulario */
     #container-formulario {
-        width: 100%;
+        width: 90%;
 
     }
 
