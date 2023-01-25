@@ -22,8 +22,9 @@ body {
 }
 
 /* toggle menu icono */
+
 .toggle-menu {
-    width: 40px;
+    /* width: 40px; */
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -168,13 +169,15 @@ img {
     padding: 1rem;
     display: grid;
     grid-template-columns: 2fr 2fr 2fr;
-    gap: 20px; 
+    gap: 20px;
 }
 
 .card:hover {
-    box-shadow: 3.9px 7.8px 7.8px #1abc9c6e;;
+    box-shadow: 3.9px 7.8px 7.8px #1abc9c6e;
+    ;
 }
-.btn{
+
+.btn {
     box-shadow: 3.9px 7.8px 7.8px hsl(0deg 0% 0% / 0.38);
 }
 
@@ -319,17 +322,17 @@ img {
         transition: transform 0.3s;
         transform: translateY(-100%);
         background-color: #0e293c;
-
     }
-
 
     .main-menu--show {
         transform: translateY(0);
         height: auto;
         padding: 0px;
+
+
     }
 
-    /* menu oculto co checbok */
+    /* menu oculto con checbok */
     /* .toogle-menu__checkbox:checked+.main-menu {
         transform: translateY(0);
     }
@@ -338,11 +341,29 @@ img {
         display: none;
     } */
 
-    /* fin menu oculto co checbok */
+    /* fin menu oculto con checbok */
 
     .toggle-menu {
         display: block;
     }
+
+    /* Toggle menu x */
+    .toggle-menu .hamburger-icon {
+        width: 40px;
+        height: 40px;
+        background: url('./asset/bars-solid.svg') no-repeat;
+        background-size:contain;
+        /* background-position: center; */
+        filter: drop-shadow(1px 2px 1px (0, 0, 0, .1));
+    }
+
+    .toggle-menu.active .hamburger-icon {
+        background: url('./asset/xmark-solid.svg') no-repeat;
+        background-size: contain;
+        /* background-position: center; */
+    }
+
+    /* fin  Toggle menu x */
 
     #main-nav {
         background-color: #0e293c;
@@ -361,7 +382,7 @@ img {
 
     /* carruel */
 
-   
+
 
     /* section formulario contacto */
     #container-portafolio {
