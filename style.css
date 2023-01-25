@@ -46,15 +46,19 @@ body {
     background-color: #0e293c;
     height: 70px;
     justify-content: flex-end;
+    width: 100%;
     /* font-size: 1rem;   */
     /* transition: transform 0.3s; */
     /* transform: translateY(-100%); */
     /* transform: translateY(0) */
+    /* position:fixed; */
+
 }
 
 #main-nav {
     position: fixed;
     width: 100%;
+    z-index: 1;
 }
 
 .main-menu__item {
@@ -68,7 +72,7 @@ body {
     text-decoration: none;
 }
 
-.main-menu__link:active{
+.main-menu__link:active {
     background-color: #1abc9c;
     padding: 1rem;
     border-radius: 10px;
@@ -91,7 +95,7 @@ body {
 
 /* carruel */
 #container-carrusel {
-   margin-top: 70px;
+    margin-top: 70px;
 }
 
 .w-100 {
@@ -112,6 +116,7 @@ img {
     margin: 10px auto;
     font-size: 2.25rem;
     font-weight: bold;
+    /* box-shadow: 3.9px 7.8px 7.8px hsl(0deg 0% 0% / 0.38); */
 
 }
 
@@ -150,11 +155,89 @@ img {
     font-size: 1.25rem;
 }
 
-/* section acerca de mi */
+.mt-4 .btn-xl:hover {
+    box-shadow: 3.9px 7.8px 7.8px hsl(0deg 0% 0% / 0.38);
+}
+
+/* fin section acerca de mi */
 
 
 /* section portafolio */
+#container-portafolio {
+    background-color: #32322C;
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    gap: 20px;
+    padding: 2rem;
+    
+}
 
+/* .cards {
+    min-width: 200px;
+    margin: 10px;
+    background-color: #c0f0fa;
+    border-radius: 10px;
+    transform: 0.3s;
+    border-radius: 10px 10px 10px 10px;  
+}
+
+.cards:hover {
+    box-shadow: 3.9px 7.8px 7.8px hsl(0deg 0% 0% / 0.38);
+}
+
+
+.card-img {
+    width: 200px;
+    height: 200px;
+    background-color: #0e293c;
+}
+
+.card-img img {
+    max-width: 100%;
+
+    object-fit: cover;
+}
+
+.imgpos {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.card-body h2 {
+    text-align: center;
+}
+
+.card-body p {
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.card-footer a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 17px;
+    background-color: #031523;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #383838;
+    transform: 0.2s;
+}
+
+.card-footer a:hover {
+    color: #000;
+    background-color: #fff;
+    border: 1px solid black;
+} */
 
 /* fin section portafolio */
 
@@ -191,7 +274,17 @@ img {
 /* fin inicio footer*/
 
 
-@media only screen and (max-width: 1024px) {}
+@media only screen and (max-width: 1024px) {
+    /*  section de articulos  */
+    #card_container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: space-around;
+        gap: 10px;
+    }
+
+    /*  FIN section de articulos  */
+}
 
 
 @media only screen and (min-width: 768px) {
@@ -258,6 +351,16 @@ img {
 
     /* carruel */
 
+    /* section formulario contacto */
+    #container-portafolio {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin: 10px;
+    }
+
+    /* fin section formulario contacto */
+
     /* inicio footer*/
     #footer-container {
         display: flex;
@@ -289,6 +392,15 @@ img {
     }
 
     /* fin section acerca de mi */
+
+    /* section formulario contacto */
+    #container-portafolio {
+        display: flex;
+        flex-direction: column;
+        margin: 5px;
+    }
+
+    /* fin section formulario contacto */
 
 
 }

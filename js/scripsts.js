@@ -1,7 +1,6 @@
 // toogle-menu
 // main-menu
 
-
 const toggleMenuElement = document.getElementById("toogle-menu");
 const mainMenuElement = document.getElementById("main-menu");
 
@@ -23,5 +22,4 @@ toggleMenuElement.addEventListener('click', () => {
 //         contador=0;
 //     }
 // })
-
 
