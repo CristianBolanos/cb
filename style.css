@@ -161,7 +161,7 @@ img {
 }
 
 .mt-4 .btn-xl:hover {
-    box-shadow: 3.9px 7.8px 7.8px hsl(0deg 0% 0% / 0.38);
+    box-shadow: 3.9px 7.8px 7.8px #1abc9c70;
 }
 
 /* fin section acerca de mi */
