@@ -184,6 +184,11 @@ img {
     box-shadow: 3.9px 7.8px 7.8px hsl(0deg 0% 0% / 0.38);
 }
 
+.btn-outline-info{
+ color: #000 !important;
+ font-weight: bold !important;
+}
+
 /* fin section portafolio */
 
 /* section formulario bootstrap  */
