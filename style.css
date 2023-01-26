@@ -137,13 +137,13 @@ img {
    
 }
 
-.title-strong {
+/* .title-strong {
     background-color: #0e293cb9;
     background-color: #1abc9c;
     border-radius: 10px;
     padding: 12px;
 
-}
+} */
 
 .parrafo-historia {
     font-weight: 500;
@@ -218,8 +218,8 @@ img {
 }
 
 #container-formulario {
-    /* background-color: #1abc9c; */
-    background-color: #0e293c17;
+    /* background-color: #0e293c17; */
+    background-color: #0e293c;
     display: flex;
     justify-content: center;
     border-radius: 20px;
