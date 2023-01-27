@@ -15,9 +15,9 @@ section[id] {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    /* min-height: 100vh;
-    grid-template-rows: auto 1fr auto; 
+    /* display: flex; */
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
     /* background-color: #32322C; */
 }
 
@@ -32,7 +32,7 @@ body {
     filter: invert(1);
     display: none;
     z-index: 1;
-    
+
 }
 
 .toggle-menu img {
@@ -53,14 +53,16 @@ body {
     /* transition: transform 0.3s; */
     /* transform: translateY(-100%); */
     /* transform: translateY(0) */
-    /* position:fixed; */
+    
 
 }
 
-#main-nav {
+.main-nav {
     position: fixed;
     width: 100%;
     z-index: 1;
+    top: 0px;
+    
 }
 
 .main-menu__item {
@@ -135,7 +137,7 @@ img {
 
 #container-historia {
     font-size: 2rem;
-   
+
 }
 
 /* .title-strong {
@@ -185,16 +187,16 @@ img {
     box-shadow: 3.9px 7.8px 7.8px hsl(0deg 0% 0% / 0.38);
 }
 
-.btn-outline-info{
- color: #000 !important;
- font-weight: bold !important;
+.btn-outline-info {
+    color: #000 !important;
+    font-weight: bold !important;
 }
 
 /* fin section portafolio */
 
 /* section formulario bootstrap  */
 
-/* #container-formulario{
+/* .container-formulario{
     background-color: #32322C;
     display: flex;
     justify-content: center;
@@ -339,9 +341,9 @@ img {
     /*  FIN section de articulos  */
 
     /* section formulario */
-    
-    
-   
+
+
+
 
     /* fin section formulario */
 }
@@ -450,7 +452,7 @@ img {
     /* fin section formulario */
 
     /* inicio footer*/
-    #footer-container {
+    /* #footer-container {
         display: flex;
         flex-direction: column;
         height: 300px;
@@ -458,7 +460,7 @@ img {
         text-align: center;
         gap: 12px;
 
-    }
+    } */
 
     /* fin inicio footer*/
 }

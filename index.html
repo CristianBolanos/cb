@@ -19,39 +19,39 @@
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> 
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <!-- font-awesome iconos-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
 </head>
 
 <body>
-    
 
-        <!-- inicio header -->
-        <header>
-            <nav id="main-nav">
-                <a href="index.html"><img src="./asset/favicon.ico" id="logo" alt="logo" srcset=""></a>
-                <!-- menu oculto para checkbok o para javaScript-->
-                <div id="toogle-menu" class="toggle-menu">
-                    <!-- <label for="toogle-menu-checkbox"> -->
-                    <!-- <img src="./asset/menu.png" alt="menu"> -->
-                    <!-- Toggle menu x  iconos en el css -->
-                    <div class="hamburger-icon"></div>
-                    <!-- Toggle menu x  -->
-                    <!--</label> -->
-                </div>
-                <!-- <input type="checkbox" class="toogle-menu__checkbox" id="toogle-menu-checkbox"> -->
-                <!-- fin menu oculto co checbok  -->
-                <ul id="main-menu" class="main-menu">
-                    <li class="main-menu__item"><a href="#acercademi" class="main-menu__link">Acerca de mi</a></li>
-                    <li class="main-menu__item"><a href="#portafolio" class="main-menu__link">Portafolio</a></li>
-                    <li class="main-menu__item"><a href="#contacto" class="main-menu__link">Contactame</a></li>
-                </ul>
-            </nav>
-        </header>
-        <!-- fin inicio header -->
 
-<main id="main-container">
+    <!-- inicio header -->
+    <header>
+        <nav class="main-nav">
+            <a href="index.html"><img src="./asset/favicon.ico" id="logo" alt="logo" srcset=""></a>
+            <!-- menu oculto para checkbok o para javaScript-->
+            <div id="toogle-menu" class="toggle-menu">
+                <!-- <label for="toogle-menu-checkbox"> -->
+                <!-- <img src="./asset/menu.png" alt="menu"> -->
+                <!-- Toggle menu x  iconos en el css -->
+                <div class="hamburger-icon"></div>
+                <!-- Toggle menu x  -->
+                <!--</label> -->
+            </div>
+            <!-- <input type="checkbox" class="toogle-menu__checkbox" id="toogle-menu-checkbox"> -->
+            <!-- fin menu oculto co checbok  -->
+            <ul id="main-menu" class="main-menu">
+                <li class="main-menu__item"><a href="#acercademi" class="main-menu__link">Acerca de mi</a></li>
+                <li class="main-menu__item"><a href="#portafolio" class="main-menu__link">Portafolio</a></li>
+                <li class="main-menu__item"><a href="#contacto" class="main-menu__link">Contactame</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- fin inicio header -->
+
+    <main id="main-container">
 
         <!-- carrusel -->
         <section id="container-carrusel">
@@ -149,8 +149,8 @@
             </article>
 
             <article class="card">
-                <div class="card h-100">
-                    <picture>
+                <div class="card h-100 ">
+                    <picture >
                         <img src="./asset/img-portafolio/corporativa.webp" alt="post1" class="card-img-top img-fluid">
                     </picture>
                     <div class="card-body">
@@ -272,7 +272,7 @@
                 <button type="submit" class="btn btn-primary send">Enviar</button>
             </form> -->
 
-            <div id="container-formulario">
+            <div class="container-formulario">
                 <form action="" class="container_inputs">
 
                     <label for="nombre" class="label">Nombre</label>
@@ -291,66 +291,64 @@
 
                 </form>
             </div>
-
-
-
         </section>
         <!--fin section formulario -->
-     </main>
-      
-  <!-- inicio footer -->
-        <footer id="footer-container">
-            <div class="footer-informacion">
-                <h3>LOCALIZACIÓN</h3>
-                <p>Cali Colombia</p>
-            </div>
-            <nav>
-                <picture>
-                    <ul class="ico">
 
-                        <a href="https://www.linkedin.com/in/cristianbola%C3%B1os/" target="_blank"
-                            class="btn btn-outline-light btn-social mx-1" aria-label="linkedin">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/Cristian032019" target="_blank"
-                            class="btn btn-outline-light btn-social mx-1" aria-label="github">
-                            <i class="fa-brands fa-github"></i>
-                        </a>
 
-                        <a href="https://co.pinterest.com/cristianbolanos7/" target="_blank"
-                            class="btn btn-outline-light btn-social mx-1" aria-label="pinterest">
-                            <i class="fa-brands fa-pinterest-p"></i>
-                        </a>
+    </main>
 
-                        <a href="https://api.whatsapp.com/send?phone=573167341074&text=Hola,%20estoy%20interesad@%20en"
-                            target="_blank" class="btn btn-outline-light btn-social mx-1" aria-label="whatsapp">
-                            <i class="fa-brands fa-whatsapp"></i>
-                        </a>
-                        <a href="mailto:cristianbolanos316@gmail.com" target="_blank"
-                            class="btn btn-outline-light btn-social mx-1" aria-label="correo">
-                            <i class="fa-solid fa-envelope"></i>
-                        </a>
-
-                    </ul>
-                </picture>
-            </nav>
-
-            <div class="footer-informacion">
-                <h3>PROFESIÓN</h3>
-                <p>Tecnólogo en sistemas</p>
-            </div>
-        </footer>
-
-        <div id="container-derechos">
-            <small>Copyright &copy 2023</small>
+    <!-- inicio footer -->
+    <footer id="footer-container">
+        <div class="footer-informacion">
+            <h3>LOCALIZACIÓN</h3>
+            <p>Cali Colombia</p>
         </div>
-        <!-- fin inicio footer -->
+        <nav>
+            <picture>
+                <ul class="ico">
 
-    
+                    <a href="https://www.linkedin.com/in/cristianbola%C3%B1os/" target="_blank"
+                        class="btn btn-outline-light btn-social mx-1" aria-label="linkedin">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/Cristian032019" target="_blank"
+                        class="btn btn-outline-light btn-social mx-1" aria-label="github">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+
+                    <a href="https://co.pinterest.com/cristianbolanos7/" target="_blank"
+                        class="btn btn-outline-light btn-social mx-1" aria-label="pinterest">
+                        <i class="fa-brands fa-pinterest-p"></i>
+                    </a>
+
+                    <a href="https://api.whatsapp.com/send?phone=573167341074&text=Hola,%20estoy%20interesad@%20en"
+                        target="_blank" class="btn btn-outline-light btn-social mx-1" aria-label="whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="mailto:cristianbolanos316@gmail.com" target="_blank"
+                        class="btn btn-outline-light btn-social mx-1" aria-label="correo">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+
+                </ul>
+            </picture>
+        </nav>
+
+        <div class="footer-informacion">
+            <h3>PROFESIÓN</h3>
+            <p>Tecnólogo en sistemas</p>
+        </div>
+    </footer>
+
+    <div id="container-derechos">
+        <small>Copyright &copy 2023</small>
+    </div>
+    <!-- fin inicio footer -->
+
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
-    </script>
+        </script>
     <!-- font-awesome -->
     <script src="js/scripsts.js"></script>
 </body>
