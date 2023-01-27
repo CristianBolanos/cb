@@ -110,15 +110,13 @@ body {
     margin-top: 70px;
 }
 
-.w-100 {
+img.d-block.w-100 {
     height: 32rem;
-
-}
-
-img {
-    object-fit: cover;
     max-width: 100%;
+    object-fit: cover;
 }
+
+
 
 /* fin carruel */
 
@@ -306,7 +304,7 @@ img {
     align-items: center;
     height: 150px;
     color: #fff;
-    
+
     width: 100%;
 
     /* posocionar abajo el footer con flex */
@@ -353,7 +351,7 @@ img {
     /*  FIN section de articulos  */
 
     /* section formulario */
-  
+
 
 
     /* fin section formulario */
@@ -439,7 +437,7 @@ img {
     /* fin section formulario contacto */
 
     /* section formulario */
-  
+
 
     .container-formulario {
         width: 90%
@@ -455,8 +453,9 @@ img {
         justify-content: center;
         text-align: center;
         gap: 12px;
-        
+
     }
+
     /* .footer-informacion{
         padding: 10rem;
     } */
@@ -491,9 +490,21 @@ img {
 
     /* fin section portafolio contacto */
 
-     /* inicio footer*/
+    .textos-sesiones {
+        font-size: 20px;
+    }
 
-    
+    /* inicio footer*/
+    #footer-container {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .ico {
+        display: flex;
+        flex-direction: column;
+    }
 
     /* fin inicio footer*/
 
