@@ -15,10 +15,17 @@ section[id] {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    /* display: flex; */
+
+    /* posocionar abajo el footer con grid*/
     min-height: 100vh;
     grid-template-rows: auto 1fr auto;
-    /* background-color: #32322C; */
+    /*fin posocionar abajo el footer con grid*/
+
+    /* posocionar abajo el footer con flex */
+    /* display: flex;
+    flex-direction: column;
+    min-height: 100vh; */
+    /* fin posocionar abajo el footer con flex */
 }
 
 /* toggle menu icono */
@@ -53,7 +60,7 @@ body {
     /* transition: transform 0.3s; */
     /* transform: translateY(-100%); */
     /* transform: translateY(0) */
-    
+
 
 }
 
@@ -62,7 +69,7 @@ body {
     width: 100%;
     z-index: 1;
     top: 0px;
-    
+
 }
 
 .main-menu__item {
@@ -225,16 +232,13 @@ img {
 
 }
 
-#container-formulario {
-    /* background-color: #0e293c17; */
+.container-formulario {
     background-color: #0e293c;
     display: flex;
     justify-content: center;
     border-radius: 20px;
     width: 50%;
     padding-bottom: 1rem;
-
-
 }
 
 .container_inputs {
@@ -246,6 +250,7 @@ img {
     flex-direction: column;
     /* padding: 1.5rem; */
     border-radius: 40px;
+
 }
 
 .label {
@@ -265,6 +270,7 @@ img {
     outline: 0;
     border-bottom: 1px solid #fff;
     color: #fff;
+
 }
 
 .input:focus {
@@ -300,6 +306,12 @@ img {
     align-items: center;
     height: 150px;
     color: #fff;
+    
+    width: 100%;
+
+    /* posocionar abajo el footer con flex */
+    /* margin-top: auto; */
+    /* fin posocionar abajo el footer con flex */
 }
 
 .ico {
@@ -341,25 +353,10 @@ img {
     /*  FIN section de articulos  */
 
     /* section formulario */
-
-
+  
 
 
     /* fin section formulario */
-}
-
-
-@media only screen and (min-width: 768px) {
-    /* .main-menu{
-        flex-direction:row;
-        justify-content: flex-end;
-        /* height: 70px; *
-        transform: translateY(0);
-    }
-    .toggle-menu {
-        display: none;
-
-    } */
 }
 
 
@@ -377,8 +374,6 @@ img {
         transform: translateY(0);
         height: auto;
         padding: 0px;
-
-
     }
 
     /* menu oculto con checbok */
@@ -414,7 +409,7 @@ img {
 
     /* fin  Toggle menu x */
 
-    #main-nav {
+    .main-nav {
         background-color: #0e293c;
         height: 70px;
         z-index: 1;
@@ -444,22 +439,26 @@ img {
     /* fin section formulario contacto */
 
     /* section formulario */
-    #container-formulario {
-        width: 90%;
+  
 
+    .container-formulario {
+        width: 90%
     }
 
     /* fin section formulario */
 
     /* inicio footer*/
-    /* #footer-container {
+    #footer-container {
         display: flex;
         flex-direction: column;
         height: 300px;
         justify-content: center;
         text-align: center;
         gap: 12px;
-
+        
+    }
+    /* .footer-informacion{
+        padding: 10rem;
     } */
 
     /* fin inicio footer*/
@@ -483,14 +482,20 @@ img {
 
     /* fin section acerca de mi */
 
-    /* section formulario contacto */
+    /* section portafolio contacto */
     #container-portafolio {
         display: flex;
         flex-direction: column;
         margin: 5px;
     }
 
-    /* fin section formulario contacto */
+    /* fin section portafolio contacto */
+
+     /* inicio footer*/
+
+    
+
+    /* fin inicio footer*/
 
 
 }
