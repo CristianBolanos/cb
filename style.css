@@ -486,19 +486,40 @@ img.d-block.w-100 {
         font-size: 19px;
     }
 
+    .mt-4 .btn-xl {
+        padding: 0px;
+        font-size: 10px;
+    }
+
     /* fin section acerca de mi */
 
     /* section portafolio contacto */
+
+
     #container-portafolio {
         display: flex;
         flex-direction: column;
         margin: 5px;
     }
 
+    .btn-outline-info {
+        color: #000 !important;
+        font-weight: none !important;
+        font-size: 10px !important;
+        padding: 0px !important;
+    }
+
     /* fin section portafolio contacto */
 
     .textos-sesiones {
-        font-size: 20px;
+        font-size: 15px;
+    }
+
+    .send {
+        width: auto;
+        height: auto;
+        margin: auto;
+        font-size: 10px;
     }
 
     /* inicio footer*/
