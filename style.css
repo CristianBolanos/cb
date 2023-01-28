@@ -111,12 +111,10 @@ body {
 }
 
 img.d-block.w-100 {
-    height: 32rem;
+    height: 28rem;
     max-width: 100%;
     object-fit: cover;
 }
-
-
 
 /* fin carruel */
 
@@ -336,6 +334,14 @@ img.d-block.w-100 {
 
 
 @media only screen and (max-width: 1024px) {
+
+    /* carruel */
+
+    img.d-block.w-100 {
+        height: 23rem;
+    }
+
+    /* carruel */
     /*  section de articulos  */
     /* #card_container {
         display: grid;
@@ -416,13 +422,14 @@ img.d-block.w-100 {
 
     /* fin menu toogle icono */
 
-
     /* carruel */
-    .w-100 {
-        height: 21rem;
+    img.d-block.w-100 {
+        height: 24rem;
     }
 
     /* carruel */
+
+
 
 
 
@@ -466,12 +473,11 @@ img.d-block.w-100 {
 @media only screen and (max-width: 320px) {
 
     /* carruel */
-    .w-100 {
-        height: 20rem;
-
+    img.d-block.w-100 {
+        height: 25rem;
     }
 
-    /*fin carruel */
+    /* carruel */
 
     /* section acerca de mi */
     .title-strong {
