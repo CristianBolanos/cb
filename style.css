@@ -1,6 +1,5 @@
 * {
     margin: 0px;
-    padding: 0px;
     box-sizing: border-box;
 
 }
@@ -14,7 +13,7 @@ section[id] {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
 
     /* posocionar abajo el footer con grid*/
     min-height: 100vh;
@@ -60,8 +59,6 @@ body {
     /* transition: transform 0.3s; */
     /* transform: translateY(-100%); */
     /* transform: translateY(0) */
-
-
 }
 
 .main-nav {
@@ -69,7 +66,6 @@ body {
     width: 100%;
     z-index: 1;
     top: 0px;
-
 }
 
 .main-menu__item {
@@ -120,42 +116,39 @@ img.d-block.w-100 {
 /* fin carruel */
 
 /* section acerca de mi */
+
+
 .textos-sesiones {
     text-align: center;
-    margin: 10px auto;
+    margin: 5px auto;
+    /* width: 300px;
+    height: 50px; */
     font-size: 2.25rem;
     font-weight: bold;
-    /* box-shadow: 3.9px 7.8px 7.8px hsl(0deg 0% 0% / 0.38); */
-
 }
 
 #container-presentacion {
-    /* background-color: #1abc9c; */
     background-color: #0e293c;
-    flex-direction: column;
+    /* flex-direction: column; */
     text-align: center;
+    width: auto;
+    height: auto;
     color: #fff;
-    padding: 2rem;
+    padding: 0 2rem;
     font-size: 1.25rem;
 }
 
-#container-historia {
+.--container-historia {
     font-size: 2rem;
-
 }
 
-/* .title-strong {
-    background-color: #0e293cb9;
-    background-color: #1abc9c;
-    border-radius: 10px;
-    padding: 12px;
+.title-strong {
+    font-weight: bold;
+}
 
-} */
-
-.parrafo-historia {
-    font-weight: 500;
+/* .parrafo-historia {
     padding-top: 20px;
-}
+} */
 
 
 #cv a {
@@ -165,6 +158,7 @@ img.d-block.w-100 {
 .mt-4 .btn-xl {
     padding: 1rem 1.75rem;
     font-size: 1.25rem;
+    margin: 15px auto;
 }
 
 .mt-4 .btn-xl:hover {
@@ -175,12 +169,13 @@ img.d-block.w-100 {
 
 
 /* section portafolio */
-#container-portafolio {
+.container__portafolio {
     /* background-color: #0e293c; */
     padding: 1rem;
     display: grid;
     grid-template-columns: 2fr 2fr 2fr;
     gap: 20px;
+    margin-top: 10px;
 }
 
 .card:hover {
@@ -267,20 +262,18 @@ img.d-block.w-100 {
     outline: 0;
     border-bottom: 1px solid #fff;
     color: #fff;
-
 }
 
 .input:focus {
     box-shadow: 0 0 0 0.2rem #1abc9c70;
 }
 
-
 .send {
     background-color: #0e293c;
     color: #fff;
     width: 150px;
     height: 50px;
-    margin: auto;
+    margin: 0px  auto;
     font-weight: bold;
     border-radius: 10px;
     margin-top: 20px;
@@ -418,7 +411,7 @@ img.d-block.w-100 {
         background-color: #0e293c;
         height: 70px;
         z-index: 1;
-
+      
     }
 
     /* fin menu toogle icono */
@@ -430,12 +423,8 @@ img.d-block.w-100 {
 
     /* carruel */
 
-
-
-
-
     /* section formulario contacto */
-    #container-portafolio {
+    .container__portafolio {
         display: grid;
         grid-template-columns: 1fr;
         gap: 10px;
@@ -481,22 +470,32 @@ img.d-block.w-100 {
     /* carruel */
 
     /* section acerca de mi */
-    .title-strong {
-        padding: 0px;
-        font-size: 19px;
+
+    .--container-historia {
+        font-size: 1rem;
     }
 
-    .mt-4 .btn-xl {
-        padding: 0px;
+    /* .title-strong {
+        font-size: 19px;
+    } */
+
+    .parrafo-historia {
+        padding-top: 20px;
+    }
+
+
+    .container-presentacion {
         font-size: 10px;
     }
 
+    .mt-4 .btn-xl {
+        padding: 10px;
+        font-size: 10px;
+    }
     /* fin section acerca de mi */
 
     /* section portafolio contacto */
-
-
-    #container-portafolio {
+    .container__portafolio {
         display: flex;
         flex-direction: column;
         margin: 5px;
@@ -506,20 +505,22 @@ img.d-block.w-100 {
         color: #000 !important;
         font-weight: none !important;
         font-size: 10px !important;
-        padding: 0px !important;
+        padding: 5px !important;
     }
 
     /* fin section portafolio contacto */
-
-    .textos-sesiones {
+    .textos-sesiones  {
         font-size: 15px;
     }
+    .title-strong{
+        font-size: 15px;
+    }
+    
 
     .send {
-        width: auto;
-        height: auto;
-        margin: auto;
-        font-size: 10px;
+        width: 100px;
+        height: 50px;
+
     }
 
     /* inicio footer*/

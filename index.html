@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,">
+
+    <!-- <meta http-equiv="Permissions-Policy" content="interest-cohort=()"> -->
     <meta name="description" content=" Desarollador web">
     <meta name="author" content=" Crsitian Bolaños">
     <title>Portafolio</title>
@@ -21,18 +22,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <!-- font-awesome iconos-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 </head>
 
 <body>
-
-
     <!-- inicio header -->
     <header>
         <nav class="main-nav">
-            <picture>
-                <a href="index.html"><img src="./asset/logo.webp" id="logo" alt="logo"></a>
-            </picture>
+            <a href="index.html"><img src="./asset/logo.webp" id="logo" alt="logo"></a>
             <!-- menu oculto para checkbok o para javaScript-->
             <div id="toogle-menu" class="toggle-menu">
                 <!-- <label for="toogle-menu-checkbox"> -->
@@ -56,7 +53,7 @@
     <main id="main-container">
 
         <!-- carrusel -->
-        <section id="container-carrusel">
+        <div id="container-carrusel">
             <div id="carouselExampleIndicators" class="carousel slide">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
@@ -88,21 +85,23 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-        </section>
+        </div>
         <!-- fin carrrusel -->
 
         <!-- section banner y saludo -->
-        <h2 id="acercademi" class="textos-sesiones">ACERCA DE MI</h2>
-        <section id="container-presentacion">
-            <article>
-                <p id="container-historia">
-                    Hola que tal te saluda <strong>Cristian Bolaños</strong> es un gusto tenerte en mi portafolio,
+        <article>
+            <h2 class="textos-sesiones" id="acercademi">ACERCA DE MI</h2>
+            <div id="container-presentacion">
+                <p class=" parrafo-historia --container-historia">
+                    Hola que tal te saluda <strong class="title-strong">Cristian Bolaños</strong> es un gusto tenerte en mi portafolio,
                     espero que sea de tu agrado, espero ayudarte!!!
                 </p><br>
                 <strong class="title-strong">PROPUESTA VALOR</strong>
                 <p class="parrafo-historia">
-                    Tengo un gusto y curiosidad por aprendes cosas nuevas en el sector de la tecnología, soy una persona
-                    que me gusta el autoaprendizaje, que busca la solución adecuada de acuerdo necesidad del problema
+                    Tengo un gusto y curiosidad por aprendes cosas nuevas en el sector de la tecnología, soy una
+                    persona
+                    que me gusta el autoaprendizaje, que busca la solución adecuada de acuerdo necesidad del
+                    problema
                     requerido.
                 </p>
                 <br><br>
@@ -110,7 +109,8 @@
                 <p class="parrafo-historia">
                     Tecnólogo en sistemas con 1 año de experiencia, en el campo laboral por empresa, dedicado al
                     sector de la tecnología tanto por empresa como independiente, contando con experiencias y
-                    conocimientos en computadores, programación, diseño, dando un manejo y aprendizaje adecuado, al uso
+                    conocimientos en computadores, programación, diseño, dando un manejo y aprendizaje adecuado, al
+                    uso
                     del software y hardware de acuerdo a la necesidad requerida.
                     <br><br>
                 </p>
@@ -125,133 +125,143 @@
                         VER CURRÍCULO
                     </a>
                 </div>
-            </article>
-        </section>
+            </div>
+        </article>
         <!-- fin section banner y saludo -->
 
         <!-- section portafolio -->
-        <h2 class="textos-sesiones" id="portafolio">PORTAFOLIO</h2>
-        <section id="container-portafolio">
-
-            <article class="card">
-                <div class="card h-100">
-                    <picture>
-                        <img src="./asset/img-portafolio/corporativa.webp" alt="Landing Pages corporativa"
-                            class="card-img-top img-fluid">
-                    </picture>
-                    <div class="card-body">
-                        <h3 class="card-title">Card title</h3>
-                        <p class="card-text">Some quick example text to build on the card title and make
-                            up the bulkjnsjdjss djsdhsjhaajxk
-                        </p>
-                        <a href="https://cristian032019.github.io/corporativa/" target="_blank"
-                            class="btn btn-outline-info">Ver</a>
+        <section>
+            <h2 class="textos-sesiones" id="portafolio">PORTAFOLIO</h2>
+            <div class="container__portafolio">
+                <article class="card">
+                    <div class="card h-100">
+                        <picture>
+                            <img src="./asset/img-portafolio/corporativa.webp" alt="Landing Pages corporativa"
+                                class="card-img-top img-fluid">
+                        </picture>
+                        <div class="card-body">
+                            <h3 class="card-title">Card title</h3>
+                            <p class="card-text">Some quick example text to build on the card title and make
+                                up the bulkjnsjdjss djsdhsjhaajxk
+                            </p>
+                            <a href="https://cristian032019.github.io/corporativa/" target="_blank"
+                                class="btn btn-outline-info">Ver</a>
+                        </div>
                     </div>
-                </div>
-            </article>
+                </article>
 
-            <article class="card">
-                <div class="card h-100 ">
-                    <picture>
-                        <img src="./asset/img-portafolio/corporativa.webp" alt="post1" class="card-img-top img-fluid">
-                    </picture>
-                    <div class="card-body">
-                        <h3 class="card-title">Card title</h3>
-                        <p class="card-text">Some quick example text to build on the card title and make
-                            up the bulkjnsjdjss djsdhsjhaajxk
-                        </p>
-                        <a href="#" target="_blank" class="btn btn-outline-info">Ver</a>
+                <article class="card">
+                    <div class="card h-100 ">
+                        <picture>
+                            <img src="./asset/img-portafolio/corporativa.webp" alt="post1"
+                                class="card-img-top img-fluid">
+                        </picture>
+                        <div class="card-body">
+                            <h3 class="card-title">Card title</h3>
+                            <p class="card-text">Some quick example text to build on the card title and make
+                                up the bulkjnsjdjss djsdhsjhaajxk
+                            </p>
+                            <a href="#" target="_blank" class="btn btn-outline-info">Ver</a>
+                        </div>
                     </div>
-                </div>
-            </article>
+                </article>
 
-            <article class="card">
-                <div class="card h-100">
-                    <picture>
-                        <img src="./asset/img-portafolio/corporativa.webp" alt="post" class="card-img-top img-fluid">
-                    </picture>
-                    <div class="card-body">
-                        <h3 class="card-title">Card title</h3>
-                        <p class="card-text">Some quick example text to build on the card title and make
-                            up the bulkjnsjdjss djsdhsjhaajxk
-                        </p>
-                        <a href="#" target="_blank" class="btn btn-outline-info">Ver</a>
+                <article class="card">
+                    <div class="card h-100">
+                        <picture>
+                            <img src="./asset/img-portafolio/corporativa.webp" alt="post"
+                                class="card-img-top img-fluid">
+                        </picture>
+                        <div class="card-body">
+                            <h3 class="card-title">Card title</h3>
+                            <p class="card-text">Some quick example text to build on the card title and make
+                                up the bulkjnsjdjss djsdhsjhaajxk
+                            </p>
+                            <a href="#" target="_blank" class="btn btn-outline-info">Ver</a>
+                        </div>
                     </div>
-                </div>
-            </article>
+                </article>
 
-            <article class="card">
-                <div class="card h-100">
-                    <picture>
-                        <img src="./asset/img-portafolio/corporativa.webp" alt="post1" class="card-img-top img-fluid">
-                    </picture>
-                    <div class="card-body">
-                        <h3 class="card-title">Card title</h3>
-                        <p class="card-text">Some quick example text to build on the card title and make
-                            up the bulkjnsjdjss djsdhsjhaajxk
-                        </p>
-                        <a href="#" target="_blank" class="btn btn-outline-info">Ver</a>
+                <article class="card">
+                    <div class="card h-100">
+                        <picture>
+                            <img src="./asset/img-portafolio/corporativa.webp" alt="post1"
+                                class="card-img-top img-fluid">
+                        </picture>
+                        <div class="card-body">
+                            <h3 class="card-title">Card title</h3>
+                            <p class="card-text">Some quick example text to build on the card title and make
+                                up the bulkjnsjdjss djsdhsjhaajxk
+                            </p>
+                            <a href="#" target="_blank" class="btn btn-outline-info">Ver</a>
+                        </div>
                     </div>
-                </div>
-            </article>
+                </article>
 
-            <article class="card">
-                <div class="card h-100">
-                    <picture>
-                        <img src="./asset/img-portafolio/corporativa.webp" alt="post1" class="card-img-top img-fluid">
-                    </picture>
-                    <div class="card-body">
-                        <h3 class="card-title">Card title</h3>
-                        <p class="card-text">Some quick example text to build on the card title and make
-                            up the bulkjnsjdjss djsdhsjhaajxk
-                        </p>
-                        <a href="#" target="_blank" class="btn btn-outline-info">ver</a>
+                <article class="card">
+                    <div class="card h-100">
+                        <picture>
+                            <img src="./asset/img-portafolio/corporativa.webp" alt="post1"
+                                class="card-img-top img-fluid">
+                        </picture>
+                        <div class="card-body">
+                            <h3 class="card-title">Card title</h3>
+                            <p class="card-text">Some quick example text to build on the card title and make
+                                up the bulkjnsjdjss djsdhsjhaajxk
+                            </p>
+                            <a href="#" target="_blank" class="btn btn-outline-info">ver</a>
+                        </div>
                     </div>
-                </div>
-            </article>
+                </article>
 
-            <article class="card">
-                <div class="card h-100">
-                    <picture>
-                        <img src="./asset/img-portafolio/corporativa.webp" alt="post1" class="card-img-top img-fluid">
-                    </picture>
-                    <div class="card-body">
-                        <h3 class="card-title">Card title</h3>
-                        <p class="card-text">Some quick example text to build on the card title and make
-                            up the bulkjnsjdjss djsdhsjhaajxk
-                        </p>
-                        <a href="#" target="_blank" class="btn btn-outline-info">ver</a>
+                <article class="card">
+                    <div class="card h-100">
+                        <picture>
+                            <img src="./asset/img-portafolio/corporativa.webp" alt="post1"
+                                class="card-img-top img-fluid">
+                        </picture>
+                        <div class="card-body">
+                            <h3 class="card-title">Card title</h3>
+                            <p class="card-text">Some quick example text to build on the card title and make
+                                up the bulkjnsjdjss djsdhsjhaajxk
+                            </p>
+                            <a href="#" target="_blank" class="btn btn-outline-info">ver</a>
+                        </div>
                     </div>
-                </div>
-            </article>
-
-
-
-            <!--<article class="cards-articulos">
-                <div class="card-img">
-                    <img src="" alt="post4" srcset="">
-                </div>
-                <div class="card-body">
-                    <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur placeat sapiente
-                        repudiandae nobis odio illo cum iusto. Officia, itaque! Vitae distinctio rem optio sapiente
-                        amet consectetur iure eum minus voluptate.
-                    </p>
-                </div>
-                <div class="card-footer">
-                    <a href="#">Ver</a>
-                </div>
-            </article> -->
-
+                </article>
+            </div>
         </section>
         <!-- fin section portafolio -->
 
         <!-- section formulario -->
-        <h2 class="textos-sesiones" id="contacto">CONTACTAME</h2>
-        <section id="form-container">
 
+        <section>
+            <h2 class="textos-sesiones" id="contacto">CONTACTAME</h2>
+            <div id="form-container">
+                <div class="container-formulario">
+                    <form class="container_inputs">
 
-            <!-- <form action="" method="get" class="form">
+                        <label for="nombre" class="label">Nombre</label>
+                        <input id="nombre" type="text" class="input">
+
+                        <label for="email" class="label">Email</label>
+                        <input type="email" id="email" class="input">
+
+                        <label for="telefono" class="label">Telefono</label>
+                        <input type="number" id="telefono" class="input">
+
+                        <label for="mensaje" class="label">Mensaje</label>
+                        <textarea id="mensaje" cols="30" rows="10" class="input"></textarea>
+
+                        <button type="submit" class="send">Enviar</button>
+
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!--fin section formulario -->
+
+        <!-- <form action="" method="get" class="form">
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="floatingInput">
                     <label for="floatingInput">Nombre</label>
@@ -272,29 +282,7 @@
                     <label for="floatingTextarea2">Mensaje</label>
                 </div>
                 <button type="submit" class="btn btn-primary send">Enviar</button>
-            </form> -->
-
-            <div class="container-formulario">
-                <form action="" class="container_inputs">
-
-                    <label for="nombre" class="label">Nombre</label>
-                    <input id="nombre" type="text" class="input">
-
-                    <label for="email" class="label">Email</label>
-                    <input type="email" id="email" class="input">
-
-                    <label for="telefono" class="label">Telefono</label>
-                    <input type="number" id="telefono" class="input">
-
-                    <label for="mensaje" class="label">Mensaje</label>
-                    <textarea id="mensaje" cols="30" rows="10" class="input"></textarea>
-
-                    <button type="submit" class="send">Enviar</button>
-
-                </form>
-            </div>
-        </section>
-        <!--fin section formulario -->
+              </form> -->
 
 
     </main>
@@ -305,32 +293,32 @@
             <h3>LOCALIZACIÓN</h3>
             <p>Cali Colombia</p>
         </div>
-        <nav>
-            <picture class="ico">
-                <a href="https://www.linkedin.com/in/cristianbola%C3%B1os/" target="_blank"
-                    class="btn btn-outline-light btn-social mx-1" aria-label="linkedin">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-                <a href="https://github.com/Cristian032019" target="_blank"
-                    class="btn btn-outline-light btn-social mx-1" aria-label="github">
-                    <i class="fa-brands fa-github"></i>
-                </a>
+        <nav class="ico">
 
-                <a href="https://co.pinterest.com/cristianbolanos7/" target="_blank"
-                    class="btn btn-outline-light btn-social mx-1" aria-label="pinterest">
-                    <i class="fa-brands fa-pinterest-p"></i>
-                </a>
+            <a href="https://www.linkedin.com/in/cristianbola%C3%B1os/" target="_blank"
+                class="btn btn-outline-light btn-social mx-1" aria-label="linkedin">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/Cristian032019" target="_blank" class="btn btn-outline-light btn-social mx-1"
+                aria-label="github">
+                <i class="fa-brands fa-github"></i>
+            </a>
 
-                <a href="https://api.whatsapp.com/send?phone=573167341074&text=Hola,%20estoy%20interesad@%20en"
-                    target="_blank" class="btn btn-outline-light btn-social mx-1" aria-label="whatsapp">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-                <a href="mailto:cristianbolanos316@gmail.com" target="_blank"
-                    class="btn btn-outline-light btn-social mx-1" aria-label="correo">
-                    <i class="fa-solid fa-envelope"></i>
-                </a>
+            <a href="https://co.pinterest.com/cristianbolanos7/" target="_blank"
+                class="btn btn-outline-light btn-social mx-1" aria-label="pinterest">
+                <i class="fa-brands fa-pinterest-p"></i>
+            </a>
 
-            </picture>
+            <a href="https://api.whatsapp.com/send?phone=573167341074&text=Hola,%20estoy%20interesad@%20en"
+                target="_blank" class="btn btn-outline-light btn-social mx-1" aria-label="whatsapp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="mailto:cristianbolanos316@gmail.com" target="_blank" class="btn btn-outline-light btn-social mx-1"
+                aria-label="correo">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+
+
 
         </nav>
 
@@ -341,7 +329,7 @@
     </footer>
 
     <div id="container-derechos">
-        <small>Copyright &copy 2023</small>
+        <small>Copyright &copy;2023</small>
     </div>
     <!-- fin inicio footer -->
 
