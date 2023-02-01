@@ -178,6 +178,11 @@ img.d-block.w-100 {
     margin-top: 10px;
 }
 
+ .card-img-top{
+    width: 421px !important;
+    height: 590px!important;
+}
+
 .card:hover {
     box-shadow: 3.9px 7.8px 7.8px #1abc9c6e;
 }
