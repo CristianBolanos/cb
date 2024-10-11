@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head></head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <meta name="description"
+        content="Portafolio personal de [Tu Nombre], desarrollador web especializado en [tus habilidades principales].">
+    <meta name="keywords" content="desarrollador web, portafolio, [tus habilidades clave]">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="asset/logo.webp" type="image/x-icon">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-GA-ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'YOUR-GA-ID');
+    </script>
+</head>
+
+<body>
+    <!-- <header id="main-header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Tu Nombre</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="experiencia.html">Experiencia</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <button id="theme-toggle" aria-label="Cambiar tema">
+                        <i class="fas fa-adjust"></i>
+                    </button>
+                    <select id="language-select" aria-label="Seleccionar idioma">
+                        <option value="es">ES</option>
+                        <option value="en">EN</option>
+                    </select>
+                </div>
+                <button class="hamburger" aria-label="Menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header> -->
+
+    <header id="main-header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo" data-translate="logo">
+                    <img src="https://cristian032019.github.io/cb/asset/logo.webp" alt="img logo" id="logo">
+                </a>
+                <!-- <div class="nav-center"> -->
+                <ul class="nav-links">
+                    <li><a href="index.html" data-translate="home">Inicio</a></li>
+                    <li><a href="experiencia.html" data-translate="experience">Experiencia</a></li>
+                    <li><a href="proyectos.html" data-translate="projects">Proyectos</a></li>
+                    <li><a href="blog.html" data-translate="blog">Blog</a></li>
+                    <li><a href="index.html#contacto" data-translate="contact">Contacto</a></li>
+                </ul>
+                <!-- </div> -->
+                <div class="nav-right">
+                    <div class="nav-buttons">
+                        <button id="theme-toggle" aria-label="Cambiar tema">
+                            <!-- <i class="fas fa-adjust"></i> -->
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <select id="language-select" aria-label="Seleccionar idioma">
+                            <option value="es">ES</option>
+                            <option value="en">EN</option>
+                        </select>
+                    </div>
+                    <button class="hamburger" aria-label="Menú">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+
+    <main>
+        <section id="blog">
+            <div class="container">
+                <h1>Mi Blog</h1>
+                <div id="blog-container"></div>
+                <div id="pagination"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add this at the end of the body -->
+    <footer></footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/cristianbola%C3%B1os/" target="_blank" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Cristian032019" target="_blank" aria-label="GitHub"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=573167341074&amp;text=Hola,%20estoy%20interesad@%20en"
+                    target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <!-- <a href="mailto:cristianbolanos316@gmail.com" target="_blank" aria-label="Email"><i
+                        class="fa-solid fa-envelope"></i></a> -->
+            </div>
+            <p class="derechos">Portafolio Copyright &copy;2025.</p>
+            <!-- <a href="privacidad.html">Política de Privacidad</a> -->
+            <!-- <a href="dashboard.html" class="btn btn-admin">Administrar Portafolio</a> -->
+            <!-- <a href="dashboard.html" data-translate="managePortfolio">Administrar Portafolio</a> -->
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/blog.js"></script>
+    <script src="js/translations.js"></script>
+</body>
+
+</html>
