@@ -28,8 +28,8 @@ $(document).ready(function() {
             titulo: "Portaolio",
             descripcion: "Landing pages Portafolio. Tecnologías utilizadas: HTML5, CSS3, Bootstrap.",
             imagen: "asset/img-portafolio/portafolio.webp",
-            enlace: "https://cristian032019.github.io/cb/",
-            Codigolink:"https://github.com/Cristian032019/cb"
+            enlace: "https://cristian032019.github.io/portafolio/",
+            Codigolink:"https://github.com/Cristian032019/portafolio"
         },
        
         // Agrega más proyectos aquí...
