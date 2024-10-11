@@ -3,401 +3,230 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,">
-
-    <!-- <meta http-equiv="Permissions-Policy" content="interest-cohort=()"> -->
-    <meta name="author" content=" Crsitian Bolaños Maquetador web">
-    <meta name="description" content="Diseño de Maquetación web con html y css" lang="es">
-    <meta name="keywords" content="Maquetador web, html, css">
-    <meta name="Copyright" content="Cristian Bolaños Portafolio Copyright &copy;2024">
-
-    <meta property="og:locale" content="es_ES">
-    <meta property="og:type" content="portafolio">
-    <meta property="og:title" content="Cristian Bolaños Portafolio">
-    <meta property="og:url" content="https://cristian032019.github.io/cb/">
-
-    <meta property="og:description" content="Diseño de Maquetación web con html y css">
-    <meta property="og:site_name" content="Cristian Bolaños Portafolio">
-    <!-- <meta property="og:locale:alternate" content="en_EU" > -->
-
-    <title>Cristian Bolaños Portafolio</title>
-
-    <!-- Fuentes personalizadas para este tema -->
-    <link rel="shortcut icon" href="./asset/logo.webp" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <!-- font family -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"  type="text/css"> -->
-
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <!-- font-awesome iconos-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desarrollador Web</title>
+    <meta name="description"
+        content="Portafolio personal de Cristian Bolaños, desarrollador web especializado en [tus habilidades principales].">
+    <meta name="keywords" content="desarrollador web, portafolio, [tus habilidades clave]">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="asset/logo.webp" type="image/x-icon">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-GA-ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'YOUR-GA-ID');
+    </script>
 </head>
 
 <body>
-    <!-- inicio header -->
-    <header>
-        <nav class="main-nav">
-            <a href="index.html"><img src="./asset/logo.webp" id="logo" alt="logo"></a>
-            <!-- menu oculto para checkbok o para javaScript-->
-            <div id="toogle-menu" class="toggle-menu">
-                <!-- <label for="toogle-menu-checkbox"> -->
-                <!-- <img src="./asset/menu.png" alt="menu"> -->
-                <!-- Toggle menu x  iconos en el css -->
-                <div class="hamburger-icon"></div>
-                <!-- Toggle menu x  -->
-                <!--</label> -->
-            </div>
-            <!-- <input type="checkbox" class="toogle-menu__checkbox" id="toogle-menu-checkbox"> -->
-            <!-- fin menu oculto co checbok  -->
-            <ul id="main-menu" class="main-menu">
-                <li class="main-menu__item"><a href="#acercademi" class="main-menu__link">Acerca de mi</a></li>
-                <li class="main-menu__item"><a href="#portafolio" class="main-menu__link">Portafolio</a></li>
-                <li class="main-menu__item"><a href="#contacto" class="main-menu__link">Contactame</a></li>
-            </ul>
-        </nav>
-    </header>
-    <!-- fin inicio header -->
-
-    <main id="main-container">
-
-        <!-- carrusel -->
-        <div id="container-carrusel">
-            <div id="carouselExampleIndicators" class="carousel slide">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                        class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
+    <!-- <header id="main-header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Tu Nombre</a>
+                <ul class="nav-links">
+                    <li><a href="index.html" data-translate="home">Inicio</a></li>
+                    <li><a href="experiencia.html" data-translate="experience">Experiencia</a></li>
+                    <li><a href="proyectos.html" data-translate="projects">Proyectos</a></li>
+                    <li><a href="blog.html" data-translate="blog">Blog</a></li>
+                    <li><a href="index.html#contacto" data-translate="contact">Contacto</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <button id="theme-toggle" aria-label="Cambiar tema">
+                        <i class="fas fa-adjust"></i>
+                    </button>
+                    <select id="language-select" aria-label="Seleccionar idioma">
+                        <option value="es">ES</option>
+                        <option value="en">EN</option>
+                    </select>
                 </div>
-                <div class="carousel-inner">
-                    <picture class="carousel-item active">
-                        <img src="./asset/img-carrusel/banner.webp" class="d-block w-100" alt="banner">
-                    </picture>
-                    <picture class="carousel-item">
-                        <img src="./asset/img-carrusel/banner1.webp" class="d-block w-100" alt="banner1">
-                    </picture>
-                    <picture class="carousel-item">
-                        <img src="./asset/img-carrusel/banner2.webp" class="d-block w-100" alt="banner2">
-                    </picture>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
+                <button class="hamburger" aria-label="Menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
+            </nav>
         </div>
-        <!-- fin carrrusel -->
+    </header>  -->
+    <header id="main-header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo" data-translate="logo">
+                    <img src="asset/logo.webp" alt="img logo" id="logo">
+                </a>
+                <!-- <div class="nav-center"> -->
+                <ul class="nav-links">
+                    <!-- <li><a href="index.html" data-translate="home">Inicio</a></li> -->
+                    <li><a href="experiencia.html" data-translate="experience">Experiencia</a></li>
+                    <li><a href="proyectos.html" data-translate="projects">Proyectos</a></li>
+                    <!-- <li><a href="blog.html" data-translate="blog">Blog</a></li> -->
+                    <li><a href="index.html#contacto" data-translate="contact">Contacto</a></li>
+                </ul>
+                <!-- </div> -->
+                <div class="nav-right">
+                    <div class="nav-buttons">
+                        <button id="theme-toggle" aria-label="Cambiar tema">
+                            <!-- <i class="fas fa-adjust"></i> -->
+                            <i class="fas fa-moon"></i> 
+                        </button>
+                        <select id="language-select" aria-label="Seleccionar idioma">
+                            <option value="es">ES</option>
+                            <option value="en">EN</option>
+                        </select>
+                    </div>
+                    <button class="hamburger" aria-label="Menú">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-        <!-- section banner y saludo -->
-        <article>
-            <h2 class="textos-sesiones" id="acercademi">ACERCA DE MI</h2>
-            <div id="container-presentacion">
-                <p class=" parrafo-historia container-historia">
-                    Hola que tal te saluda <strong class="title-strong">Cristian Bolaños</strong> es un gusto tenerte en
-                    mi portafolio,
-                    espero que sea de tu agrado, espero ayudarte!!!
-                </p><br>
-                <strong class="title-strong">PROPUESTA VALOR</strong>
-                <p class="parrafo-historia">
-                    Tengo un gusto y curiosidad por aprender cosas nuevas en el sector de la tecnología y ámbitos operativos, dispuesto  
-                    al autoaprendizaje, que busca la solución adecuada de acuerdo a la necesidad del problema.
-                </p>
-                <br><br>
-                <strong class="title-strong">PERFIL PROFESIONAL</strong>
-                <p class="parrafo-historia">
-                    Tecnólogo en sistemas con 1 año de experiencia, dedicado al sector de la tecnología por medio de empresas e 
-                    independiente, con experiencias y conocimientos en computadoras, programación, diseño y auxiliar operario, 
-                    brindando un manejo de aprendizaje adecuado de acuerdo a la necesidad.
+
+    <main>
+        <section id="banner">
+            <div class="container">
+                <h1>Hola, soy <span class="highlight">Cristian Bolaños</span></h1>
+                <p id="dynamic-text"></p>
+            </div>
+            <div class="banner-bg"></div>
+        </section>
+
+        <section id="sobre-mi">
+            <div class="container">
+                <h2 data-translate="Aboutme">Sobre Mí</h2>
+                <!-- <p>Soy un desarrollador web apasionado por crear experiencias digitales únicas y funcionales. Con
+                    experiencia en [tus tecnologías principales], me especializo en [tu área de especialización].</p> -->
+                <p data-translate="AboutmeText">
+                    Tecnólogo en sistemas con 1 año de experiencia, dedicado al sector de la tecnología a través de
+                    empresas e independientes, con experiencia y conocimientos en computadoras, programación y redes
+                    informáticas.
                     <br><br>
+                    Actualmente, estoy aprendiendo sobre la IA para optimizar la productividad.
+                    <br><br>
+                    Siempre he sentido gusto por armar y desarmar cosas y entender su funcionalidad, lo que me llevó a
+                    interesarme por las computadoras y la tecnología. Me considero una persona autodidacta, ya que busco
+                    soluciones de acuerdo con la necesidad del problema, aunque no hay nada como tener el apoyo de
+                    alguien que pueda compartir su experiencia.
                 </p>
-                <strong class="title-strong">Skills</strong>
-                <p class="parrafo-historia">
-                    Soporte técnico en sistemas, conocimiento en redes informaticas, desarrollo web.
-                </p>
-                <div class="text-center mt-4">
-                    <a class="btn btn-xl btn-outline-light" href="src/Tecnólogo_en _sistemas_HV.pdf" download target="_blank">
-                        <i class="fas fa-download mr-2"></i>
-                        VER CURRÍCULO
-                    </a>
-                </div>
-            </div>
-        </article>
-        <!-- fin section banner y saludo -->
-
-        <!-- section portafolio -->
-        <section>
-            <h2 class="textos-sesiones" id="portafolio">PORTAFOLIO</h2>
-            <div class="container__portafolio">
-
-                <article class="card">
-                    <div class="card h-100">
-                        <picture>
-                            <img src="./asset/img-portafolio/corporativa.webp" alt="Landing Pages corporativa"
-                                class="card-img-top img-fluid">
-                        </picture>
-                        <div class="card-body">
-                            <h3 class="card-title">Corporativa</h3>
-                            <p class="card-text">
-                                Landing pages corporativa realizada en HTML5 y CSS3 y un poco de JavaScript.
-                            </p>
-                            <a href="https://cristian032019.github.io/corporativa/" target="_blank"
-                                class="btn btn-outline-info">Producción</a>
-
-                            <!-- Button trigger modal -->
-                            <button type="button" class=" btn btn-outline-info" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
-                                Imagen
-                            </button>
-                            <!-- fin Button trigger modal -->
-                            <!-- Modal -->
-                            <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog  modal-xl">
-                                    <div class="modal-content">
-                                        <div class="modal-header text-center">
-                                            <h2 class="modal-title fs-5 r" id="exampleModalLabel">
-                                                Página corporativa
-                                            </h2>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <img src="./asset/img-portafolio/corporativa.webp" alt="página portafolio"
-                                                class="img-fluid">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- fin Modal -->
-                        </div>
-                    </div>
-                </article>
-
-
-                <article class="card">
-                    <div class="card h-100 ">
-                        <picture>
-                            <img src="./asset/img-portafolio/portafolio.webp" alt="Landing Pages portafolio"
-                                class="card-img-top img-fluid">
-                        </picture>
-                        <div class="card-body">
-                            <h3 class="card-title">Portafolio</h3>
-                            <p class="card-text">
-                                Portafolio web realizada en HTML5, CSS3, Bootstrap y un poco de JavaScript.
-                            </p>
-                            <a href="https://cristian032019.github.io/cb/" target="_blank"
-                                class="btn btn-outline-info">Producción</a>
-
-                            <!-- Button trigger modal -->
-                            <button type="button" class=" btn btn-outline-info" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal1">
-                                Imagen
-                            </button>
-                            <!-- fin Button trigger modal -->
-                            <!-- Modal -->
-                            <div class="modal" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1"
-                                aria-hidden="true">
-                                <div class="modal-dialog  modal-xl">
-                                    <div class="modal-content">
-                                        <div class="modal-header ">
-                                            <h2 class="modal-title fs-5 r" id="exampleModalLabel1">
-                                                Página de portafolio
-                                            </h2>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <img src="./asset/img-portafolio/portafolio.webp" alt="página portafolio"
-                                                class="img-fluid ">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- fin Modal -->
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="card h-100">
-                        <picture>
-                            <img src="./asset/img-portafolio/restaurante.webp" alt="Landing Pages corporativa"
-                                class="card-img-top img-fluid">
-                        </picture>
-                        <div class="card-body">
-                            <h3 class="card-title">Restaurante</h3>
-                            <p class="card-text">
-                                Landing pages para Restaurante realizada en HTML5 y CSS3 y Bootstrap.
-                            </p>
-                            <a href="https://cristian032019.github.io/restaurante/" target="_blank"
-                                class="btn btn-outline-info">Producción</a>
-
-                            <!-- Button trigger modal -->
-                            <button type="button" class=" btn btn-outline-info" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal2">
-                                Imagen
-                            </button>
-                            <!-- fin Button trigger modal -->
-                            <!-- Modal -->
-                            <div class="modal" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
-                                aria-hidden="true">
-                                <div class="modal-dialog  modal-xl">
-                                    <div class="modal-content">
-                                        <div class="modal-header ">
-                                            <h2 class="modal-title fs-5 r" id="exampleModalLabel2">
-                                                Página de Restaurante
-                                            </h2>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <img src="./asset/img-portafolio/restaurante.webp" alt="página restaurante"
-                                                class="img-fluid">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- fin Modal -->
-                        </div>
-                    </div>
-                </article>
-
+                <!-- <a href="ruta/a/tu-cv.pdf" class="btn" download>Descargar CV</a> -->
+                <a href="src/TecnólogoEnSistemasHV.pdf" class="btn btn-center" download
+                    data-translate="downloadCV">Descargar CV</a>
             </div>
         </section>
-        <!-- fin section portafolio -->
 
-
-
-
-        <!-- section formulario -->
-        <section>
-            <h2 class="textos-sesiones" id="contacto">CONTACTAME</h2>
-            <div id="form-container">
-                <div class="container-formulario">
-                    <form class="container_inputs">
-
-                        <label for="nombre" class="label">Nombre</label>
-                        <input id="nombre" type="text" class="input">
-
-                        <label for="email" class="label">Email</label>
-                        <input type="email" id="email" class="input">
-
-                        <label for="telefono" class="label">Telefono</label>
-                        <input type="number" id="telefono" class="input">
-
-                        <label for="mensaje" class="label">Mensaje</label>
-                        <textarea id="mensaje" cols="30" rows="10" class="input"></textarea>
-
-                        <button type="submit" class="send">Enviar</button>
-
-                    </form>
+        <section id="habilidades">
+            <div class="container">
+                <h2>Mis Habilidades</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Habilidades Técnicas</h3>
+                        <ul class="skills-list">
+                            <li><i class="fab fa-html5"></i> HTML5</li>
+                            <li><i class="fab fa-css3-alt"></i> CSS3</li>
+                            <li><i class="fab fa-js"></i> JavaScript</li>
+                            <li><i class="fa-brands fa-bootstrap"></i> Bootstrap</li>
+                            <li><i class="fa-brands fa-git-alt"></i> Git</li>
+                            <li><i class="fa-brands fa-github"></i> GitHub</li>
+                            
+                            <!-- <li><i class="fab fa-react"></i> React</li>
+                            <li><i class="fab fa-node-js"></i> Node.js</li> -->
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Habilidades Blandas</h3>
+                        <ul class="skills-list">
+                            <li><i class="fas fa-users"></i> Trabajo en equipo</li>
+                            <li><i class="fas fa-comments"></i> Comunicación efectiva</li>
+                            <!-- <li><i class="fas fa-lightbulb"></i> Resolución de problemas</li> -->
+                            <!-- <li><i class="fas fa-tasks"></i> Gestión del tiempo</li> -->
+                            <li><i class="fas fa-chart-line"></i> Adaptabilidad</li>
+                            <li><i class="fa-solid fa-sitemap"></i> Organizado</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
-        <!--fin section formulario -->
 
-        <!-- <form action="" method="get" class="form">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput">
-                    <label for="floatingInput">Nombre</label>
+        <section id="proyectos-recientes">
+            <div class="container">
+                <h2>Proyectos Recientes</h2>
+                <div class="projects-grid">
+                    <!-- Los proyectos se cargarán dinámicamente aquí -->
                 </div>
+                <!-- <a href="proyectos.html" class="btn">Ver todos los proyectos</a> -->
+                <a href="proyectos.html" class="btn btn-center" data-translate="SeeMore"></a>
+            </div>
+        </section>
 
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput">
-                    <label for="floatingInput">Email</label>
-                </div>
+        <section id="contacto">
+            <div class="container">
+                <h2>Contacto</h2>
+                <!-- <form id="contact-form" action="https://formspree.io/f/your-formspree-id" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nombre *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                     <button type="submit" class="btn">Enviar Mensaje</button> -
+                    <button type="submit" class="btn btn-center" data-translate="sendMessage">Enviar Mensaje</button> -->
 
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="floatingInput">
-                    <label for="floatingInput">Telefono</label>
-                </div>
+                <form id="contact-form" action="https://formspree.io/f/xeoqjyeo" method="POST">
+                    <div class="form-group">
+                        <label for="name" data-translate="name">Nombre</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" data-translate="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" data-translate="message">Mensaje</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-center" data-translate="sendMessage"></button>
+                    <div id="success-message" style="display: none;">¡Formulario enviado con éxito!</div>
 
-                <div class="form-floating">
-                    <textarea class="form-control" id="floatingTextarea2"style="height: 100px"></textarea>
-                    <label for="floatingTextarea2">Mensaje</label>
-                </div>
-                <button type="submit" class="btn btn-primary send">Enviar</button>
-              </form> -->
-
-
+                </form>
+            </div>
+        </section>
     </main>
 
-    <!-- inicio footer -->
-    <footer id="footer-container">
-        <div class="footer-informacion">
-            <h3>LOCALIZACIÓN</h3>
-            <p>Cali Colombia</p>
-        </div>
-        <nav class="ico">
-
-            <a href="https://www.linkedin.com/in/cristianbola%C3%B1os/" target="_blank"
-                class="btn btn-outline-light btn-social mx-1" aria-label="linkedin">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-            <a href="https://github.com/Cristian032019" target="_blank" class="btn btn-outline-light btn-social mx-1"
-                aria-label="github">
-                <i class="fa-brands fa-github"></i>
-            </a>
-
-            <a href="https://co.pinterest.com/cristianbolanos7/" target="_blank"
-                class="btn btn-outline-light btn-social mx-1" aria-label="pinterest">
-                <i class="fa-brands fa-pinterest-p"></i>
-            </a>
-
-            <a href="https://api.whatsapp.com/send?phone=573167341074&text=Hola,%20estoy%20interesad@%20en"
-                target="_blank" class="btn btn-outline-light btn-social mx-1" aria-label="whatsapp">
-                <i class="fa-brands fa-whatsapp"></i>
-            </a>
-            <a href="mailto:cristianbolanos316@gmail.com" target="_blank" class="btn btn-outline-light btn-social mx-1"
-                aria-label="correo">
-                <i class="fa-solid fa-envelope"></i>
-            </a>
-
-
-
-        </nav>
-
-        <div class="footer-informacion">
-            <h3>PROFESIÓN</h3>
-            <p>Tecnólogo en sistemas</p>
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/cristianbola%C3%B1os/" target="_blank" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Cristian032019" target="_blank" aria-label="GitHub"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=573167341074&amp;text=Hola,%20estoy%20interesad@%20en"
+                    target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <!-- <a href="mailto:cristianbolanos316@gmail.com" target="_blank" aria-label="Email"><i
+                        class="fa-solid fa-envelope"></i></a> -->
+            </div>
+            <p class="derechos">Portafolio Copyright &copy;2025.</p>
+            <!-- <a href="privacidad.html">Política de Privacidad</a> -->
+            <!-- <a href="dashboard.html" class="btn btn-admin">Administrar Portafolio</a> -->
+            <!-- <a href="dashboard.html" data-translate="managePortfolio">Administrar Portafolio</a> -->
         </div>
     </footer>
 
-    <div id="container-derechos">
-        <small> Cristian Bolaños Portafolio Copyright &copy;2024</small>
-    </div>
-    <!-- fin inicio footer -->
-
-    <!-- Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
-        </script>
-    <!-- font-awesome -->
-    <script src="js/scripsts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/proyectos.js"></script>
 </body>
 
 </html>
