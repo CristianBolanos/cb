@@ -34,7 +34,7 @@ $(document).ready(function () {
             periodo: " mayoc2023 - diciembre 2023",
             funciones: "<strong>Funciones:</strong> Administrar las redes sociales. Diseñar gráficos y materiales visuales. Crear y aplicar estampados. ",
             logros: "<strong>Logros:</strong> Adquirí y apliqué con éxito herramientas especializadas en estampados textiles, reduciendo errores en un " +
-                "50% y mejorando la entrega a tiempo en un 90%"
+                "50% y mejorando la entrega a tiempo en un 90%."
         },
         {
             titulo: "Técnico de sistemas",
