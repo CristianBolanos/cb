@@ -20,9 +20,17 @@ $(document).ready(function () {
         // },
         // Agrega más experiencias aquí...
         {
+            titulo: "Freelance",
+            empresa: "SYSHELP",
+            periodo: "Agosto 2024 - actualidad ",
+            funciones: "<strong>Funciones:</strong> Actualmente estoy en proyecto de investigación sobre la inteligencia artificial para optimizar "+
+            "la productividad. Actualizando conocimientos en desarrollo web y tecnologías. Creando proyectos web personales con inteligencia artificial. ",
+            logros: "<strong>Logros:</strong> aprendizaje de herramientas con inteligencia artificial y su manejo."
+        },
+        {
             titulo: "Auxiliar Operativo",
             empresa: "Colácteos",
-            periodo: "marzo 2024 - hasta junio 2024",
+            periodo: "Marzo 2024 - hasta junio 2024",
             funciones: "<strong>Funciones:</strong> Realizar el almacenamiento, acopio y despacho de mercancías. Controlar y gestionar el inventario. "+
             "Semaforización de productos según fechas de vencimiento. ",
             logros: "<strong>Logros:</strong> Durante un contrato eventual por temporada de vacaciones, adquirí conocimientos especializados en " +
@@ -31,7 +39,7 @@ $(document).ready(function () {
         {
             titulo: "Marketing, diseño y estampador",
             empresa: "EAU EARTH FUEGO",
-            periodo: " mayoc2023 - diciembre 2023",
+            periodo: " mayo 2023 - diciembre 2023",
             funciones: "<strong>Funciones:</strong> Administrar las redes sociales. Diseñar gráficos y materiales visuales. Crear y aplicar estampados. ",
             logros: "<strong>Logros:</strong> Adquirí y apliqué con éxito herramientas especializadas en estampados textiles, reduciendo errores en un " +
                 "50% y mejorando la entrega a tiempo en un 90%."
