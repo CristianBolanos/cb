@@ -4,7 +4,14 @@
     --background-color: #ffffff;
     --text-color: #333333;
     --accent-color: #17a2b8;
+    
 }
+
+/* color: #E8E6E3
+color: RGBA(232, 230, 227, 1)
+background-color: #00000000
+background-color: RGBA(0, 0, 0, 0) */
+
 
 * {
     margin: 0;
@@ -13,8 +20,9 @@
 }
 
 body {
-    /* font-family: 'Open Sans', sans-serif;  */
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace, Open Sans, sans-serif;
+
+    /* font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace, Open Sans, sans-serif; */
+    font-family:"IBM Plex Mono", monospace;
     /* font-feature-settings: normal;
     font-variation-settings: normal; */
     /* font-size: 1em; */
@@ -37,6 +45,14 @@ option {
 .goog-te-gadget-icon{
     display: none;
 }
+
+/* .VIpgJd-ZVi9od-ORHb {
+    margin: 0;
+    background-color: #E4EFFB;
+    overflow: hidden;
+    display: flex;
+    width: 1000px;
+} */
 
 
 
