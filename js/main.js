@@ -110,22 +110,22 @@ $(document).ready(function () {
             title: "Snake Game",
             description: "Juego de Snake Game. Tecnologías utilizadas: HTML5, CSS3, JavaScript.",
             image: "asset/img-portafolio/SnakeGame.webp",
-            link: "https://cristian032019.github.io/SnakeGame/",
-            Codigo: "https://github.com/Cristian032019/SnakeGame"
+            link: "https://cristianbolanos.github.io/SnakeGame/",
+            Codigo: "https://github.com/CristianBolanos/SnakeGame"
         },
         {
             title: "Corporativa",
             description: "Landing pages corporativa. Tecnologías utilizadas: HTML5, CSS3, JavaScript. ",
             image: "asset/img-portafolio/corporativa.webp",
-            link: "https://cristian032019.github.io/corporativa/",
-            Codigo: "https://github.com/Cristian032019/corporativa"
+            link: "https://CristianBolanos.github.io/corporativa/",
+            Codigo: "https://github.com/CristianBolanos/corporativa"
         },
         {
             title: "Restaurante",
             description: "Landing pages Restaurante. Tecnologías utilizadas: HTML5, CSS3, Bootstrap.",
             image: "asset/img-portafolio/restaurante.webp",
-            link: "https://cristian032019.github.io/restaurante/",
-            Codigo: "https://github.com/Cristian032019/restaurante"
+            link: "https://CristianBolanos.github.io/restaurante/",
+            Codigo: "https://github.com/CristianBolanos/restaurante"
         }
     ];
 
