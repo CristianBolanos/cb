@@ -23,10 +23,10 @@
 </head>
 
 <body>
-   
+
     <header id="main-header">
         <div id="google_translate_element" class="google"></div>
-        <div class="container">      
+        <div class="container">
             <nav>
                 <a href="index.html" class="logo">
                     <img src="asset/logo.webp" alt="img logo" id="logo">
@@ -38,7 +38,7 @@
                     <li><a href="proyectos.html" data-translate="projects">Proyectos</a></li>
                     <!-- <li><a href="blog.html" data-translate="blog">Blog</a></li> -->
                     <li><a href="index.html#contacto" data-translate="contact">Contacto</a></li>
-                   
+
                 </ul>
                 <!-- </div> -->
                 <div class="nav-right">
@@ -53,8 +53,8 @@
                         </select>
                         -->
                     </div>
-                    
-                    
+
+
 
                     <button class="hamburger" aria-label="Menú">
                         <span></span>
@@ -150,16 +150,20 @@
                 <h2>Contacto</h2>
                 <form id="contact-form" action="https://formspree.io/f/xeoqjyeo" method="POST">
                     <div class="form-group">
-                        <label for="name" data-translate="name">Nombre</label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="name" data-translate="name">Cómo te llamas
+                            <input type="text" id="name" name="name" required placeholder="Nombre y apellido">
+                        </label>
                     </div>
                     <div class="form-group">
-                        <label for="email" data-translate="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="email" data-translate="email">Email
+                            <!-- <input type="email" id="email" name="email" required placeholder="Tu correo electrónico" autocomplete="off"> -->
+                            <input type="email" id="email" name="email" required placeholder="Tu correo electrónico">
+                        </label>
                     </div>
                     <div class="form-group">
-                        <label for="message" data-translate="message">Mensaje</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <label for="message" data-translate="message">Mensaje
+                            <textarea id="message" name="message" required placeholder="Escribe tu mensaje"></textarea>
+                        </label>
                     </div>
                     <button type="submit" class="btn btn-center" data-translate="sendMessage">Enviar Mensaje</button>
                     <div id="success-message" style="display: none;">¡Formulario enviado con éxito!</div>
@@ -195,7 +199,7 @@
     <script src="js/translations.js"></script>
     <script src="js/proyectos.js"></script>
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    
+
 </body>
 
 </html>
