@@ -385,30 +385,36 @@ h2 {
 label:has(:focus:valid){
     color: green
 } */
-
+/* input{
+    caret-color: #c82333;
+} */
 
 
 label:has(:focus-visible:invalid) 
 input {
     outline-color: #ff00007a; 
+    caret-color: #ff00007a;
 }
 
 
 label:has(:focus-visible:valid) 
 input {
     outline-color: #00800077; 
+    caret-color: #00800077 ;
 }
 
 
 label:has(:focus-visible:invalid) 
 textarea{
     outline-color: #ff00007a; 
+    caret-color: #ff00007a;
 }
 
 
 label:has(:focus-visible:valid) 
 textarea{
     outline-color: #00800077; 
+    caret-color: #00800077 ;
 }
 
 
