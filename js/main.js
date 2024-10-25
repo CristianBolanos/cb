@@ -14,7 +14,7 @@ $(document).ready(function () {
             // $header.css('background-color', 'transparent');
         }
     });
-  
+
 
     // Hamburger menu toggle
     $hamburger.click(function (e) {
@@ -42,6 +42,9 @@ $(document).ready(function () {
     // Dynamic text
     // const texts = ['Desarrollador Web Creativo', 'Experto en Frontend', 'Apasionado por la Tecnología'];
     const texts = ['Tecnólogo en sistemas', 'Apasionado por la Tecnología', 'Experto en Frontend'];
+
+    // const texts = [translations.es.textDinamico, translations.en.textDinamico]; 
+
     let count = 0;
     let index = 0;
     let currentText = '';
@@ -107,22 +110,22 @@ $(document).ready(function () {
             title: "Snake Game",
             description: "Juego de Snake Game. Tecnologías utilizadas: HTML5, CSS3, JavaScript.",
             image: "asset/img-portafolio/SnakeGame.webp",
-            link: "https://cristian032019.github.io/SnakeGame/",
-            Codigo: "https://github.com/Cristian032019/SnakeGame" 
+            link: "https://cristianbolanos.github.io/SnakeGame/",
+            Codigo: "https://github.com/CristianBolanos/SnakeGame"
         },
         {
             title: "Corporativa",
             description: "Landing pages corporativa. Tecnologías utilizadas: HTML5, CSS3, JavaScript. ",
             image: "asset/img-portafolio/corporativa.webp",
-            link: "https://cristian032019.github.io/corporativa/",
-            Codigo: "https://github.com/Cristian032019/corporativa"
+            link: "https://CristianBolanos.github.io/corporativa/",
+            Codigo: "https://github.com/CristianBolanos/corporativa"
         },
         {
             title: "Restaurante",
             description: "Landing pages Restaurante. Tecnologías utilizadas: HTML5, CSS3, Bootstrap.",
             image: "asset/img-portafolio/restaurante.webp",
-            link: "https://cristian032019.github.io/restaurante/",
-            Codigo: "https://github.com/Cristian032019/restaurante"
+            link: "https://CristianBolanos.github.io/restaurante/",
+            Codigo: "https://github.com/CristianBolanos/restaurante"
         }
     ];
 
@@ -214,8 +217,16 @@ $(document).ready(function () {
     // Escuchar cambios en el modo del sistema
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applySystemTheme);
 
+
 });
 
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'es', includedLanguages: 'en-CA,en,fr,it,pt,de,ru', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true }, 'google_translate_element');
+}
+
+// function googleTranslateElementInit() {
+//     new google.translate.TranslateElement({ pageLanguage: 'es', includedLanguages: 'ca,eu,gl,en,fr,it,pt,de,ru', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true }, 'google_translate_element');
+// }
 
 
 

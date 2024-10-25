@@ -5,31 +5,31 @@ $(document).ready(function() {
             titulo: "Snake Game",
             descripcion: "Juego de Snake Game. Tecnologías utilizadas: HTML5, CSS3, JavaScript.",
             imagen: "asset/img-portafolio/SnakeGame.webp",
-            enlace: "https://cristian032019.github.io/SnakeGame/",
-            Codigolink: "https://github.com/Cristian032019/SnakeGame" 
+            enlace: "https://CristianBolanos.github.io/SnakeGame/",
+            Codigolink: "https://github.com/CristianBolanos/SnakeGame" 
         },
        
         {
             titulo: "Corporativa",
             descripcion: "Landing pages corporativa. Tecnologías utilizadas: HTML5, CSS3, JavaScript. ",
             imagen: "asset/img-portafolio/corporativa.webp",
-            enlace: "https://cristian032019.github.io/corporativa/",
-            Codigolink: "https://github.com/Cristian032019/corporativa"
+            enlace: "https://CristianBolanos.github.io/corporativa/",
+            Codigolink: "https://github.com/CristianBolanos/corporativa"
         },
         {
             titulo: "Restaurante",
             descripcion: "Landing pages Restaurante. Tecnologías utilizadas: HTML5, CSS3, Bootstrap.",
             imagen: "asset/img-portafolio/restaurante.webp",
-            enlace: "https://cristian032019.github.io/restaurante/",
-            Codigolink: "https://github.com/Cristian032019/restaurante"
+            enlace: "https://CristianBolanos.github.io/restaurante/",
+            Codigolink: "https://github.com/CristianBolanos/restaurante"
             
         },
         {
             titulo: "Portaolio",
             descripcion: "Landing pages Portafolio. Tecnologías utilizadas: HTML5, CSS3, Bootstrap.",
             imagen: "asset/img-portafolio/portafolio.webp",
-            enlace: "https://cristian032019.github.io/portafolio/",
-            Codigolink:"https://github.com/Cristian032019/portafolio"
+            enlace: "https://CristianBolanos.github.io/portafolio/",
+            Codigolink:"https://github.com/CristianBolanos/portafolio"
         },
        
         // Agrega más proyectos aquí...

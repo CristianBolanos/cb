@@ -1,10 +1,19 @@
 :root {
-    --primary-color: #007bff;
+    /* --primary-color: #007bff; original */
+    /* --primary-color: #35a9fd; */
+    --primary-color: #0276ca;
     --secondary-color: #6c757d;
     --background-color: #ffffff;
     --text-color: #333333;
     --accent-color: #17a2b8;
+    
 }
+
+/* color: #E8E6E3
+color: RGBA(232, 230, 227, 1)
+background-color: #00000000
+background-color: RGBA(0, 0, 0, 0) */
+
 
 * {
     margin: 0;
@@ -13,8 +22,8 @@
 }
 
 body {
-    /* font-family: 'Open Sans', sans-serif;  */
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace, Open Sans, sans-serif;
+    /* font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace, Open Sans, sans-serif; */
+    font-family:"IBM Plex Mono", monospace;
     /* font-feature-settings: normal;
     font-variation-settings: normal; */
     /* font-size: 1em; */
@@ -22,8 +31,32 @@ body {
     color: var(--text-color);
     background-color: var(--background-color);
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+option {
+    background-color: var(--secondary-color);
+}
+
+.google {
+    display: grid;
+    place-items: center;
 
 }
+.goog-te-gadget-icon{
+    display: none;
+}
+
+/* .VIpgJd-ZVi9od-ORHb {
+    margin: 0;
+    background-color: #E4EFFB;
+    overflow: hidden;
+    display: flex;
+    width: 1000px;
+} */
+
+
+
 
 .container {
     width: 90%;
@@ -97,11 +130,27 @@ nav {
 .nav-links a {
     color: var(--text-color);
     text-decoration: none;
-    transition: color 0.3s ease;
+    /* transition: color 0.3s ease; */
+    position: relative;
+    transition: all 0.3s ease;  
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 
-.nav-links a:hover {
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover::after {
     color: var(--primary-color);
+    width: 100%;
 }
 
 .nav-right {
@@ -224,7 +273,7 @@ modifica el contenido de  card de experoncia */
 h2 {
     font-size: 2rem;
     margin-bottom: 30px;
-    text-align: center;
+    text-align: center;  
 }
 
 .btn {
@@ -244,7 +293,7 @@ h2 {
 
 .btn:hover {
     background-color: darken(var(--primary-color), 10%);
-    color: #000000;
+    color: var(--accent-color);
 }
 
 /* Center buttons cv y formulario */
@@ -254,6 +303,7 @@ h2 {
     text-align: center;
     max-width: 200px;
 } */
+ 
 /* ¡Formulario enviado con éxito! */
 #success-message {
     display: inline-block;
@@ -262,6 +312,7 @@ h2 {
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
+    
 }
 
 /* ¡Formulario enviado con éxito! */
@@ -345,6 +396,47 @@ h2 {
     margin-bottom: 20px;
 }
 
+/* label:has(:focus:invalid){
+    color: red;
+}
+label:has(:focus:valid){
+    color: green
+} */
+ 
+/* input{
+    caret-color: #c82333;
+} */
+
+
+label:has(:focus-visible:invalid) 
+input {
+    outline-color: #ff00007a; 
+    caret-color: #ff00007a;
+}
+
+
+label:has(:focus-visible:valid) 
+input {
+    outline-color: #00800077; 
+    caret-color: #00800077 ;
+}
+
+
+label:has(:focus-visible:invalid) 
+textarea{
+    outline-color: #ff00007a; 
+    caret-color: #ff00007a;
+}
+
+
+label:has(:focus-visible:valid) 
+textarea{
+    outline-color: #00800077; 
+    caret-color: #00800077 ;
+}
+
+
+
 label {
     display: block;
     margin-bottom: 5px;
@@ -364,7 +456,8 @@ textarea {
 
 /* Footer Styles */
 footer {
-    background-color: #f8f9fa;
+    /* background-color: #f8f9fa; */
+    background-color: var(--background-color);
     /* padding: 20px 0; */
     text-align: center;
     /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
@@ -376,7 +469,7 @@ footer {
 } */
 
 .social-links a {
-    color: var(--secondary-color);
+    color: var(--text-color);
     font-size: 1.5rem;
     /* margin: 0 10px; */
     transition: color 0.3s ease;
@@ -387,7 +480,8 @@ footer {
 }
 
 .derechos {
-    color: #000000;
+    /* color: #000000; */
+    color: var(--text-color);
 }
 
 
@@ -609,7 +703,7 @@ footer {
         display: flex;
         flex-direction: column;
         align-items: center;
-        
+
     }
 
     .skills-list {

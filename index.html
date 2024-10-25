@@ -23,10 +23,12 @@
 </head>
 
 <body>
+
     <header id="main-header">
+        <div id="google_translate_element" class="google"></div>
         <div class="container">
             <nav>
-                <a href="index.html" class="logo" data-translate="logo">
+                <a href="index.html" class="logo">
                     <img src="asset/logo.webp" alt="img logo" id="logo">
                 </a>
                 <!-- <div class="nav-center"> -->
@@ -36,6 +38,7 @@
                     <li><a href="proyectos.html" data-translate="projects">Proyectos</a></li>
                     <!-- <li><a href="blog.html" data-translate="blog">Blog</a></li> -->
                     <li><a href="index.html#contacto" data-translate="contact">Contacto</a></li>
+
                 </ul>
                 <!-- </div> -->
                 <div class="nav-right">
@@ -44,11 +47,15 @@
                             <!-- <i class="fas fa-adjust"></i> -->
                             <i class="fas fa-moon"></i>
                         </button>
-                        <select id="language-select" aria-label="Seleccionar idioma">
+                        <!-- <select id="language-select" aria-label="Seleccionar idioma">
                             <option value="es">ES</option>
-                            <option value="en">EN</option>
+                            <option value="en">EN</option>  
                         </select>
+                        -->
                     </div>
+
+
+
                     <button class="hamburger" aria-label="Menú">
                         <span></span>
                         <span></span>
@@ -63,7 +70,7 @@
     <main>
         <section id="banner">
             <div class="container">
-                <h1>Hola, soy <span class="highlight">Cristian Bolaños</span></h1>
+                <h1 data-translate="SaludoBanner">Hola, soy <span class="highlight">Cristian Bolaños</span></h1>
                 <p id="dynamic-text"></p>
             </div>
             <div class="banner-bg"></div>
@@ -74,7 +81,7 @@
                 <h2 data-translate="Aboutme">Sobre Mí</h2>
                 <!-- <p>Soy un desarrollador web apasionado por crear experiencias digitales únicas y funcionales. Con
                     experiencia en [tus tecnologías principales], me especializo en [tu área de especialización].</p> -->
-                <p data-translate="AboutmeText">
+                <p>
                     Tecnólogo en sistemas con 1 año de experiencia, dedicado al sector de la tecnología a través de
                     empresas e independientes, con experiencia y conocimientos en computadoras, programación y redes
                     informáticas.
@@ -94,10 +101,10 @@
 
         <section id="habilidades">
             <div class="container">
-                <h2>Mis Habilidades</h2>
+                <h2 data-translate="habilidades">Mis Habilidades</h2>
                 <div class="skills-container">
                     <div class="skill-category">
-                        <h3>Habilidades Técnicas</h3>
+                        <h3 data-translate="tecnicas">Habilidades Técnicas</h3>
                         <ul class="skills-list">
                             <li><i class="fab fa-html5"></i> HTML5</li>
                             <li><i class="fab fa-css3-alt"></i> CSS3</li>
@@ -112,14 +119,15 @@
                     </div>
 
                     <div class="skill-category">
-                        <h3>Habilidades Blandas</h3>
+                        <h3 data-translate="blandas">Habilidades Blandas</h3>
                         <ul class="skills-list">
                             <li><i class="fas fa-users"></i> Trabajo en equipo</li>
                             <li><i class="fas fa-comments"></i> Comunicación efectiva</li>
                             <!-- <li><i class="fas fa-lightbulb"></i> Resolución de problemas</li> -->
                             <!-- <li><i class="fas fa-tasks"></i> Gestión del tiempo</li> -->
                             <li><i class="fas fa-chart-line"></i> Adaptabilidad</li>
-                            <li><i class="fa-solid fa-sitemap"></i> Organizado</li>
+                            <li><i class="fa-solid fa-sitemap"></i><span data-translate="organizado">Organizado</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -133,7 +141,7 @@
                     <!-- Los proyectos se cargarán dinámicamente aquí -->
                 </div>
                 <!-- <a href="proyectos.html" class="btn">Ver todos los proyectos</a> -->
-                <a href="proyectos.html" class="btn btn-center" data-translate="SeeMore"></a>
+                <a href="proyectos.html" class="btn btn-center" data-translate="SeeMore">Ver más</a>
             </div>
         </section>
 
@@ -142,18 +150,22 @@
                 <h2>Contacto</h2>
                 <form id="contact-form" action="https://formspree.io/f/xeoqjyeo" method="POST">
                     <div class="form-group">
-                        <label for="name" data-translate="name">Nombre</label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="name" data-translate="name">Cómo te llamas
+                            <input type="text" id="name" name="name" required placeholder="Nombre y apellido">
+                        </label>
                     </div>
                     <div class="form-group">
-                        <label for="email" data-translate="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="email" data-translate="email">Email
+                            <!-- <input type="email" id="email" name="email" required placeholder="Tu correo electrónico" autocomplete="off"> -->
+                            <input type="email" id="email" name="email" required placeholder="Tu correo electrónico">
+                        </label>
                     </div>
                     <div class="form-group">
-                        <label for="message" data-translate="message">Mensaje</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <label for="message" data-translate="message">Mensaje
+                            <textarea id="message" name="message" required placeholder="Escribe tu mensaje"></textarea>
+                        </label>
                     </div>
-                    <button type="submit" class="btn btn-center" data-translate="sendMessage"></button>
+                    <button type="submit" class="btn btn-center" data-translate="sendMessage">Enviar Mensaje</button>
                     <div id="success-message" style="display: none;">¡Formulario enviado con éxito!</div>
 
                 </form>
@@ -161,12 +173,14 @@
         </section>
     </main>
 
+
+
     <footer>
         <div class="container">
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/cristianbola%C3%B1os/" target="_blank" aria-label="LinkedIn"><i
                         class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Cristian032019" target="_blank" aria-label="GitHub"><i
+                <a href="https://github.com/CristianBolanos" target="_blank" aria-label="GitHub"><i
                         class="fab fa-github"></i></a>
                 <a href="https://api.whatsapp.com/send?phone=573167341074&amp;text=Hola,%20estoy%20interesad@%20en"
                     target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
@@ -184,6 +198,8 @@
     <script src="js/main.js"></script>
     <script src="js/translations.js"></script>
     <script src="js/proyectos.js"></script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 
 </html>
