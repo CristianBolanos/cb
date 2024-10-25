@@ -1,3 +1,3 @@
 # Mi portafolio
 
-https://cristian032019.github.io/cb/
+https://CristianBolaños.github.io/cb/
