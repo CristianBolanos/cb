@@ -130,11 +130,27 @@ nav {
 .nav-links a {
     color: var(--text-color);
     text-decoration: none;
-    transition: color 0.3s ease;
+    /* transition: color 0.3s ease; */
+    position: relative;
+    transition: all 0.3s ease;  
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 
-.nav-links a:hover {
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover::after {
     color: var(--primary-color);
+    width: 100%;
 }
 
 .nav-right {
@@ -257,7 +273,7 @@ modifica el contenido de  card de experoncia */
 h2 {
     font-size: 2rem;
     margin-bottom: 30px;
-    text-align: center;
+    text-align: center;  
 }
 
 .btn {
@@ -296,6 +312,7 @@ h2 {
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
+    
 }
 
 /* ¡Formulario enviado con éxito! */
@@ -385,6 +402,7 @@ h2 {
 label:has(:focus:valid){
     color: green
 } */
+ 
 /* input{
     caret-color: #c82333;
 } */
