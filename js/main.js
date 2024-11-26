@@ -218,6 +218,10 @@ $(document).ready(function () {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applySystemTheme);
 
 
+
+     // Set current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
 });
 
 function googleTranslateElementInit() {
