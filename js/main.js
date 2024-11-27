@@ -107,18 +107,18 @@ $(document).ready(function () {
     // Load recent projects
     const recentProjects = [
         {
+            title: "SOAT Ya",
+            description: "Website venta de soat. Tecnologías utilizadas: HTML5, CSS3, JavaScript.",
+            image: "asset/img-portafolio/soat.webp",
+            link: "https://cristianbolanos.github.io/soat/",
+            Codigo: "https://github.com/CristianBolanos/soat" 
+        },
+        {
             title: "Snake Game",
             description: "Juego de Snake Game. Tecnologías utilizadas: HTML5, CSS3, JavaScript.",
             image: "asset/img-portafolio/SnakeGame.webp",
             link: "https://cristianbolanos.github.io/SnakeGame/",
             Codigo: "https://github.com/CristianBolanos/SnakeGame"
-        },
-        {
-            title: "Corporativa",
-            description: "Landing pages corporativa. Tecnologías utilizadas: HTML5, CSS3, JavaScript. ",
-            image: "asset/img-portafolio/corporativa.webp",
-            link: "https://CristianBolanos.github.io/corporativa/",
-            Codigo: "https://github.com/CristianBolanos/corporativa"
         },
         {
             title: "Restaurante",
