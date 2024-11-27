@@ -2,6 +2,13 @@ $(document).ready(function() {
     const proyectos = [
         
         {
+            titulo: "SOAT Ya",
+            descripcion: "Website venta de soat. Tecnologías utilizadas: HTML5, CSS3, JavaScript.",
+            imagen: "asset/img-portafolio/soat.webp",
+            enlace: "https://cristianbolanos.github.io/soat/",
+            Codigolink: "https://github.com/CristianBolanos/soat" 
+        },
+        {
             titulo: "Snake Game",
             descripcion: "Juego de Snake Game. Tecnologías utilizadas: HTML5, CSS3, JavaScript.",
             imagen: "asset/img-portafolio/SnakeGame.webp",
