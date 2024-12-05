@@ -255,11 +255,7 @@ nav {
 #banner h1 {
     font-size: 3rem;
     margin-bottom: 20px;
-    color: #ffffff;
-}
 
-#banner .highlight {
-    color: var(--primary-color);
 }
 
 #dynamic-text {
@@ -844,10 +840,15 @@ footer {
         justify-content: flex-end;
         /* width: 100%; */
     }
-
+/* banner imagen texto */
     #banner h1 {
-        font-size: 2rem;
+        font-size: 1.7rem;
     }
+    
+    #dynamic-text {
+        font-size:1.5rem;
+    }
+  /* fin banner imagen texto */  
 
     /* pagina inicio yProjects Styles */
     .projects-grid {
