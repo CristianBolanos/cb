@@ -107,42 +107,134 @@ $(document).ready(function () {
     // Load recent projects
     const recentProjects = [
         {
+            title: "Ecommerce",
+            description: "Ecommerce creada con nocode, Tecnologías utilizadas: react, typescripts,Vite. Cosas aprendidas a manejar la imaginación para perfecionar las instrucciones de los prompt a la IA en la creación del proyecto dando un buen manejo de IU y UX y su funcionalidad.",
+            tipo: "video",
+            media: "asset/videos/video.webm",
+            enlace: "#",
+        },
+        {
             title: "SOAT Ya",
             description: "Website venta de soat. Tecnologías utilizadas: HTML5, CSS3, JavaScript.",
-            image: "asset/img-portafolio/soat.webp",
+            tipo: "imagen",
+            media: "asset/img-portafolio/soat.webp",
             link: "https://cristianbolanos.github.io/soat/",
             Codigo: "https://github.com/CristianBolanos/soat" 
         },
         {
             title: "Snake Game",
             description: "Juego de Snake Game. Tecnologías utilizadas: HTML5, CSS3, JavaScript.",
-            image: "asset/img-portafolio/SnakeGame.webp",
+            tipo: "imagen",
+            media: "asset/img-portafolio/SnakeGame.webp",
             link: "https://cristianbolanos.github.io/SnakeGame/",
             Codigo: "https://github.com/CristianBolanos/SnakeGame"
         },
-        {
-            title: "Restaurante",
-            description: "Landing pages Restaurante. Tecnologías utilizadas: HTML5, CSS3, Bootstrap.",
-            image: "asset/img-portafolio/restaurante.webp",
-            link: "https://CristianBolanos.github.io/restaurante/",
-            Codigo: "https://github.com/CristianBolanos/restaurante"
-        }
+      
     ];
 
-    const projectsContainer = $('.projects-grid');
-    recentProjects.forEach(project => {
-        const projectCard = `
-            <div class="project-card">
-                <img src="${project.image}" alt="${project.title}">
-                <div class="content">
-                    <h3>${project.title}</h3>
-                    <p>${project.description}</p>
-                    <a href="${project.link}" class="btn" target="_blank">Demo</a>
-                    <a href="${project.Codigo}" class="btn" target="_blank">Código</a>
+    // Esperar a que el DOM esté completamente cargado
+    $(document).ready(function() {
+        const projectsContainer = $('.projects-grid');
+        projectsContainer.empty();
+
+        recentProjects.forEach(project => {
+            const descripcionCorta = project.description.length > 150 ? 
+                project.description.substring(0, 150) + '...' : 
+                project.description;
+
+            let mediaContent;
+            let botonesHtml;
+
+            if (project.tipo === "video") {
+                mediaContent = `<div class="media-container">
+                    <video src="${project.media}" class="card-media">
+                        Tu navegador no soporta el elemento video.
+                    </video>
+                    <div class="play-overlay">
+                        <i class="fas fa-play play-icon"></i>
+                        <i class="fas fa-pause pause-icon" style="display: none;"></i>
+                    </div>
+                </div>`;
+                botonesHtml = `
+                    <div class="botones-principales">
+                        <a href="${project.link || project.enlace}" class="btn" target="_blank">Demo</a>
+                        <a href="#" class="btn ver-video" data-video="${project.media}">Ver Video</a>
+                    </div>
+                    <button class="btn ver-mas" type="button">Ver más</button>
+                `;
+            } else {
+                mediaContent = `<div class="media-container">
+                    <img src="${project.media}" alt="${project.title}" class="card-media">
+                </div>`;
+                botonesHtml = `
+                    <div class="botones-principales">
+                        <a href="${project.link || project.enlace}" class="btn" target="_blank">Demo</a>
+                        ${project.Codigo ? `<a href="${project.Codigo}" class="btn" target="_blank">Código</a>` : ''}
+                    </div>
+                    <button class="btn ver-mas" type="button">Ver más</button>
+                `;
+            }
+
+            const projectCard = `
+                <div class="project-card">
+                    ${mediaContent}
+                    <div class="content">
+                        <h3>${project.title}</h3>
+                        <p class="descripcion-corta">${descripcionCorta}</p>
+                        <p class="descripcion-completa" style="display: none;">${project.description}</p>
+                        <div class="botones-container">
+                            ${botonesHtml}
+                        </div>
+                    </div>
                 </div>
-            </div>
-        `;
-        projectsContainer.append(projectCard);
+            `;
+            projectsContainer.append(projectCard);
+        });
+
+        // Manejador para el botón "Ver más"
+        projectsContainer.on('click', '.ver-mas', function() {
+            const card = $(this).closest('.project-card');
+            const descripcionCorta = card.find('.descripcion-corta');
+            const descripcionCompleta = card.find('.descripcion-completa');
+            
+            if (descripcionCorta.is(':visible')) {
+                descripcionCorta.hide();
+                descripcionCompleta.show();
+                $(this).text('Ver menos');
+            } else {
+                descripcionCompleta.hide();
+                descripcionCorta.show();
+                $(this).text('Ver más');
+            }
+        });
+
+        // Manejador para los videos
+        projectsContainer.on('click', '.media-container', function() {
+            const video = $(this).find('video');
+            const playIcon = $(this).find('.play-icon');
+            const pauseIcon = $(this).find('.pause-icon');
+
+            if (video.length) {
+                if (video[0].paused) {
+                    video[0].play();
+                    playIcon.hide();
+                    pauseIcon.show();
+                } else {
+                    video[0].pause();
+                    pauseIcon.hide();
+                    playIcon.show();
+                }
+            }
+        });
+
+        // Manejar el evento ended para los videos
+        projectsContainer.on('ended', 'video', function() {
+            const container = $(this).closest('.media-container');
+            const playIcon = container.find('.play-icon');
+            const pauseIcon = container.find('.pause-icon');
+            pauseIcon.hide();
+            playIcon.show();
+        });
     });
 
     // Form validation
@@ -231,10 +323,3 @@ function googleTranslateElementInit() {
 // function googleTranslateElementInit() {
 //     new google.translate.TranslateElement({ pageLanguage: 'es', includedLanguages: 'ca,eu,gl,en,fr,it,pt,de,ru', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true }, 'google_translate_element');
 // }
-
-
-
-
-
-
-
