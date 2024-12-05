@@ -6,6 +6,8 @@
     --background-color: #ffffff;
     --text-color: #333333;
     --accent-color: #17a2b8;
+    --card-background: #f8f9fa;
+    --border-color: #ddd;
     
 }
 
@@ -33,7 +35,6 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-
 option {
     background-color: var(--secondary-color);
 }
@@ -47,17 +48,6 @@ option {
     display: none;
 }
 
-/* .VIpgJd-ZVi9od-ORHb {
-    margin: 0;
-    background-color: #E4EFFB;
-    overflow: hidden;
-    display: flex;
-    width: 1000px;
-} */
-
-
-
-
 .container {
     width: 90%;
     max-width: 1200px;
@@ -68,14 +58,18 @@ option {
 
 /* Header Styles */
 #main-header {
-    background-color: var(--background-color);
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-    /* box-shadow: 3.9px 7.8px 7.8px #cccccc; */
+    background-color: transparent;
+    /* box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); */
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     transition: all 0.3s ease;
+}
+
+#main-header.shrink {
+    background-color: var(--background-color);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 #main-header .container {
@@ -97,17 +91,12 @@ nav {
     width: 100%;
 }
 
-/* .logo {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    text-decoration: none;
-} */
-
 #logo {
     width: 40px;
+    height: auto;
     clip-path: circle(50%);
     object-fit: cover;
+    aspect-ratio: auto;
 }
 
 .nav-center {
@@ -163,7 +152,24 @@ nav {
     align-items: center;
 }
 
-#theme-toggle,
+#theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    color: var(--text-color);
+    padding: 5px;
+}
+
+#theme-toggle i {
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+#theme-toggle:hover i {
+    color: var(--primary-color);
+}
+
 #language-select {
     background: none;
     border: none;
@@ -289,6 +295,7 @@ h2 {
     margin: 20px auto;
     text-align: center;
     max-width: 200px;
+    border: none; 
 }
 
 .btn:hover {
@@ -358,32 +365,183 @@ h2 {
 }
 
 .project-card {
-    background-color: #f8f9fa;
-    color: #000000;
-    border-radius: 5px;
+    position: relative;
+    height: auto;
+    min-height: 400px;
+    transition: all 0.3s ease;
     overflow: hidden;
-    transition: transform 0.3s ease;
-    /* box-shadow: 3.9px 7.8px 7.8px #cccccc; */
+    background-color: var(--card-background);
+    color: var(--text-color);
+    border-radius: 5px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-
 }
 
 .project-card:hover {
     transform: translateY(-5px);
 }
 
-.project-card img {
+.project-card .content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+    background-color: var(--card-background);
+    height: auto;
+}
+
+.project-card .content h2 {
+    margin: 0 0 1rem;
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.project-card .descripcion-corta,
+.project-card .descripcion-completa {
+    margin: 0 0 1rem;
+    overflow: hidden;
+    line-height: 1.5;
+    color: var(--text-color);
+}
+
+.project-card .descripcion-corta {
+    display: -webkit-box;
+    /* -webkit-line-clamp: 3; */
+    -webkit-box-orient: vertical;
+    height: auto;
+    max-height: 4.5em;
+}
+
+.project-card .descripcion-completa {
+    display: none;
+    height: auto;
+}
+
+.project-card .botones-container {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.project-card .botones-principales {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+    max-width: 200px;
+}
+
+.project-card .btn {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: var(--primary-color);
+    color: white;
+    white-space: nowrap;
+}
+
+.project-card .btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.project-card .btn.ver-mas {
+    width: 120px;
+    margin: 10px auto;
+    background-color: var(--accent-color);
+}
+
+.project-card .media-container {
+    position: relative;
     width: 100%;
     height: 200px;
+    overflow: hidden;
+}
+
+.project-card .card-media {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
-.project-card .content {
-    padding: 20px;
+.project-card .play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.project-card h3 {
-    margin-bottom: 10px;
+.project-card .play-overlay:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.project-card .play-overlay i {
+    color: white;
+    font-size: 3rem;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.project-card .play-overlay:hover i {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.project-card video {
+    cursor: pointer;
+}
+
+/* Tema oscuro específico para las cards */
+body.dark-theme .project-card {
+    background-color: #444444;
+}
+
+body.dark-theme .project-card .content {
+    background-color: #444444;
+}
+
+@media screen and (max-width: 768px) {
+    .project-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .project-card .media-container {
+        height: 180px;
+    }
+
+    .project-card .content {
+        padding: 1.2rem;
+    }
+
+    .project-card .btn.ver-mas {
+        width: 120px;
+        margin: 10px auto;
+    }
+
+    .project-card .botones-container {
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
 }
 
 /* Contact Form Styles */
@@ -418,7 +576,7 @@ input {
 label:has(:focus-visible:valid) 
 input {
     outline-color: #00800077; 
-    caret-color: #00800077 ;
+    caret-color: #00800077;
 }
 
 
@@ -712,6 +870,86 @@ footer {
         justify-content: center; */
     }
 
+    .project-card {
+        height: auto;
+        min-height: auto;
+        margin-bottom: 1rem;
+    }
+
+    .project-card .content {
+        height: auto;
+        min-height: auto;
+        padding: 1rem;
+    }
+
+    .project-card .media-container {
+        height: 120px;
+    }
+
+    .content {
+        padding: 1rem;
+    }
+
+    .content h2 {
+        font-size: 1.2rem;
+    }
+
+    .descripcion-corta {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .botones-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .project-card .btn {
+        min-width: auto;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .botones-principales {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .project-card .media-container {
+        height: 120px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .project-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .project-card .media-container {
+        height: 180px;
+    }
+
+    .project-card .content {
+        padding: 1.2rem;
+    }
+
+    .project-card .btn.ver-mas {
+        width: 120px;
+        margin: 10px auto;
+    }
+
+    .project-card .botones-container {
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
 }
 
 /* Dark Theme */
@@ -748,4 +986,44 @@ body.dark-theme {
         }
     }
 
+}
+
+/* Estilos para el modal de video */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+}
+
+.modal-content {
+    position: relative;
+    margin: auto;
+    width: 90%;
+    max-width: 800px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#modalVideo {
+    width: 100%;
+    max-height: 80vh;
+}
+
+.close-modal {
+    position: absolute;
+    right: -30px;
+    top: -30px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #ccc;
 }
