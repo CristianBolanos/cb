@@ -8,10 +8,8 @@ $(document).ready(function () {
     $(window).scroll(function () {
         if ($(this).scrollTop() > 50) {
             $header.addClass('shrink');
-            // $header.css('background-color', 'var(--background-color)');
         } else {
             $header.removeClass('shrink');
-            // $header.css('background-color', 'transparent');
         }
     });
 
