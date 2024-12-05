@@ -35,7 +35,6 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-
 option {
     background-color: var(--secondary-color);
 }
@@ -49,17 +48,6 @@ option {
     display: none;
 }
 
-/* .VIpgJd-ZVi9od-ORHb {
-    margin: 0;
-    background-color: #E4EFFB;
-    overflow: hidden;
-    display: flex;
-    width: 1000px;
-} */
-
-
-
-
 .container {
     width: 90%;
     max-width: 1200px;
@@ -70,14 +58,18 @@ option {
 
 /* Header Styles */
 #main-header {
-    background-color: var(--background-color);
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-    /* box-shadow: 3.9px 7.8px 7.8px #cccccc; */
+    background-color: transparent;
+    /* box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); */
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     transition: all 0.3s ease;
+}
+
+#main-header.shrink {
+    background-color: var(--background-color);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 #main-header .container {
@@ -98,13 +90,6 @@ nav {
     align-items: center;
     width: 100%;
 }
-
-/* .logo {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    text-decoration: none;
-} */
 
 #logo {
     width: 40px;
