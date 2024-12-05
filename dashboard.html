@@ -1,38 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-        content="Portafolio personal de Cristian Bolaños, desarrollador web especializado en programación web, redes informáticas e inteligencia artificial">
-    <meta name="keywords"
-        content="Tecnólogo en sistemas, habilidades técnicas, programación web, redes informáticas e inteligencia artificial">
-
-    <title>Desarrollador Web</title>
-    <!-- Estilos CSS -->
-    <link rel="stylesheet" href="css/styles.css">
-
-    <!-- Cargar fuentes de manera optimizada -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">-->
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- favicon -->
-    <link rel="shortcut icon" href="asset/logo.webp" type="image/x-icon">
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-GA-ID"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'YOUR-GA-ID');
-    </script>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
     <header id="main-header">
         <!-- Header content (same as other pages) -->
@@ -44,10 +19,8 @@
                 <h1 data-translate="managePortfolio">Administrar Portafolio</h1>
                 <div class="dashboard-menu">
                     <button class="btn" data-section="blog" data-translate="manageBlog">Administrar Blog</button>
-                    <button class="btn" data-section="projects" data-translate="manageProjects">Administrar
-                        Proyectos</button>
-                    <button class="btn" data-section="experience" data-translate="manageExperience">Administrar
-                        Experiencia</button>
+                    <button class="btn" data-section="projects" data-translate="manageProjects">Administrar Proyectos</button>
+                    <button class="btn" data-section="experience" data-translate="manageExperience">Administrar Experiencia</button>
                 </div>
                 <div id="dashboard-content"></div>
             </div>
@@ -63,5 +36,4 @@
     <!-- <script src="js/translations.js"></script> -->
     <script src="js/dashboard.js"></script>
 </body>
-
 </html>
