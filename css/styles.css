@@ -454,7 +454,7 @@ h2 {
 .project-card .btn.ver-mas {
     width: 120px;
     margin: 10px auto;
-    background-color: var(--accent-color);
+    background-color: var(--primary-color);
 }
 
 .project-card .media-container {
