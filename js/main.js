@@ -108,8 +108,8 @@ $(document).ready(function () {
             title: "Ecommerce",
             description: "Ecommerce creada con nocode, Tecnologías utilizadas: react, typescripts,Vite. Cosas aprendidas a manejar la imaginación para perfecionar las instrucciones de los prompt a la IA en la creación del proyecto dando un buen manejo de IU y UX y su funcionalidad.",
             tipo: "video",
-            media: "asset/videos/video.webm",
-            enlace: "#",
+            media: "../asset/videos/video.webm",
+            enlace: "https://github.com/CristianBolanos/"
         },
         {
             title: "SOAT Ya",
