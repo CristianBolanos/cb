@@ -6,7 +6,6 @@ $(document).ready(function() {
             tipo: "video",
             media: "/asset/videos/video.webm",
             enlace: "https://cristianbolanos.github.io/shop/",
-            // enlace: "../asset/videos/video.webm",
             Codigolink: "https://github.com/CristianBolanos/shop" 
         },
         {
@@ -55,7 +54,7 @@ $(document).ready(function() {
         // Agrega más proyectos aquí...
     ];
 
-    const itemsPerPage = 10;
+    const itemsPerPage = 8;
     let currentPage = 1;
 
     // Crear el modal una vez al inicio
@@ -71,17 +70,6 @@ $(document).ready(function() {
     `);
 
     // Manejadores de eventos para el modal
-    const modal = $('#videoModal');
-    const modalVideo = $('#modalVideo')[0];
-    
-    $(document).on('click', '.ver-video', function(e) {
-        e.preventDefault();
-        const videoSrc = $(this).data('video');
-        if (videoSrc) {
-            openVideoModal(videoSrc);
-        }
-    });
-
     function openVideoModal(videoSrc) {
         const modal = $('#videoModal');
         const modalVideo = $('#modalVideo')[0];
@@ -121,19 +109,18 @@ $(document).ready(function() {
             let botonesHtml;
 
             if (proyecto.tipo === "video") {
-                mediaContent = `<div class="media-container">
-                    <video src="${proyecto.media}" class="card-media">
+                mediaContent = `<div class="media-container video-card-container" style="position:relative;">
+                    <video src="${proyecto.media}" class="card-media card-video" controls preload="none" tabindex="0">
                         Tu navegador no soporta el elemento video.
                     </video>
-                    <div class="play-overlay">
-                        <i class="fas fa-play play-icon"></i>
-                        <i class="fas fa-pause pause-icon" style="display: none;"></i>
+                    <div class="play-overlay-modern" style="display:flex; align-items:center; justify-content:center; position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;">
+                        <i class="fas fa-play play-icon-modern" style="font-size:3rem; color:white; background:rgba(0,0,0,0.4); border-radius:50%; padding:18px; pointer-events:auto; cursor:pointer; transition:opacity 0.2s;"></i>
                     </div>
                 </div>`;
                 botonesHtml = `
                     <div class="botones-principales">
                         <a href="${proyecto.enlace}" class="btn" target="_blank">Demo</a>
-                        <a href="#" class="btn ver-video" data-video="${proyecto.media}">Ver Video</a>
+                        ${proyecto.Codigolink ? `<a href="${proyecto.Codigolink}" class="btn" target="_blank">Código</a>` : ''}
                     </div>
                     <button class="btn ver-mas">Ver más</button>
                 `;
@@ -186,43 +173,54 @@ $(document).ready(function() {
         });
 
         // Manejadores de eventos para los videos
-        $('.media-container').each(function() {
+        $('.video-card-container').each(function() {
             const container = $(this);
-            const video = container.find('video');
-            const overlay = container.find('.play-overlay');
-            const playIcon = overlay.find('.play-icon');
-            const pauseIcon = overlay.find('.pause-icon');
+            const video = container.find('video.card-video');
+            const overlay = container.find('.play-overlay-modern');
+            const playIcon = overlay.find('.play-icon-modern');
 
-            if (video.length) {
-                overlay.click(function() {
+            // Mostrar overlay solo si el video está pausado
+            function updateOverlay() {
+                if (video[0].paused) {
+                    overlay.fadeIn(150);
+                } else {
+                    overlay.fadeOut(150);
+                }
+            }
+
+            // Al hacer click en el video o en el icono, reproducir/pausar
+            video.off('click').on('click', function(e) {
                     if (video[0].paused) {
                         video[0].play();
-                        playIcon.hide();
-                        pauseIcon.show();
                     } else {
                         video[0].pause();
-                        pauseIcon.hide();
-                        playIcon.show();
                     }
+                updateOverlay();
                 });
-
-                video.click(function(e) {
-                    e.preventDefault();
+            playIcon.off('click').on('click', function(e) {
+                e.stopPropagation();
                     if (video[0].paused) {
                         video[0].play();
-                        playIcon.hide();
-                        pauseIcon.show();
                     } else {
                         video[0].pause();
-                        pauseIcon.hide();
-                        playIcon.show();
-                    }
-                });
+                }
+                updateOverlay();
+            });
 
-                video.on('ended', function() {
-                    pauseIcon.hide();
-                    playIcon.show();
-                });
+            // Actualizar overlay al reproducir/pausar
+            video.off('play pause ended').on('play pause ended', function() {
+                updateOverlay();
+            });
+
+            // Inicializar overlay
+            updateOverlay();
+        });
+
+        // Manejador para mostrar el modal de video al hacer click en la card de video
+        $(document).off('dblclick.card-video').on('dblclick.card-video', '.video-card-container', function(e) {
+            const videoSrc = $(this).find('video.card-video').attr('src');
+            if (videoSrc) {
+                openVideoModal(videoSrc);
             }
         });
 
@@ -265,21 +263,133 @@ $(document).ready(function() {
         const paginationContainer = $('#pagination');
         paginationContainer.empty();
 
-        for (let i = 1; i <= totalPages; i++) {
-            const pageLink = $('<a>', {
-                href: '#',
-                text: i,
-                class: i === currentPage ? 'active' : ''
-            });
+        // Si solo hay una página, no mostrar paginación
+        if (totalPages <= 1) {
+            return;
+        }
 
-            pageLink.click(function(e) {
+        // Crear contenedor principal de paginación
+        const paginationWrapper = $('<div class="pagination-wrapper"></div>');
+        
+        // Botón "Anterior"
+        const prevButton = $('<button class="pagination-btn prev-btn" aria-label="Página anterior">');
+        prevButton.html('<i class="fas fa-chevron-left"></i> Anterior');
+        prevButton.prop('disabled', currentPage === 1);
+        prevButton.click(function(e) {
+            e.preventDefault();
+            if (currentPage > 1) {
+                currentPage--;
+                displayProyectos(currentPage);
+                // Scroll suave hacia arriba
+                $('html, body').animate({
+                    scrollTop: $('#proyectos').offset().top - 100
+                }, 500);
+            }
+        });
+
+        // Botón "Siguiente"
+        const nextButton = $('<button class="pagination-btn next-btn" aria-label="Página siguiente">');
+        nextButton.html('Siguiente <i class="fas fa-chevron-right"></i>');
+        nextButton.prop('disabled', currentPage === totalPages);
+        nextButton.click(function(e) {
+            e.preventDefault();
+            if (currentPage < totalPages) {
+                currentPage++;
+                displayProyectos(currentPage);
+                // Scroll suave hacia arriba
+                $('html, body').animate({
+                    scrollTop: $('#proyectos').offset().top - 100
+                }, 500);
+            }
+        });
+
+        // Contenedor para los números de página
+        const pageNumbersContainer = $('<div class="page-numbers"></div>');
+
+        // Calcular qué páginas mostrar
+        const maxVisiblePages = 5;
+        let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+        let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+        // Ajustar si estamos cerca del final
+        if (endPage - startPage + 1 < maxVisiblePages) {
+            startPage = Math.max(1, endPage - maxVisiblePages + 1);
+        }
+
+        // Primera página y puntos suspensivos
+        if (startPage > 1) {
+            const firstPageBtn = $('<button class="pagination-btn page-btn">1</button>');
+            firstPageBtn.click(function(e) {
+                e.preventDefault();
+                currentPage = 1;
+                displayProyectos(currentPage);
+                $('html, body').animate({
+                    scrollTop: $('#proyectos').offset().top - 100
+                }, 500);
+            });
+            pageNumbersContainer.append(firstPageBtn);
+
+            if (startPage > 2) {
+                const ellipsis = $('<span class="pagination-ellipsis">...</span>');
+                pageNumbersContainer.append(ellipsis);
+            }
+        }
+
+        // Páginas visibles
+        for (let i = startPage; i <= endPage; i++) {
+            const pageBtn = $('<button class="pagination-btn page-btn"></button>');
+            pageBtn.text(i);
+            
+            if (i === currentPage) {
+                pageBtn.addClass('active');
+            }
+
+            pageBtn.click(function(e) {
                 e.preventDefault();
                 currentPage = i;
                 displayProyectos(currentPage);
+                $('html, body').animate({
+                    scrollTop: $('#proyectos').offset().top - 100
+                }, 500);
             });
 
-            paginationContainer.append(pageLink);
+            pageNumbersContainer.append(pageBtn);
         }
+
+        // Última página y puntos suspensivos
+        if (endPage < totalPages) {
+            if (endPage < totalPages - 1) {
+                const ellipsis = $('<span class="pagination-ellipsis">...</span>');
+                pageNumbersContainer.append(ellipsis);
+            }
+
+            const lastPageBtn = $('<button class="pagination-btn page-btn"></button>');
+            lastPageBtn.text(totalPages);
+            lastPageBtn.click(function(e) {
+                e.preventDefault();
+                currentPage = totalPages;
+                displayProyectos(currentPage);
+                $('html, body').animate({
+                    scrollTop: $('#proyectos').offset().top - 100
+                }, 500);
+            });
+            pageNumbersContainer.append(lastPageBtn);
+        }
+
+        // Información de páginas
+        const pageInfo = $('<div class="page-info"></div>');
+        pageInfo.html(`Página ${currentPage} de ${totalPages} • ${proyectos.length} proyectos`);
+
+        // Ensamblar la paginación
+        paginationWrapper.append(prevButton);
+        paginationWrapper.append(pageNumbersContainer);
+        paginationWrapper.append(nextButton);
+        paginationWrapper.append(pageInfo);
+
+        paginationContainer.append(paginationWrapper);
+
+        // Agregar animación de entrada
+        paginationWrapper.hide().fadeIn(300);
     }
 
     displayProyectos(currentPage);

@@ -109,7 +109,8 @@ $(document).ready(function () {
             description: "Ecommerce creada con nocode, Tecnologías utilizadas: react, typescripts,Vite. Cosas aprendidas a manejar la imaginación para perfecionar las instrucciones de los prompt a la IA en la creación del proyecto dando un buen manejo de IU y UX y su funcionalidad.",
             tipo: "video",
             media: "/asset/videos/video.webm",
-            enlace: "https://cristianbolanos.github.io/shop/"
+            enlace: "https://cristianbolanos.github.io/shop/",
+            Codigo: "https://github.com/CristianBolanos/shop"
         },
         {
             title: "SOAT Ya",
@@ -144,48 +145,17 @@ $(document).ready(function () {
             let botonesHtml;
 
             if (project.tipo === "video") {
-                mediaContent = `<div class="media-container">
-                    <video src="${project.media}" class="card-media">
-                        Tu navegador no soporta el elemento video.
-                    </video>
-                    <div class="play-overlay">
-                        <i class="fas fa-play play-icon"></i>
-                        <i class="fas fa-pause pause-icon" style="display: none;"></i>
-                    </div>
-                </div>`;
+                mediaContent = `<div class=\"media-container video-card-container\" style=\"position:relative;\">\n                    <video src=\"${project.media}\" class=\"card-media card-video\" controls preload=\"none\" tabindex=\"0\">\n                        Tu navegador no soporta el elemento video.\n                    </video>\n                    <div class=\"play-overlay-modern\" style=\"display:flex; align-items:center; justify-content:center; position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;\">\n                        <i class=\"fas fa-play play-icon-modern\" style=\"font-size:3rem; color:white; background:rgba(0,0,0,0.4); border-radius:50%; padding:18px; pointer-events:auto; cursor:pointer; transition:opacity 0.2s;\"></i>\n                    </div>\n                </div>`;
                 botonesHtml = `
-                    <div class="botones-principales">
-                        <a href="${project.link || project.enlace}" class="btn" target="_blank">Demo</a>
-                        <a href="#" class="btn ver-video" data-video="${project.media}">Ver Video</a>
-                    </div>
-                    <button class="btn ver-mas" type="button">Ver más</button>
-                `;
+                    <div class=\"botones-principales\">\n                        <a href=\"${project.link || project.enlace}\" class=\"btn\" target=\"_blank\">Demo</a>\n                        ${project.Codigo ? `<a href=\"${project.Codigo}\" class=\"btn\" target=\"_blank\">Código</a>` : ''}\n                    </div>\n                    <button class=\"btn ver-mas\" type=\"button\">Ver más</button>\n                `;
             } else {
-                mediaContent = `<div class="media-container">
-                    <img src="${project.media}" alt="${project.title}" class="card-media">
-                </div>`;
+                mediaContent = `<div class=\"media-container\">\n                    <img src=\"${project.media}\" alt=\"${project.title}\" class=\"card-media\">\n                </div>`;
                 botonesHtml = `
-                    <div class="botones-principales">
-                        <a href="${project.link || project.enlace}" class="btn" target="_blank">Demo</a>
-                        ${project.Codigo ? `<a href="${project.Codigo}" class="btn" target="_blank">Código</a>` : ''}
-                    </div>
-                    <button class="btn ver-mas" type="button">Ver más</button>
-                `;
+                    <div class=\"botones-principales\">\n                        <a href=\"${project.link || project.enlace}\" class=\"btn\" target=\"_blank\">Demo</a>\n                        ${project.Codigo ? `<a href=\"${project.Codigo}\" class=\"btn\" target=\"_blank\">Código</a>` : ''}\n                    </div>\n                    <button class=\"btn ver-mas\" type=\"button\">Ver más</button>\n                `;
             }
 
             const projectCard = `
-                <div class="project-card">
-                    ${mediaContent}
-                    <div class="content">
-                        <h3>${project.title}</h3>
-                        <p class="descripcion-corta">${descripcionCorta}</p>
-                        <p class="descripcion-completa" style="display: none;">${project.description}</p>
-                        <div class="botones-container">
-                            ${botonesHtml}
-                        </div>
-                    </div>
-                </div>
-            `;
+                <div class=\"project-card\">\n                    ${mediaContent}\n                    <div class=\"content\">\n                        <h3>${project.title}</h3>\n                        <p class=\"descripcion-corta\">${descripcionCorta}</p>\n                        <p class=\"descripcion-completa\" style=\"display: none;\">${project.description}</p>\n                        <div class=\"botones-container\">\n                            ${botonesHtml}\n                        </div>\n                    </div>\n                </div>\n            `;
             projectsContainer.append(projectCard);
         });
 
@@ -206,33 +176,60 @@ $(document).ready(function () {
             }
         });
 
-        // Manejador para los videos
-        projectsContainer.on('click', '.media-container', function () {
-            const video = $(this).find('video');
-            const playIcon = $(this).find('.play-icon');
-            const pauseIcon = $(this).find('.pause-icon');
-
-            if (video.length) {
-                if (video[0].paused) {
-                    video[0].play();
-                    playIcon.hide();
-                    pauseIcon.show();
-                } else {
-                    video[0].pause();
-                    pauseIcon.hide();
-                    playIcon.show();
-                }
+        // Lógica moderna para videos en cards
+        projectsContainer.on('click', 'video.card-video', function (e) {
+            if (this.paused) {
+                this.play();
+            } else {
+                this.pause();
+            }
+            const overlay = $(this).closest('.video-card-container').find('.play-overlay-modern');
+            if (this.paused) {
+                overlay.fadeIn(150);
+            } else {
+                overlay.fadeOut(150);
             }
         });
-
-        // Manejar el evento ended para los videos
-        projectsContainer.on('ended', 'video', function () {
-            const container = $(this).closest('.media-container');
-            const playIcon = container.find('.play-icon');
-            const pauseIcon = container.find('.pause-icon');
-            pauseIcon.hide();
-            playIcon.show();
+        projectsContainer.on('click', '.play-icon-modern', function (e) {
+            e.stopPropagation();
+            const video = $(this).closest('.video-card-container').find('video.card-video')[0];
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+            const overlay = $(this).closest('.video-card-container').find('.play-overlay-modern');
+            if (video.paused) {
+                overlay.fadeIn(150);
+            } else {
+                overlay.fadeOut(150);
+            }
         });
+        projectsContainer.on('play pause ended', 'video.card-video', function () {
+            const overlay = $(this).closest('.video-card-container').find('.play-overlay-modern');
+            if (this.paused) {
+                overlay.fadeIn(150);
+            } else {
+                overlay.fadeOut(150);
+            }
+        });
+        // Inicializar overlays
+        projectsContainer.find('.video-card-container').each(function () {
+            const video = $(this).find('video.card-video')[0];
+            const overlay = $(this).find('.play-overlay-modern');
+            if (video && video.paused) {
+                overlay.show();
+            } else {
+                overlay.hide();
+            }
+        });
+        // Doble click en la card de video para abrir el video en modal (opcional)
+        // projectsContainer.on('dblclick', '.video-card-container', function (e) {
+        //     const videoSrc = $(this).find('video.card-video').attr('src');
+        //     if (videoSrc) {
+        //         // Aquí puedes abrir tu modal personalizado si lo deseas
+        //     }
+        // });
     });
 
     // Form validation
