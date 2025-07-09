@@ -5,7 +5,7 @@ $(document).ready(function() {
             descripcion: "Ecommerce creada con nocode, Tecnologías utilizadas: react, typescripts,Vite. Cosas aprendidas a manejar la imaginación para perfecionar las instrucciones de los prompt a la IA en la creación del proyecto dando un buen manejo de IU y UX y su funcionalidad.",
             tipo: "video",
             media: "../asset/videos/video.webm",
-            enlace: "../asset/videos/video.webm",
+            enlace: "https://cristianbolanos.github.io/shop/",
             Codigolink: "https://github.com/CristianBolanos/" 
         },
         {
