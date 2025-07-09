@@ -6,7 +6,8 @@ $(document).ready(function() {
             tipo: "video",
             media: "../asset/videos/video.webm",
             enlace: "https://cristianbolanos.github.io/shop/",
-            Codigolink: "https://github.com/CristianBolanos/" 
+            // enlace: "../asset/videos/video.webm",
+            Codigolink: "https://github.com/CristianBolanos/shop" 
         },
         {
             titulo: "SOAT Ya",
