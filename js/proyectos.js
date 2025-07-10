@@ -54,7 +54,7 @@ $(document).ready(function() {
         // Agrega más proyectos aquí...
     ];
 
-    const itemsPerPage = 8;
+    const itemsPerPage = 3;
     let currentPage = 1;
 
     // Crear el modal una vez al inicio
@@ -228,35 +228,35 @@ $(document).ready(function() {
     }
 
     // Función para mostrar el modal
-    function mostrarModal(titulo, descripcion) {
-        const modalHtml = `
-            <div class="modal-descripcion">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3>${titulo}</h3>
-                        <button class="modal-close">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <p>${descripcion}</p>
-                    </div>
-                </div>
-            </div>
-        `;
+    // function mostrarModal(titulo, descripcion) {
+    //     const modalHtml = `
+    //         <div class="modal-descripcion">
+    //             <div class="modal-content">
+    //                 <div class="modal-header">
+    //                     <h3>${titulo}</h3>
+    //                     <button class="modal-close">&times;</button>
+    //                 </div>
+    //                 <div class="modal-body">
+    //                     <p>${descripcion}</p>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     `;
 
-        $('body').append(modalHtml);
+    //     $('body').append(modalHtml);
 
-        const modal = $('.modal-descripcion');
+    //     const modal = $('.modal-descripcion');
         
-        // Cerrar modal con el botón
-        $('.modal-close').click(() => modal.remove());
+    //     // Cerrar modal con el botón
+    //     $('.modal-close').click(() => modal.remove());
         
-        // Cerrar modal al hacer clic fuera
-        modal.click(function(e) {
-            if ($(e.target).is('.modal-descripcion')) {
-                modal.remove();
-            }
-        });
-    }
+    //     // Cerrar modal al hacer clic fuera
+    //     modal.click(function(e) {
+    //         if ($(e.target).is('.modal-descripcion')) {
+    //             modal.remove();
+    //         }
+    //     });
+    // }
 
     function updatePagination() {
         const totalPages = Math.ceil(proyectos.length / itemsPerPage);
