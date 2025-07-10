@@ -108,7 +108,7 @@ $(document).ready(function () {
             title: "Ecommerce",
             description: "Ecommerce creada con nocode, Tecnologías utilizadas: react, typescripts,Vite. Cosas aprendidas a manejar la imaginación para perfecionar las instrucciones de los prompt a la IA en la creación del proyecto dando un buen manejo de IU y UX y su funcionalidad.",
             tipo: "video",
-            media: "/asset/videos/video.webm",
+            media: "../asset/videos/video.webm",
             enlace: "https://cristianbolanos.github.io/shop/",
             Codigo: "https://github.com/CristianBolanos/shop"
         },
@@ -234,7 +234,7 @@ $(document).ready(function () {
 
     // Form validation
     const $form = document.querySelector('#contact-form');
-     if ($form) { // Verifica si el formulario existe
+    if ($form) { // Verifica si el formulario existe
         $form.addEventListener('submit', handleSubmit);
     }
     async function handleSubmit(event) {
