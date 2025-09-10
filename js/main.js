@@ -111,7 +111,7 @@ $(document).ready(function () {
   // Load recent projects
   const recentProjects = [
     {
-      title: "constructoraxyz",
+      title: "Constructoraxyz",
       description:
         "Desarrollé una 𝗽𝗮́𝗴𝗶𝗻𝗮 𝘄𝗲𝗯 𝗮𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝗯𝗹𝗲, diseñada para que el cliente pueda 𝗴𝗲𝘀𝘁𝗶𝗼𝗻𝗮𝗿 𝗰𝗼𝗻𝘁𝗲𝗻𝗶𝗱𝗼 𝗳𝗮́𝗰𝗶𝗹𝗺𝗲𝗻𝘁𝗲 sin conocimientos técnicos⁣. 𝗧𝗲𝗰𝗻𝗼𝗹𝗼𝗴í𝗮𝘀 𝘂𝘁𝗶𝗹𝗶𝘇𝗮𝗱𝗮𝘀: HTML5, Tailwind CSS, JavaScript, PHP, MySQL ",
       tipo: "imagen",
