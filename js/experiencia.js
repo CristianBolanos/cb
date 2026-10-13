@@ -22,45 +22,52 @@ $(document).ready(function () {
         {
             titulo: "Freelance",
             empresa: "SYSHELP",
-            periodo: "Agosto 2024 - actualidad ",
-            funciones: "<strong>Funciones:</strong> Actualmente estoy en proyecto de investigación sobre la inteligencia artificial para optimizar "+
-            "la productividad. Actualizando conocimientos en desarrollo web y tecnologías. Creando proyectos web personales con inteligencia artificial. ",
+            periodo: "agosto 2024 - Actualidad ",
+            funciones: "<strong>Responsabilidades:</strong> Actualmente estoy en proyecto de investigación sobre la inteligencia artificial para optimizar " +
+                "la productividad. Actualizando conocimientos en desarrollo web y tecnologías. Creando proyectos web personales con inteligencia artificial. ",
             logros: "<strong>Logros:</strong> aprendizaje de herramientas con inteligencia artificial y su manejo."
+        },
+        {
+            titulo: "Trabajo independiente",
+            empresa: "Gema",
+            periodo: "junio de 2025 - septiembre 2026",
+            funciones: "<strong>Responsabilidades: </strong> Administración y actualización de catálogos de productos en los marketplaces Falabella, AlCarrito y la aplicación Brilla; publicación de productos nuevos gestionando imágenes, descripciones, especificaciones técnicas, precios e información comercial; actualización de contenidos digitales manteniendo la coherencia visual y la correcta presentación de los productos en línea; diseño de piezas promocionales para apoyar campañas comerciales. ",
+            logros: "<strong>Logros:</strong> Gestión simultánea de catálogos en tres canales de venta digital; fortalecimiento de competencias en redacción comercial, actualización de contenidos y diseño de piezas promocionales para ecommerce."
+        },
+        {
+            titulo: "Auxiliar Comercial y Logístico",
+            empresa: "Vision y Marketing",
+            periodo: "noviembre 2025 - mayo 2026",
+            funciones: "<strong>Responsabilidades: </strong> Seguimiento de indicadores de gestión comercial, administración y control del sistema DMS, coordinación de procesos logísticos y comerciales, seguimiento a cronogramas de entrega, relacionamiento con proveedores, gestión de inventarios, control documental de la operación, elaboración de reportes para la gerencia y apoyo en la ejecución de estrategias comerciales. ",
+            logros: "<strong>Logros:</strong>  Cumplimiento de los indicadores establecidos desde el primer mes, optimización de la trazabilidad documental y fortalecimiento de la coordinación entre las áreas comercial y operativa. "
         },
         {
             titulo: "Auxiliar Operativo",
             empresa: "Colácteos",
-            periodo: "Marzo 2024 - hasta junio 2024",
-            funciones: "<strong>Funciones:</strong> Realizar el almacenamiento, acopio y despacho de mercancías. Controlar y gestionar el inventario. "+
-            "Semaforización de productos según fechas de vencimiento. ",
-            logros: "<strong>Logros:</strong> Durante un contrato eventual por temporada de vacaciones, adquirí conocimientos especializados en " +
-                "operaciones y logré ejecutar un 95% de las funciones encomendadas, mejorando la eficiencia operativa de la empresa."
+            periodo: "marzo 2024 - junio 2024",
+            funciones: "<strong>Responsabilidades:</strong> Control de inventarios, almacenamiento y despacho, organización de mercancía, gestión de productos por fechas de vencimiento.",
+            logros: "<strong>Logros:</strong> Cumplimiento del 95 % de los objetivos durante el contrato, fortalecimiento de los procesos operativos. "
         },
         {
-            titulo: "Marketing, diseño y estampador",
+            titulo: "Marketing Digital - Diseño - Producción",
             empresa: "EAU EARTH FUEGO",
             periodo: " mayo 2023 - diciembre 2023",
-            funciones: "<strong>Funciones:</strong> Administrar las redes sociales. Diseñar gráficos y materiales visuales. Crear y aplicar estampados. ",
-            logros: "<strong>Logros:</strong> Adquirí y apliqué con éxito herramientas especializadas en estampados textiles, reduciendo errores en un " +
-                "50% y mejorando la entrega a tiempo en un 90%."
+            funciones: "<strong>Responsabilidades:</strong> Administración de redes sociales, atención a clientes, diseño publicitario, gestión de producción y cumplimiento de tiempos de entrega de pedidos.",
+            logros: "<strong>Logros:</strong> Reducción de errores en un 90 % y cumplimiento de entregas a tiempo en un 95 %. "
         },
         {
             titulo: "Técnico de sistemas",
             empresa: "MicroApple",
             periodo: "agosto 2022 - octubre 2022",
-            funciones: "<strong>Funciones:</strong> Realizar mantenimiento preventivo y correctivo de computadoras. Reemplazar y actualizar piezas de " +
-                "equipos y software. Instalar sistemas operativos, programas y configurar redes LAN. ",
-            logros: "<strong>Logros:</strong> Efectué y resolví soluciones autodidactas adaptadas a las necesidades específicas de cada problema, " +
-                "alcanzando una reducción del 30% en tiempos de inactividad y una mejora del 25% en la satisfacción del usuario."
+            funciones: "<strong>Responsabilidades:</strong> Soporte técnico, atención a clientes, configuración de equipos, instalación de redes y solución de incidentes tecnológicos. ",
+            logros: "<strong>Logros:</strong> Reducción del 30 % en tiempos de respuesta e incremento del 25 % en la satisfacción de clientes "
         },
         {
             titulo: "Auxiliar en programación y diseño",
             empresa: "Vektor Media",
             periodo: "septiembre 2018 - febrero 2019",
-            funciones: "<strong>Funciones:</strong> Administrar páginas web actualizándolas periódicamente. Diseñar y editar elementos visuales con Photoshop. "+
-            " Crear y personalizar plantillas web",
-            logros: "<strong>Logros:</strong>  Logré una adaptación exitosa al equipo, aumentando la colaboración y productividad en un 30% y eficiencia "+ 
-            "en un 25% gracias al aprendizaje de herramientas tecnológicas avanzadas."
+            funciones: "<strong>Responsabilidades:</strong> Administración de tiendas ecommerce y páginas web, actualización de contenido digital, desarrollo de plantillas web y diseño gráfico. ",
+            logros: "<strong>Logros:</strong> Optimización de procesos digitales e incremento de la productividad del equipo. "
         },
     ];
 
