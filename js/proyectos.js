@@ -1,64 +1,75 @@
 $(document).ready(function () {
   const proyectos = [
     {
-      titulo: "Constructoraxyz",
+      titulo: "Página web administrable para gestionar contenido sin depender de un desarrollador",
       descripcion:
-        "Desarrollé una 𝗽𝗮́𝗴𝗶𝗻𝗮 𝘄𝗲𝗯 𝗮𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝗯𝗹𝗲, diseñada para que el cliente pueda 𝗴𝗲𝘀𝘁𝗶𝗼𝗻𝗮𝗿 𝗰𝗼𝗻𝘁𝗲𝗻𝗶𝗱𝗼 𝗳𝗮́𝗰𝗶𝗹𝗺𝗲𝗻𝘁𝗲 sin conocimientos técnicos⁣. 𝗧𝗲𝗰𝗻𝗼𝗹𝗼𝗴í𝗮𝘀 𝘂𝘁𝗶𝗹𝗶𝘇𝗮𝗱𝗮𝘀: HTML5, Tailwind CSS, JavaScript, PHP, MySQL",
+        "Desarrollé una página web administrable pensada para que el cliente pueda mantener su sitio actualizado sin necesidad de tener conocimientos técnicos ni depender de otra persona para cada cambio <br><br> La plataforma permite gestionar el contenido digital de forma sencilla desde un panel administrativo, facilitando la actualización de la información y el mantenimiento del sitio web. <br><br> Tecnologías utilizadas: HTML5, Tailwind CSS, JavaScript, PHP, MySQL. Utilicé Kilo Code como herramienta de apoyo durante el desarrollo.",
       tipo: "imagen",
       media: "asset/img-portafolio/constructoraxyz.webp",
       enlace: "https://constructoraxyz.infinityfree.me/",
       Codigolink: "https://github.com/CristianBolanos",
     },
     {
-      titulo: "Ecommerce",
+      titulo: "Tienda virtual de ropa con una experiencia de compra sencilla e intuitiva",
       descripcion:
-        "Ecommerce creada con nocode, 𝗧𝗲𝗰𝗻𝗼𝗹𝗼𝗴í𝗮𝘀 𝘂𝘁𝗶𝗹𝗶𝘇𝗮𝗱𝗮𝘀: react, typescripts,Vite. Cosas aprendidas a manejar la imaginación para perfecionar las instrucciones de los prompt a la IA en la creación del proyecto dando un buen manejo de IU y UX y su funcionalidad.",
+        "Desarrollé una tienda virtual de ropa con el objetivo de ofrecer una forma práctica y atractiva de explorar productos en línea. Durante el proceso, trabajé en el diseño de la interfaz, la experiencia de usuario y el funcionamiento general de la tienda, buscando que la navegación fuera clara y fácil de usar. <br><br> Este proyecto también me permitió aprender a trabajar con herramientas de inteligencia artificial para convertir ideas en funcionalidades concretas, mejorar mis instrucciones y resolver problemas durante el desarrollo. <br><br> Además, estoy trabajando en una segunda tienda virtual con Medusa.js, Next.js y PostgreSQL, con la que estoy explorando una arquitectura más avanzada para la gestión de productos y datos. Esta segunda versión todavía no está publicada en internet. <br><br> Tecnologías utilizadas: React, TypeScript y Vite. Utilicé Windsurf como herramienta de apoyo durante el desarrollo.",
       tipo: "video",
       media: "asset/videos/video.mp4",
       enlace: "https://cristianbolanos.github.io/shop/",
       Codigolink: "https://github.com/CristianBolanos/shop",
     },
     {
-      titulo: "SOAT Ya",
+      titulo: "Sistema de gestión de pedidos y despachos",
       descripcion:
-        "Website venta de soat. 𝗧𝗲𝗰𝗻𝗼𝗹𝗼𝗴í𝗮𝘀 𝘂𝘁𝗶𝗹𝗶𝘇𝗮𝗱𝗮𝘀: HTML5, CSS3, JavaScript.",
+        "Una solución web diseñada para centralizar el control de pedidos y facilitar la coordinación de las operaciones logísticas desde un único panel administrativo. <br><br> Permite registrar y consultar pedidos, controlar sus estados, organizar rutas de entrega y visualizar indicadores operativos para facilitar el seguimiento de cada despacho. <br><br> Ideal para: distribuidoras, comercios y negocios que necesitan organizar sus pedidos y mejorar el control de sus entregas. <br><br> Tecnologías utilizadas: Google sheets, App script, Utilicé Claude como herramienta de apoyo durante el desarrollo. ",
       tipo: "imagen",
-      media: "asset/img-portafolio/soat.webp",
-      enlace: "https://cristianbolanos.github.io/soat/",
-      Codigolink: "https://github.com/CristianBolanos/soat",
+      media: "asset/img-portafolio/control-pedidos.jfif",
+      enlace: "https://cristianbolanos.github.io/Distribuidora-Demo/demo/",
+      Codigolink: "https://github.com/CristianBolanos/Distribuidora-Demo",
     },
     {
-      titulo: "Snake Game",
+      titulo: "Landing page para restaurantes enfocada en atraer clientes",
       descripcion:
-        "Juego de Snake Game. 𝗧𝗲𝗰𝗻𝗼𝗹𝗼𝗴í𝗮𝘀 𝘂𝘁𝗶𝗹𝗶𝘇𝗮𝗱𝗮𝘀: HTML5, CSS3, JavaScript.",
-      tipo: "imagen",
-      media: "asset/img-portafolio/SnakeGame.webp",
-      enlace: "https://CristianBolanos.github.io/SnakeGame/",
-      Codigolink: "https://github.com/CristianBolanos/SnakeGame",
-    },
-
-    {
-      titulo: "Corporativa",
-      descripcion:
-        "Landing pages corporativa. 𝗧𝗲𝗰𝗻𝗼𝗹𝗼𝗴í𝗮𝘀 𝘂𝘁𝗶𝗹𝗶𝘇𝗮𝗱𝗮𝘀: HTML5, CSS3, JavaScript. ",
-      tipo: "imagen",
-      media: "asset/img-portafolio/corporativa.webp",
-      enlace: "https://CristianBolanos.github.io/corporativa/",
-      Codigolink: "https://github.com/CristianBolanos/corporativa",
-    },
-    {
-      titulo: "Restaurante",
-      descripcion:
-        "Landing pages Restaurante. 𝗧𝗲𝗰𝗻𝗼𝗹𝗼𝗴í𝗮𝘀 𝘂𝘁𝗶𝗹𝗶𝘇𝗮𝗱𝗮𝘀: HTML5, CSS3, Bootstrap.",
+        "Desarrollé una landing page para restaurantes, pensada para captar la atención de los visitantes, presentar la propuesta gastronómica y facilitar que los clientes conozcan el negocio y se animen a visitarlo o ponerse en contacto. <br><br> La página tiene un diseño moderno y adaptable a dispositivos móviles. Es una plantilla personalizable: el nombre del restaurante, las imágenes, el menú y la información del negocio se pueden ajustar según las necesidades de cada cliente. <br><br> La idea es ofrecer a los restaurantes una buena base para tener presencia en internet sin tener que empezar el sitio desde cero. <br><br> Tecnologías utilizadas: Astro, TypeScript y Tailwind CSS. Utilicé Claude como herramienta de apoyo durante el desarrollo. <br><br> ¿Quieres ver cómo funciona? Explora la demostración y descubre cómo se puede adaptar a un restaurante real.",
       tipo: "imagen",
       media: "asset/img-portafolio/restaurante.webp",
       enlace: "https://CristianBolanos.github.io/restaurante/",
       Codigolink: "https://github.com/CristianBolanos/restaurante",
     },
     {
-      titulo: "Portaolio",
+      titulo: "SOAT Ya | Una página web para facilitar la cotización del SOAT",
       descripcion:
-        "Landing pages Portafolio. 𝗧𝗲𝗰𝗻𝗼𝗹𝗼𝗴í𝗮𝘀 𝘂𝘁𝗶𝗹𝗶𝘇𝗮𝗱𝗮𝘀: HTML5, CSS3, Bootstrap.",
+        "Desarrollé una landing page para la venta de SOAT, pensada para captar la atención de los usuarios y facilitarles el acceso a la información de forma clara y sencilla. <br><br> El objetivo fue crear una página fácil de navegar, con una estructura que permita al visitante entender la propuesta y encontrar rápidamente cómo continuar con el proceso de compra o solicitar información. <br><br> Durante el desarrollo, trabajé en la organización del contenido y en una interfaz enfocada en la experiencia del usuario y la conversión de visitantes en potenciales clientes. <br><br> Tecnologías utilizadas: HTML5, CSS3 y JavaScript. Utilicé Gemini como herramienta de apoyo durante el desarrollo.",
+      tipo: "imagen",
+      media: "asset/img-portafolio/soat.webp",
+      enlace: "https://cristianbolanos.github.io/soat/",
+      Codigolink: "https://github.com/CristianBolanos/soat",
+    },
+
+
+    {
+      titulo: "Snake Game | Un juego clásico desarrollado con ayuda de IA",
+      descripcion:
+        "Este proyecto nació de mi curiosidad por explorar las herramientas de inteligencia artificial aplicadas al desarrollo web. Cuando empecé a experimentar con entornos como Cursor, decidí poner a prueba lo que podía construir dando instrucciones a la IA, revisando el código y guiando el proceso hasta conseguir un juego funcional. <br><br> El resultado fue una versión del clásico Snake, en la que el jugador controla una serpiente que debe recoger alimentos, crecer y evitar chocar consigo misma. <br><br> Más allá del juego, este proyecto me permitió familiarizarme con nuevas herramientas, aprender a formular mejores instrucciones y entender cómo la inteligencia artificial puede servir de apoyo para convertir una idea en algo funcional. <br><br> Tecnologías utilizadas: HTML5, CSS3 y JavaScript. Utilicé Cursor como herramienta de apoyo durante el desarrollo.",
+      tipo: "imagen",
+      media: "asset/img-portafolio/SnakeGame.webp",
+      enlace: "https://CristianBolanos.github.io/SnakeGame/",
+      Codigolink: "https://github.com/CristianBolanos/SnakeGame",
+    },
+    {
+      titulo: "Landing page corporativa | Una práctica para poner en acción mis conocimientos",
+      descripcion:
+        "Este proyecto nació como una forma de poner en práctica lo aprendido en cursos de desarrollo web y comprobar hasta dónde podía llegar con mis propios conocimientos. <br><br> Desarrollé una landing page corporativa escribiendo el código manualmente, sin utilizar inteligencia artificial para generarlo. Me apoyé en tutoriales de YouTube, investigación propia y los conocimientos que fui adquiriendo durante mi aprendizaje. <br><br> El proceso me permitió reforzar mis bases en desarrollo web, experimentar con la estructura y el diseño de una página empresarial y ganar más confianza al escribir y organizar el código por mi cuenta. <br><br> Tecnologías utilizadas: HTML5, CSS3 y JavaScript.",
+      tipo: "imagen",
+      media: "asset/img-portafolio/corporativa.webp",
+      enlace: "https://CristianBolanos.github.io/corporativa/",
+      Codigolink: "https://github.com/CristianBolanos/corporativa",
+    },
+
+    {
+      titulo: "Mi primer portafolio web | El comienzo de mi camino en el desarrollo web",
+      descripcion:
+        "Este fue mi primer portafolio web, un proyecto con el que empecé a darle forma a mi presencia en internet y a explorar cómo presentar mis conocimientos y trabajos de manera profesional.  <br><br> Partí de una plantilla web y la adapté a mi gusto, realizando modificaciones con Bootstrap, JavaScript, HTML y CSS para personalizar su apariencia y familiarizarme con la estructura de un sitio web. <br><br> Aunque hoy tengo más experiencia y nuevos conocimientos, este proyecto representa una etapa importante de mi aprendizaje y el punto de partida para seguir mejorando mis habilidades en desarrollo web. <br><br> Tecnologías utilizadas: HTML5, CSS3 y Bootstrap, JavaScript.",
       tipo: "imagen",
       media: "asset/img-portafolio/portafolio.webp",
       enlace: "https://CristianBolanos.github.io/portafolio/",
@@ -133,14 +144,12 @@ $(document).ready(function () {
                 </div>`;
         botonesHtml = `
                     <div class="botones-principales">
-                        <a href="${
-                          proyecto.enlace
-                        }" class="btn" target="_blank">Demo</a>
-                        ${
-                          proyecto.Codigolink
-                            ? `<a href="${proyecto.Codigolink}" class="btn" target="_blank">Código</a>`
-                            : ""
-                        }
+                        <a href="${proyecto.enlace
+          }" class="btn" target="_blank">Demo</a>
+                        ${proyecto.Codigolink
+            ? `<a href="${proyecto.Codigolink}" class="btn" target="_blank">Código</a>`
+            : ""
+          }
                     </div>
                     <button class="btn ver-mas">Ver más</button>
                 `;
@@ -150,14 +159,12 @@ $(document).ready(function () {
                 </div>`;
         botonesHtml = `
                     <div class="botones-principales">
-                        <a href="${
-                          proyecto.enlace
-                        }" class="btn" target="_blank">Demo</a>
-                        ${
-                          proyecto.Codigolink
-                            ? `<a href="${proyecto.Codigolink}" class="btn" target="_blank">Código</a>`
-                            : ""
-                        }
+                        <a href="${proyecto.enlace
+          }" class="btn" target="_blank">Demo</a>
+                        ${proyecto.Codigolink
+            ? `<a href="${proyecto.Codigolink}" class="btn" target="_blank">Código</a>`
+            : ""
+          }
                     </div>
                     <button class="btn ver-mas">Ver más</button>
                 `;

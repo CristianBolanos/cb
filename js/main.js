@@ -110,33 +110,37 @@ $(document).ready(function () {
 
   // Load recent projects
   const recentProjects = [
+
     {
-      title: "Constructoraxyz",
+      title: "Página web administrable para gestionar contenido sin depender de un desarrollador",
       description:
-        "Desarrollé una 𝗽𝗮́𝗴𝗶𝗻𝗮 𝘄𝗲𝗯 𝗮𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝗯𝗹𝗲, diseñada para que el cliente pueda 𝗴𝗲𝘀𝘁𝗶𝗼𝗻𝗮𝗿 𝗰𝗼𝗻𝘁𝗲𝗻𝗶𝗱𝗼 𝗳𝗮́𝗰𝗶𝗹𝗺𝗲𝗻𝘁𝗲 sin conocimientos técnicos⁣. 𝗧𝗲𝗰𝗻𝗼𝗹𝗼𝗴í𝗮𝘀 𝘂𝘁𝗶𝗹𝗶𝘇𝗮𝗱𝗮𝘀: HTML5, Tailwind CSS, JavaScript, PHP, MySQL ",
+        "Desarrollé una página web administrable pensada para que el cliente pueda mantener su sitio actualizado sin necesidad de tener conocimientos técnicos ni depender de otra persona para cada cambio <br><br> La plataforma permite gestionar el contenido digital de forma sencilla desde un panel administrativo, facilitando la actualización de la información y el mantenimiento del sitio web. <br><br> Tecnologías utilizadas: HTML5, Tailwind CSS, JavaScript, PHP, MySQL. Utilicé Kilo Code como herramienta de apoyo durante el desarrollo. ",
       tipo: "imagen",
       media: "asset/img-portafolio/constructoraxyz.webp",
       enlace: "https://constructoraxyz.infinityfree.me/",
       Codigo: "https://github.com/CristianBolanos",
     },
+
+
     {
-      title: "Ecommerce",
+      title: "Tienda virtual de ropa con una experiencia de compra sencilla e intuitiva",
       description:
-        "Ecommerce creada con nocode, Tecnologías utilizadas: react, typescripts,Vite. Cosas aprendidas a manejar la imaginación para perfecionar las instrucciones de los prompt a la IA en la creación del proyecto dando un buen manejo de IU y UX y su funcionalidad.",
+        "Desarrollé una tienda virtual de ropa con el objetivo de ofrecer una forma práctica y atractiva de explorar productos en línea. Durante el proceso, trabajé en el diseño de la interfaz, la experiencia de usuario y el funcionamiento general de la tienda, buscando que la navegación fuera clara y fácil de usar. <br><br> Este proyecto también me permitió aprender a trabajar con herramientas de inteligencia artificial para convertir ideas en funcionalidades concretas, mejorar mis instrucciones y resolver problemas durante el desarrollo. <br><br> Además, estoy trabajando en una segunda tienda virtual con Medusa.js, Next.js y PostgreSQL, con la que estoy explorando una arquitectura más avanzada para la gestión de productos y datos. Esta segunda versión todavía no está publicada en internet. <br><br> Tecnologías utilizadas: React, TypeScript y Vite.  Utilicé Windsurf como herramienta de apoyo durante el desarrollo.",
       tipo: "video",
       media: "asset/videos/video.mp4",
       enlace: "https://cristianbolanos.github.io/shop/",
       Codigo: "https://github.com/CristianBolanos/shop",
     },
     {
-      title: "SOAT Ya",
+      title: "Sistema de gestión de pedidos y despachos",
       description:
-        "Website venta de soat. Tecnologías utilizadas: HTML5, CSS3, JavaScript.",
+        "Una solución web diseñada para centralizar el control de pedidos y facilitar la coordinación de las operaciones logísticas desde un único panel administrativo. <br><br> Permite registrar y consultar pedidos, controlar sus estados, organizar rutas de entrega y visualizar indicadores operativos para facilitar el seguimiento de cada despacho. <br><br> Ideal para: distribuidoras, comercios y negocios que necesitan organizar sus pedidos y mejorar el control de sus entregas. <br><br> Tecnologías utilizadas: Google sheets, App script, Utilicé Claude como herramienta de apoyo durante el desarrollo.",
       tipo: "imagen",
-      media: "asset/img-portafolio/soat.webp",
-      link: "https://cristianbolanos.github.io/soat/",
-      Codigo: "https://github.com/CristianBolanos/soat",
+      media: "asset/img-portafolio/control-pedidos.jfif",
+      enlace: "https://cristianbolanos.github.io/Distribuidora-Demo/demo/",
+      Codigo: "https://github.com/CristianBolanos/Distribuidora-Demo",
     },
+
   ];
 
   // Esperar a que el DOM esté completamente cargado
@@ -156,23 +160,19 @@ $(document).ready(function () {
       if (project.tipo === "video") {
         mediaContent = `<div class=\"media-container video-card-container\" style=\"position:relative;\">\n                    <video src=\"${project.media}\" class=\"card-media card-video\" controls preload=\"none\" tabindex=\"0\">\n                        Tu navegador no soporta el elemento video.\n                    </video>\n                    <div class=\"play-overlay-modern\" style=\"display:flex; align-items:center; justify-content:center; position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;\">\n                        <i class=\"fas fa-play play-icon-modern\" style=\"font-size:3rem; color:white; background:rgba(0,0,0,0.4); border-radius:50%; padding:18px; pointer-events:auto; cursor:pointer; transition:opacity 0.2s;\"></i>\n                    </div>\n                </div>`;
         botonesHtml = `
-                    <div class=\"botones-principales\">\n                        <a href=\"${
-                      project.link || project.enlace
-                    }\" class=\"btn\" target=\"_blank\">Demo</a>\n                        ${
-          project.Codigo
+                    <div class=\"botones-principales\">\n                        <a href=\"${project.link || project.enlace
+          }\" class=\"btn\" target=\"_blank\">Demo</a>\n                        ${project.Codigo
             ? `<a href=\"${project.Codigo}\" class=\"btn\" target=\"_blank\">Código</a>`
             : ""
-        }\n                    </div>\n                    <button class=\"btn ver-mas\" type=\"button\">Ver más</button>\n                `;
+          }\n                    </div>\n                    <button class=\"btn ver-mas\" type=\"button\">Ver más</button>\n                `;
       } else {
         mediaContent = `<div class=\"media-container\">\n                    <img src=\"${project.media}\" alt=\"${project.title}\" class=\"card-media\">\n                </div>`;
         botonesHtml = `
-                    <div class=\"botones-principales\">\n                        <a href=\"${
-                      project.link || project.enlace
-                    }\" class=\"btn\" target=\"_blank\">Demo</a>\n                        ${
-          project.Codigo
+                    <div class=\"botones-principales\">\n                        <a href=\"${project.link || project.enlace
+          }\" class=\"btn\" target=\"_blank\">Demo</a>\n                        ${project.Codigo
             ? `<a href=\"${project.Codigo}\" class=\"btn\" target=\"_blank\">Código</a>`
             : ""
-        }\n                    </div>\n                    <button class=\"btn ver-mas\" type=\"button\">Ver más</button>\n                `;
+          }\n                    </div>\n                    <button class=\"btn ver-mas\" type=\"button\">Ver más</button>\n                `;
       }
 
       const projectCard = `
