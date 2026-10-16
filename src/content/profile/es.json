@@ -38,16 +38,26 @@
       "title": "Desarrollo web",
       "items": [
         "HTML, CSS y JavaScript",
-        "React y TypeScript",
+        "React, Next.js y TypeScript",
         "Astro y Tailwind CSS",
-        "PHP y MySQL",
+        "Node.js",
+        "PHP, MySQL y PostgreSQL",
         "Google Sheets y Apps Script",
         "Git y GitHub"
       ]
     },
     {
       "title": "Desarrollo asistido por IA",
-      "items": ["Claude", "Cursor", "Windsurf", "Gemini", "Kilo Code"]
+      "items": ["Claude Code", "Gemini"]
+    },
+    {
+      "title": "Habilidades blandas",
+      "items": [
+        "Comunicación con clientes y proveedores",
+        "Organización y gestión de tareas",
+        "Trabajo en equipo",
+        "Adaptabilidad"
+      ]
     }
   ],
   "education": [
