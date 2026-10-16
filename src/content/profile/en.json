@@ -38,16 +38,26 @@
       "title": "Web development",
       "items": [
         "HTML, CSS and JavaScript",
-        "React and TypeScript",
+        "React, Next.js and TypeScript",
         "Astro and Tailwind CSS",
-        "PHP and MySQL",
+        "Node.js",
+        "PHP, MySQL and PostgreSQL",
         "Google Sheets and Apps Script",
         "Git and GitHub"
       ]
     },
     {
       "title": "AI-assisted development",
-      "items": ["Claude", "Cursor", "Windsurf", "Gemini", "Kilo Code"]
+      "items": ["Claude Code", "Gemini"]
+    },
+    {
+      "title": "Soft skills",
+      "items": [
+        "Communication with customers and suppliers",
+        "Organization and task management",
+        "Teamwork",
+        "Adaptability"
+      ]
     }
   ],
   "education": [
