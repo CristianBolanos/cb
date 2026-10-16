@@ -3,18 +3,12 @@ name: Portafolio (Astro)
 on:
   push:
     branches: [main]
-    paths: ["portafolio-astro/**", ".github/workflows/portafolio-astro.yml"]
   pull_request:
-    paths: ["portafolio-astro/**", ".github/workflows/portafolio-astro.yml"]
   # Para volver a publicar sin cambios: Actions → Portafolio (Astro) → Run workflow.
   workflow_dispatch:
 
 permissions:
   contents: read
-
-defaults:
-  run:
-    working-directory: portafolio-astro
 
 jobs:
   quality:
@@ -32,14 +26,11 @@ jobs:
       - uses: actions/checkout@v7
 
       - uses: pnpm/action-setup@v6
-        with:
-          package_json_file: portafolio-astro/package.json
 
       - uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: pnpm
-          cache-dependency-path: portafolio-astro/pnpm-lock.yaml
 
       - name: Instalar dependencias
         run: pnpm install --frozen-lockfile
@@ -75,8 +66,8 @@ jobs:
         with:
           name: reportes
           path: |
-            portafolio-astro/playwright-report/
-            portafolio-astro/.lighthouseci/
+            playwright-report/
+            .lighthouseci/
           # .lighthouseci empieza con punto: sin esto queda fuera del artefacto.
           include-hidden-files: true
           retention-days: 14
@@ -106,14 +97,11 @@ jobs:
       - uses: actions/checkout@v7
 
       - uses: pnpm/action-setup@v6
-        with:
-          package_json_file: portafolio-astro/package.json
 
       - uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: pnpm
-          cache-dependency-path: portafolio-astro/pnpm-lock.yaml
 
       - name: Instalar dependencias
         run: pnpm install --frozen-lockfile
@@ -137,7 +125,7 @@ jobs:
 
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: portafolio-astro/dist
+          path: dist
 
       - name: Publicar
         id: deployment
