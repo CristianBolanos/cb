@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 
+/* El workflow de GitHub Actions no es parte del sitio: sin esto, palabras como "contents" se vuelven clases. */
+@source not '../../.github';
+
 /* El modo oscuro se controla con data-theme en <html> (ver ThemeScript.astro). */
 @custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 
