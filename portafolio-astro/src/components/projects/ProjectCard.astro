@@ -1,0 +1,56 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { CollectionEntry } from 'astro:content';
+import ProjectCover from '@/components/projects/ProjectCover.astro';
+import Badge from '@/components/ui/Badge.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n';
+import { projectPath } from '@/i18n/routes';
+import { slugOf } from '@/lib/content';
+import { withBase } from '@/lib/url';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  headingLevel?: 'h2' | 'h3';
+}
+
+const { project, headingLevel = 'h3' } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const { title, summary, category, kind, stack } = project.data;
+const Heading = headingLevel;
+---
+
+<article
+  class="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface transition-colors hover:border-accent/50"
+  data-category={category}
+>
+  <ProjectCover
+    project={project}
+    sizes="(min-width: 1024px) 368px, (min-width: 768px) 50vw, 100vw"
+    class="border-b border-line"
+  />
+  <div class="flex flex-1 flex-col p-6">
+    <div class="flex flex-wrap gap-2">
+      <Badge tone={kind === 'real' ? 'accent' : 'neutral'}>{t.projects.kind[kind]}</Badge>
+      <Badge>{t.projects.categories[category]}</Badge>
+    </div>
+    <Heading class="mt-4 text-lg">
+      <a
+        href={withBase(projectPath(slugOf(project.id), lang))}
+        class="after:absolute after:inset-0"
+      >
+        {title}
+      </a>
+    </Heading>
+    <p class="mt-2 flex-1 text-sm text-muted">{summary}</p>
+    <p class="mt-4 text-xs text-muted">{stack.join(' · ')}</p>
+    <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent">
+      {t.cta.viewCase}
+      <Icon
+        name="lucide:arrow-right"
+        class="size-4 transition-transform group-hover:translate-x-1"
+        aria-hidden="true"
+      />
+    </span>
+  </div>
+</article>

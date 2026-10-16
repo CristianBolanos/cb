@@ -1,0 +1,242 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import Button from '@/components/ui/Button.astro';
+import avatar from '@/assets/cristian-avatar.webp';
+import { SITE } from '@/config/site';
+import { EXPERIENCE_AREAS } from '@/content.config';
+import { getLangFromUrl, useTranslations } from '@/i18n';
+import { pathFor } from '@/i18n/routes';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getExperience, getProfile } from '@/lib/content';
+import { formatPeriod } from '@/lib/dates';
+import { breadcrumbSchema, personSchema } from '@/lib/seo';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const [profile, experience] = await Promise.all([getProfile(lang), getExperience(lang)]);
+
+const groups = EXPERIENCE_AREAS.map((area) => ({
+  area,
+  title: t.cv.areas[area],
+  items: experience.filter((e) => e.data.area === area),
+})).filter((group) => group.items.length > 0);
+
+const jsonLd = [
+  personSchema(
+    Astro.site,
+    profile.headline,
+    profile.skills.flatMap((g) => g.items),
+  ),
+  breadcrumbSchema(Astro.site, [
+    { name: t.nav.home, path: pathFor('home', lang) },
+    { name: t.nav.cv, path: pathFor('cv', lang) },
+  ]),
+];
+---
+
+<BaseLayout
+  title={`${t.cv.pageTitle} | ${t.meta.titleSuffix}`}
+  description={t.cv.pageDescription}
+  type="profile"
+  jsonLd={jsonLd}
+  whatsappMessage={t.whatsapp.recruiter}
+>
+  <header class="container-page pt-12 pb-10 sm:pt-20">
+    <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-center">
+        <Image
+          src={avatar}
+          alt={t.cv.avatarAlt}
+          width={112}
+          height={112}
+          loading="eager"
+          class="size-24 rounded-3xl border border-line object-cover sm:size-28"
+        />
+        <div>
+          <p class="text-sm font-semibold tracking-wide text-accent uppercase">{t.nav.cv}</p>
+          <h1 class="mt-2 text-4xl font-extrabold sm:text-5xl">{SITE.name}</h1>
+          <p class="mt-2 text-xl font-semibold text-ink">{profile.headline}</p>
+          <p class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted">
+            <span class="inline-flex items-center gap-1.5">
+              <Icon name="lucide:map-pin" class="size-4" aria-hidden="true" />
+              {profile.location}
+            </span>
+            <span class="inline-flex items-center gap-1.5">
+              <span class="size-2 rounded-full bg-accent" aria-hidden="true"></span>
+              {profile.availability}
+            </span>
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <Button
+          href={SITE.cvPath}
+          icon="lucide:download"
+          download
+          track="download_cv"
+          data-track-location="cv-page"
+        >
+          {t.cta.downloadCv}
+        </Button>
+        <Button
+          href={SITE.socials.linkedin}
+          external
+          variant="secondary"
+          icon="simple-icons:linkedin"
+          track="click_linkedin"
+          data-track-location="cv-page"
+        >
+          {t.cta.linkedin}
+        </Button>
+        <Button
+          href={`${pathFor('contact', lang)}?perfil=reclutador`}
+          variant="secondary"
+          icon="lucide:mail"
+        >
+          {t.cv.contactRecruiter}
+        </Button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container-page grid gap-12 pb-16 sm:pb-24 lg:grid-cols-[1.7fr_1fr]">
+    <div class="space-y-14">
+      <section aria-labelledby="profile-title">
+        <h2 id="profile-title" class="text-2xl">
+          {t.cv.profile}
+        </h2>
+        <div class="mt-4 space-y-4 text-lg text-muted">
+          {profile.summary.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      </section>
+
+      <section aria-labelledby="experience-title">
+        <h2 id="experience-title" class="text-2xl">
+          {t.cv.experience}
+        </h2>
+        {groups.map((group) => (
+          <div class="mt-8">
+            <h3 class="text-sm font-semibold tracking-wide text-accent uppercase">{group.title}</h3>
+            <ol class="mt-4 space-y-4">
+              {group.items.map(({ data }) => (
+                <li class="rounded-3xl border border-line bg-surface p-6">
+                  <div class="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+                    <div>
+                      <h4 class="text-lg font-bold">{data.role}</h4>
+                      <p class="text-muted">
+                        {[data.company, data.sector, data.engagement].filter(Boolean).join(' · ')}
+                      </p>
+                    </div>
+                    <p class="shrink-0 text-sm font-medium whitespace-nowrap text-muted">
+                      {formatPeriod(data.start, data.end, lang)}
+                    </p>
+                  </div>
+                  <ul class="mt-4 list-disc space-y-1 pl-5 text-sm text-muted marker:text-line">
+                    {data.responsibilities.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                  {data.achievements.length > 0 && (
+                    <ul class="mt-4 space-y-2 border-t border-line pt-4">
+                      {data.achievements.map((item) => (
+                        <li class="flex gap-2 text-sm font-medium text-ink">
+                          <Icon
+                            name="lucide:badge-check"
+                            class="mt-0.5 size-4 shrink-0 text-accent"
+                            aria-hidden="true"
+                          />
+                          <span>
+                            <span class="sr-only">{t.cv.achievements}: </span>
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </div>
+        ))}
+      </section>
+    </div>
+
+    <aside class="space-y-6 self-start lg:sticky lg:top-24">
+      <section aria-labelledby="roles-title" class="rounded-3xl border border-line bg-surface p-6">
+        <h2 id="roles-title" class="text-lg">
+          {t.cv.roles}
+        </h2>
+        <ul class="mt-3 flex flex-wrap gap-2">
+          {profile.targetRoles.map((role) => (
+            <li class="rounded-full bg-accent-soft px-3 py-1 text-sm text-accent">{role}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section aria-labelledby="skills-title" class="rounded-3xl border border-line bg-surface p-6">
+        <h2 id="skills-title" class="text-lg">
+          {t.cv.skills}
+        </h2>
+        <div class="mt-4 space-y-5">
+          {profile.skills.map((group) => (
+            <div>
+              <h3 class="text-sm font-semibold text-muted">{group.title}</h3>
+              <ul class="mt-2 space-y-1 text-sm">
+                {group.items.map((item) => (
+                  <li class="flex gap-2">
+                    <Icon
+                      name="lucide:check"
+                      class="mt-0.5 size-4 shrink-0 text-accent"
+                      aria-hidden="true"
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section
+        aria-labelledby="education-title"
+        class="rounded-3xl border border-line bg-surface p-6"
+      >
+        <h2 id="education-title" class="text-lg">
+          {t.cv.education}
+        </h2>
+        <ul class="mt-3 space-y-2 text-sm">
+          {profile.education.map((item) => (
+            <li class="flex gap-2">
+              <Icon
+                name="lucide:graduation-cap"
+                class="mt-0.5 size-4 shrink-0 text-accent"
+                aria-hidden="true"
+              />
+              <span>
+                {item.title}
+                {item.institution && <span class="text-muted"> · {item.institution}</span>}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <h3 class="mt-6 text-sm font-semibold text-muted">{t.cv.courses}</h3>
+        <ul class="mt-2 space-y-1.5 text-sm">
+          {profile.courses.map((course) => (
+            <li>
+              {course.title}
+              <span class="text-muted">
+                {[course.issuer, course.year].filter(Boolean).length > 0 &&
+                  ` · ${[course.issuer, course.year].filter(Boolean).join(', ')}`}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </aside>
+  </div>
+</BaseLayout>

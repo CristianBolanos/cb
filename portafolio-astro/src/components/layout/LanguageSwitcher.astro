@@ -1,0 +1,36 @@
+---
+import { getLangFromUrl, languages, publishedLangs, stripBase, useTranslations } from '@/i18n';
+import { translatePath } from '@/i18n/routes';
+import { withBase } from '@/lib/url';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const currentPath = stripBase(Astro.url.pathname);
+---
+
+<nav aria-label={t.a11y.languageSwitcher}>
+  <ul class="flex items-center rounded-full border border-line p-0.5 text-xs font-semibold">
+    {publishedLangs.map((code) => {
+      const current = code === lang;
+      return (
+        <li>
+          <a
+            href={withBase(translatePath(currentPath, lang, code))}
+            hreflang={code}
+            lang={code}
+            aria-current={current ? 'true' : undefined}
+            data-track={current ? undefined : 'switch_language'}
+            data-track-location={code}
+            class:list={[
+              'grid h-9 min-w-9 place-items-center rounded-full px-2 uppercase transition-colors',
+              current ? 'bg-ink text-bg' : 'text-muted hover:text-ink',
+            ]}
+          >
+            <span aria-hidden="true">{code}</span>
+            <span class="sr-only">{languages[code]}</span>
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+</nav>

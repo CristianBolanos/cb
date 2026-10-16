@@ -1,0 +1,61 @@
+---
+import { Font } from 'astro:assets';
+import '@/styles/global.css';
+import Footer from '@/components/layout/Footer.astro';
+import Header from '@/components/layout/Header.astro';
+import ThemeScript from '@/components/layout/ThemeScript.astro';
+import WhatsAppFab from '@/components/layout/WhatsAppFab.astro';
+import Seo from '@/components/seo/Seo.astro';
+import { getLangFromUrl, locales, useTranslations } from '@/i18n';
+import { withBase } from '@/lib/url';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  imageAlt?: string;
+  type?: 'website' | 'article' | 'profile';
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown>[];
+  /** Mensaje prellenado del botón flotante de WhatsApp en esta página. */
+  whatsappMessage?: string;
+}
+
+const { whatsappMessage, ...seo } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<!doctype html>
+<html lang={locales[lang].html}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <ThemeScript />
+    <Font cssVariable="--font-jakarta" preload />
+    <Seo {...seo} />
+    <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="icon" href={withBase('/favicon.png')} type="image/png" sizes="48x48" />
+    <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
+    <link rel="sitemap" href={withBase('/sitemap-index.xml')} />
+  </head>
+  <body class="flex min-h-dvh flex-col">
+    <a
+      href="#contenido"
+      class="sr-only z-50 rounded-full bg-accent px-4 py-2 font-semibold text-accent-contrast focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+    >
+      {t.a11y.skipToContent}
+    </a>
+    <Header />
+    <main id="contenido" class="flex-1" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppFab message={whatsappMessage} />
+    <script>
+      import '@/scripts/analytics';
+    </script>
+  </body>
+</html>

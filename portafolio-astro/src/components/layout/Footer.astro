@@ -1,0 +1,104 @@
+---
+import { Icon } from 'astro-icon/components';
+import Logo from '@/components/layout/Logo.astro';
+import { SITE } from '@/config/site';
+import { getLangFromUrl, useTranslations } from '@/i18n';
+import { pathFor } from '@/i18n/routes';
+import { withBase } from '@/lib/url';
+import { whatsappUrl } from '@/lib/whatsapp';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+
+const navigation = [
+  { href: pathFor('services', lang), label: t.nav.services },
+  { href: pathFor('projects', lang), label: t.nav.projects },
+  { href: pathFor('cv', lang), label: t.nav.cv },
+  { href: pathFor('contact', lang), label: t.nav.contact },
+];
+
+const contact = [
+  {
+    href: whatsappUrl(t.whatsapp.default),
+    label: 'WhatsApp',
+    icon: 'simple-icons:whatsapp',
+    track: 'click_whatsapp',
+  },
+  { href: `mailto:${SITE.email}`, label: SITE.email, icon: 'lucide:mail', track: 'click_email' },
+  {
+    href: SITE.socials.linkedin,
+    label: 'LinkedIn',
+    icon: 'simple-icons:linkedin',
+    track: 'click_linkedin',
+  },
+  {
+    href: SITE.socials.github,
+    label: 'GitHub',
+    icon: 'simple-icons:github',
+    track: 'click_github',
+  },
+];
+---
+
+<footer class="border-t border-line bg-surface-muted">
+  <div class="container-page grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1.5fr]">
+    <div class="max-w-sm">
+      <Logo />
+      <p class="mt-4 text-sm text-muted">{t.footer.tagline}</p>
+    </div>
+
+    <nav aria-labelledby="footer-nav">
+      <h2 id="footer-nav" class="text-sm font-semibold">
+        {t.footer.navigation}
+      </h2>
+      <ul class="mt-3 space-y-1">
+        {navigation.map(({ href, label }) => (
+          <li>
+            <a
+              href={withBase(href)}
+              class="inline-flex min-h-9 items-center text-sm text-muted hover:text-ink"
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div>
+      <h2 class="text-sm font-semibold">{t.footer.contact}</h2>
+      <ul class="mt-3 space-y-1">
+        {contact.map(({ href, label, icon, track }) => {
+          const external = href.startsWith('http');
+          return (
+            <li>
+              <a
+                href={href}
+                class="inline-flex min-h-9 items-center gap-2 text-sm text-muted hover:text-ink"
+                target={external ? '_blank' : undefined}
+                rel={external ? 'noopener noreferrer' : undefined}
+                data-track={track}
+                data-track-location="footer"
+              >
+                <Icon name={icon} class="size-4" aria-hidden="true" />
+                {label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-line">
+    <div class="container-page flex flex-col gap-2 py-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+      <p>
+        © {year} {SITE.fullName}. {t.footer.rights}
+      </p>
+      <a href={withBase(pathFor('privacy', lang))} class="hover:text-ink">
+        {t.footer.privacy}
+      </a>
+    </div>
+  </div>
+</footer>

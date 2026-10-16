@@ -1,0 +1,17 @@
+{
+  "role": "Técnico de sistemas",
+  "company": "MicroApple",
+  "sector": "Soporte técnico",
+  "area": "tecnologia",
+  "start": "2022-08",
+  "end": "2022-10",
+  "responsibilities": [
+    "Soporte técnico y atención a clientes.",
+    "Configuración de equipos e instalación de redes.",
+    "Solución de incidentes tecnológicos."
+  ],
+  "achievements": [
+    "Reducción del 30 % en tiempos de respuesta.",
+    "Aumento del 25 % en la satisfacción de los clientes."
+  ]
+}

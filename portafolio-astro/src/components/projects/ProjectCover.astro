@@ -1,0 +1,47 @@
+---
+import { Picture } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  sizes: string;
+  /** true para la imagen principal de la página (LCP). */
+  priority?: boolean;
+  class?: string;
+}
+
+const { project, sizes, priority = false, class: className } = Astro.props;
+const { cover, coverAlt, stack, title } = project.data;
+---
+
+<div class:list={['aspect-[16/10] overflow-hidden bg-surface-muted', className]}>
+  {cover ? (
+    <Picture
+      src={cover}
+      alt={coverAlt ?? title}
+      formats={['avif']}
+      fallbackFormat="webp"
+      widths={[400, 640, 960, 1440]}
+      sizes={sizes}
+      loading={priority ? 'eager' : 'lazy'}
+      fetchpriority={priority ? 'high' : 'auto'}
+      class="size-full object-cover object-top"
+    />
+  ) : (
+    <div
+      class="flex size-full flex-col justify-between bg-gradient-to-br from-accent-soft to-surface p-6"
+      role="img"
+      aria-label={title}
+    >
+      <Icon name="lucide:store" class="size-10 text-accent" aria-hidden="true" />
+      <ul class="flex flex-wrap gap-2" aria-hidden="true">
+        {stack.map((item) => (
+          <li class="rounded-full border border-line bg-surface px-3 py-1 text-sm font-semibold text-ink">
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</div>

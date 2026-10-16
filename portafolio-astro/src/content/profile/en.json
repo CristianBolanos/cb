@@ -1,0 +1,114 @@
+{
+  "headline": "E-commerce Manager",
+  "tagline": "I manage catalogs and marketplaces, and I build the web tools that make them work better.",
+  "location": "Cali, Colombia",
+  "availability": "Available for jobs and freelance projects",
+  "summary": [
+    "I'm an E-commerce Manager with a technology degree in Information Systems Analysis and Development. I have experience managing catalogs and listing products on marketplaces such as Falabella, AlCarrito and the Brilla app, managing online stores and websites, and supporting the sales and logistics operations behind every online sale.",
+    "I combine technical skills (web development and AI tools) with experience in inventory, shipping and sales KPIs. That lets me take care of the full digital channel: from how a product is presented to the moment it reaches the customer."
+  ],
+  "targetRoles": [
+    "E-commerce Manager",
+    "E-commerce Analyst or Coordinator",
+    "Marketplace and Catalog Specialist"
+  ],
+  "skills": [
+    {
+      "title": "E-commerce",
+      "items": [
+        "Marketplace catalogs (Falabella, AlCarrito, Brilla)",
+        "Creating and updating product listings",
+        "Product copywriting",
+        "Promotional graphic design",
+        "Online store management",
+        "Social media and customer service"
+      ]
+    },
+    {
+      "title": "Sales operations",
+      "items": [
+        "Inventory control",
+        "Shipping and order traceability",
+        "KPIs and management reports",
+        "DMS system",
+        "Supplier relationships"
+      ]
+    },
+    {
+      "title": "Web development",
+      "items": [
+        "HTML, CSS and JavaScript",
+        "React and TypeScript",
+        "Astro and Tailwind CSS",
+        "PHP and MySQL",
+        "Google Sheets and Apps Script",
+        "Git and GitHub"
+      ]
+    },
+    {
+      "title": "AI-assisted development",
+      "items": ["Claude", "Cursor", "Windsurf", "Gemini", "Kilo Code"]
+    }
+  ],
+  "education": [
+    {
+      "title": "Technology degree in Information Systems Analysis and Development"
+    },
+    {
+      "title": "Technical degree in Computer Systems Support"
+    }
+  ],
+  "courses": [
+    {
+      "title": "AI Development: building with agents",
+      "issuer": "BIG School",
+      "year": 2025
+    },
+    {
+      "title": "AI Development",
+      "issuer": "BIG School",
+      "year": 2025
+    },
+    {
+      "title": "Master AI with Gemini",
+      "issuer": "Google",
+      "year": 2025
+    },
+    {
+      "title": "Digital Skills",
+      "issuer": "Google",
+      "year": 2025
+    },
+    {
+      "title": "Digital Marketing",
+      "issuer": "Google"
+    },
+    {
+      "title": "Software Engineering Fundamentals",
+      "issuer": "Platzi"
+    },
+    {
+      "title": "Frontend Developer",
+      "issuer": "Platzi"
+    },
+    {
+      "title": "Remote Work",
+      "issuer": "Platzi"
+    },
+    {
+      "title": "HTML and CSS",
+      "issuer": "Open Bootcamp"
+    },
+    {
+      "title": "Introduction to Programming",
+      "issuer": "Open Bootcamp"
+    },
+    {
+      "title": "Programming Concepts",
+      "issuer": "Open Bootcamp"
+    },
+    {
+      "title": "Network and Telecommunications Installation"
+    }
+  ]
+}

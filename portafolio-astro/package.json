@@ -1,0 +1,55 @@
+{
+  "name": "portafolio-cristian-bolanos",
+  "description": "Portafolio de Cristian Bolaños — Administrador de E-commerce",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "packageManager": "pnpm@10.17.1",
+  "engines": {
+    "node": ">=22.22.0",
+    "pnpm": ">=10"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test:e2e": "playwright test",
+    "lighthouse": "lhci autorun",
+    "og": "node scripts/generate-og.mjs",
+    "verify": "pnpm format:check && pnpm lint && pnpm check && pnpm build && pnpm test:e2e",
+    "astro": "astro",
+    "covers": "node scripts/capture-covers.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
+    "@iconify-json/lucide": "^1.2.144",
+    "@iconify-json/simple-icons": "^1.2.100",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.4.0",
+    "astro-icon": "^1.2.0",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@axe-core/playwright": "^4.14.0",
+    "@eslint/js": "^9.39.5",
+    "@lhci/cli": "^0.15.1",
+    "@playwright/test": "^1.64.1",
+    "eslint": "^9.39.5",
+    "eslint-plugin-astro": "^3.2.1",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.1",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "sharp": "^0.35.5",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.2"
+  }
+}

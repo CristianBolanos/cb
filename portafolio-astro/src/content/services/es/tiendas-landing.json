@@ -1,0 +1,17 @@
+{
+  "serviceId": "tiendas-landing",
+  "order": 2,
+  "icon": "lucide:shopping-bag",
+  "title": "Tiendas online y landing pages",
+  "summary": "Creo páginas rápidas y claras, pensadas para que el visitante entienda tu oferta y te contacte o compre.",
+  "outcome": "Una página profesional que trabaja por tu negocio las 24 horas.",
+  "includes": [
+    "Diseño pensado primero para celulares",
+    "Textos y botones enfocados en vender",
+    "Botón de WhatsApp y formulario de contacto",
+    "Optimización básica para aparecer en Google",
+    "Publicación del sitio en internet"
+  ],
+  "idealFor": "Negocios que necesitan presencia en internet, una tienda online o una página para una campaña o producto.",
+  "whatsappMessage": "Hola Cristian, quiero cotizar una tienda online o landing page para mi negocio."
+}

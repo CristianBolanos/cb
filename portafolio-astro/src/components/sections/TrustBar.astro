@@ -1,0 +1,50 @@
+---
+import { getLangFromUrl, useTranslations } from '@/i18n';
+import { getProjects } from '@/lib/content';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const publishedProjects = (await getProjects(lang)).filter((p) => p.data.demoUrl).length;
+
+// Cifras tomadas de los logros del CV (src/content/experience).
+const stats = [
+  { value: '3', label: t.trust.stats.channels },
+  { value: '95 %', label: t.trust.stats.onTime },
+  { value: '100 %', label: t.trust.stats.goals },
+  { value: String(publishedProjects), label: t.trust.stats.projects },
+];
+
+const tools = [
+  'Falabella',
+  'AlCarrito',
+  'App Brilla',
+  'Google Sheets',
+  'Apps Script',
+  'React',
+  'Astro',
+];
+---
+
+<section aria-labelledby="trust-title" class="border-y border-line bg-surface">
+  <div class="container-page py-10">
+    <h2 id="trust-title" class="sr-only">
+      {t.trust.title}
+    </h2>
+    <dl class="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
+      {stats.map(({ value, label }) => (
+        <div class="flex flex-col gap-1">
+          <dt class="order-last text-sm text-muted">{label}</dt>
+          <dd class="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">{value}</dd>
+        </div>
+      ))}
+    </dl>
+    <div class="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-line pt-6 text-sm">
+      <span class="font-semibold text-ink">{t.trust.toolsLabel}</span>
+      <ul class="flex flex-wrap gap-2">
+        {tools.map((tool) => (
+          <li class="rounded-full bg-surface-muted px-3 py-1 text-muted">{tool}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

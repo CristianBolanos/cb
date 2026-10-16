@@ -1,0 +1,56 @@
+---
+import Button from '@/components/ui/Button.astro';
+import { SITE } from '@/config/site';
+import { getLangFromUrl, useTranslations } from '@/i18n';
+import { pathFor } from '@/i18n/routes';
+import { getProfile } from '@/lib/content';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const profile = await getProfile(lang);
+---
+
+<section class="section-y pt-0" aria-labelledby="recruiter-title">
+  <div class="container-page">
+    <div class="grid gap-8 rounded-3xl bg-ink p-8 text-bg sm:p-12 lg:grid-cols-[1.4fr_1fr] lg:items-center">
+      <div>
+        <p class="text-sm font-semibold tracking-wide uppercase opacity-70">
+          {t.recruiter.eyebrow}
+        </p>
+        <h2 id="recruiter-title" class="text-fluid-h2 mt-3 text-bg">
+          {t.recruiter.title}
+        </h2>
+        <p class="mt-4 max-w-xl text-lg opacity-80">{t.recruiter.text}</p>
+        <ul class="mt-6 flex flex-wrap gap-2">
+          {profile.targetRoles.map((role) => (
+            <li class="rounded-full border border-bg/20 px-3 py-1 text-sm">{role}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="flex flex-col gap-3">
+        <Button
+          href={pathFor('cv', lang)}
+          size="lg"
+          icon="lucide:arrow-right"
+          iconPosition="end"
+          track="view_cv"
+          data-track-location="recruiter-callout"
+          variant="inverse"
+        >
+          {t.cta.viewCv}
+        </Button>
+        <Button
+          href={SITE.cvPath}
+          size="lg"
+          variant="inverse-outline"
+          icon="lucide:download"
+          download
+          track="download_cv"
+          data-track-location="recruiter-callout"
+        >
+          {t.cta.downloadCv}
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,21 @@
+---
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n';
+
+const t = useTranslations(getLangFromUrl(Astro.url));
+---
+
+<section class="section-y" aria-labelledby="process-title">
+  <div class="container-page">
+    <SectionHeading id="process-title" eyebrow={t.process.eyebrow} title={t.process.title} />
+    <ol class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {t.process.steps.map((step, index) => (
+        <li class="border-t-2 border-line pt-5">
+          <span class="text-sm font-bold text-accent">0{index + 1}</span>
+          <h3 class="mt-2 text-lg">{step.title}</h3>
+          <p class="mt-2 text-muted">{step.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

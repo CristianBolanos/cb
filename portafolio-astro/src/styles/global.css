@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+
+/* El modo oscuro se controla con data-theme en <html> (ver ThemeScript.astro). */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* ── Tokens de color (Brief §4). Todos los pares texto/fondo cumplen WCAG AA. ── */
+:root {
+  --bg: #fafaf9;
+  --surface: #ffffff;
+  --surface-muted: #f5f5f4;
+  --text: #1c1917;
+  --muted: #57534e;
+  --border: #e7e5e4;
+  --accent: #047857;
+  --accent-hover: #065f46;
+  --accent-soft: #ecfdf5;
+  --accent-contrast: #ffffff;
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --bg: #0c0a09;
+  --surface: #1c1917;
+  --surface-muted: #161412;
+  --text: #fafaf9;
+  --muted: #a8a29e;
+  --border: #292524;
+  --accent: #34d399;
+  --accent-hover: #6ee7b7;
+  --accent-soft: #052e22;
+  --accent-contrast: #022c22;
+  color-scheme: dark;
+}
+
+/* Sin JavaScript: seguir la preferencia del sistema. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #0c0a09;
+    --surface: #1c1917;
+    --surface-muted: #161412;
+    --text: #fafaf9;
+    --muted: #a8a29e;
+    --border: #292524;
+    --accent: #34d399;
+    --accent-hover: #6ee7b7;
+    --accent-soft: #052e22;
+    --accent-contrast: #022c22;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+  --color-line: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-contrast: var(--accent-contrast);
+  --font-sans: var(--font-jakarta);
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-bg font-sans text-ink antialiased;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-bold tracking-tight text-balance text-ink;
+    line-height: 1.15;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    @apply rounded-sm outline-2 outline-offset-2 outline-accent;
+  }
+
+  ::selection {
+    @apply bg-accent text-accent-contrast;
+  }
+}
+
+@utility container-page {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+}
+
+@utility section-y {
+  @apply py-16 sm:py-24;
+}
+
+@utility text-fluid-hero {
+  font-size: clamp(2.25rem, 1.5rem + 3.5vw, 4rem);
+}
+
+@utility text-fluid-h2 {
+  font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+}
+
+@utility prose-case {
+  @apply max-w-none text-muted;
+
+  & h2 {
+    @apply mt-10 mb-3 text-2xl text-ink;
+  }
+
+  & p {
+    @apply mb-4;
+  }
+
+  & ul {
+    @apply mb-4 list-disc space-y-1 pl-5;
+  }
+
+  & strong {
+    @apply text-ink;
+  }
+
+  & a {
+    @apply font-medium text-accent underline underline-offset-4;
+  }
+}

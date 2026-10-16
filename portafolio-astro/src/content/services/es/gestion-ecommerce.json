@@ -1,0 +1,16 @@
+{
+  "serviceId": "gestion-ecommerce",
+  "order": 1,
+  "icon": "lucide:store",
+  "title": "Gestión de e-commerce y marketplaces",
+  "summary": "Me encargo de tu catálogo en línea para que tus productos se vean bien, estén al día y se vendan.",
+  "outcome": "Un catálogo ordenado, completo y listo para vender en todos tus canales.",
+  "includes": [
+    "Publicación y actualización de productos en marketplaces y tienda propia",
+    "Fichas de producto completas: fotos, descripciones, especificaciones y precios",
+    "Piezas promocionales para campañas y fechas especiales",
+    "Coherencia visual de todo el catálogo"
+  ],
+  "idealFor": "Comercios que venden en Falabella, otros marketplaces o su propia tienda y no tienen tiempo para mantener el catálogo al día.",
+  "whatsappMessage": "Hola Cristian, quiero información sobre la gestión de mi catálogo y marketplaces."
+}

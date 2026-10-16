@@ -1,0 +1,68 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { Icon } from 'astro-icon/components';
+import { withBase } from '@/lib/url';
+
+type Variant = 'primary' | 'secondary' | 'ghost' | 'inverse' | 'inverse-outline';
+type Size = 'md' | 'lg';
+
+interface Props extends Omit<HTMLAttributes<'a'>, 'href'> {
+  href: string;
+  variant?: Variant;
+  size?: Size;
+  icon?: string;
+  iconPosition?: 'start' | 'end';
+  external?: boolean;
+  /** Nombre del evento de analítica que se registra al hacer clic. */
+  track?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  icon,
+  iconPosition = 'start',
+  external = false,
+  track,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const variants: Record<Variant, string> = {
+  primary: 'bg-accent text-accent-contrast hover:bg-accent-hover',
+  secondary: 'border border-line bg-surface text-ink hover:border-ink/40',
+  ghost: 'text-ink hover:text-accent',
+  inverse: 'bg-bg text-ink hover:bg-bg/90',
+  'inverse-outline': 'border border-bg/30 text-bg hover:border-bg/70',
+};
+
+const sizes: Record<Size, string> = {
+  // py-2 solo se nota cuando la etiqueta ocupa dos líneas; en una línea manda min-h.
+  md: 'min-h-11 px-5 py-2 text-sm',
+  lg: 'min-h-12 px-6 py-2 text-base',
+};
+---
+
+<a
+  href={withBase(href)}
+  class:list={[
+    // En celular una etiqueta larga pasa a dos líneas en vez de desbordar; desde sm, una sola línea.
+    'inline-flex max-w-full items-center justify-center gap-2 rounded-full text-center font-semibold text-balance transition-colors duration-200 sm:whitespace-nowrap',
+    variants[variant],
+    sizes[size],
+    className,
+  ]}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+  data-track={track}
+  {...rest}
+>
+  {icon && iconPosition === 'start' && (
+    <Icon name={icon} class="size-5 shrink-0" aria-hidden="true" />
+  )}
+  <slot />
+  {icon && iconPosition === 'end' && (
+    <Icon name={icon} class="size-4 shrink-0" aria-hidden="true" />
+  )}
+</a>

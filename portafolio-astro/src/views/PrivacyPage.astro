@@ -1,0 +1,117 @@
+---
+import PageHeader from '@/components/ui/PageHeader.astro';
+import { SITE } from '@/config/site';
+import { getLangFromUrl, useTranslations } from '@/i18n';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+// TODO: revisar este texto si cambia el proveedor del formulario o se agrega analítica con cookies.
+const updated =
+  lang === 'en' ? 'Last updated: October 2026.' : 'Última actualización: octubre de 2026.';
+const mailto = `mailto:${SITE.email}`;
+---
+
+<BaseLayout
+  title={`${t.privacy.pageTitle} | ${t.meta.titleSuffix}`}
+  description={t.privacy.pageDescription}
+>
+  <PageHeader title={t.privacy.pageTitle} lead={updated} />
+
+  <div class="prose-case container-page max-w-3xl pb-16 text-base sm:pb-24">
+    {lang === 'en' ? (
+      <>
+        <p>
+          In accordance with Colombian Law 1581 of 2012 and Decree 1377 of 2013, this policy
+          explains how the personal data you send through this website is handled.
+        </p>
+        <h2>Data controller</h2>
+        <p>
+          {SITE.fullName}, {SITE.city}, Colombia. Contact email: <a href={mailto}>{SITE.email}</a>.
+        </p>
+        <h2>Data collected</h2>
+        <p>
+          Only what you enter in the contact form: name, email, profile type, service of interest,
+          approximate budget and message. This website does not use tracking or advertising cookies.
+        </p>
+        <h2>Purpose</h2>
+        <p>
+          To answer your request: send you a proposal, set up a conversation or follow up on a job
+          opportunity. Your data is not sold or shared with third parties for commercial purposes.
+        </p>
+        <h2>Data processor</h2>
+        <p>
+          Form messages are processed by Formspree, a service based in the United States that
+          delivers the message by email. By submitting the form you authorize this international
+          transfer for the sole purpose of receiving your message.
+        </p>
+        <h2>Your rights</h2>
+        <p>As the data owner, you may at any time:</p>
+        <ul>
+          <li>Access, update and correct your data.</li>
+          <li>Request proof of the authorization you gave.</li>
+          <li>Revoke the authorization or ask for your data to be deleted.</li>
+          <li>
+            File complaints with the Colombian Superintendence of Industry and Commerce (SIC).
+          </li>
+        </ul>
+        <p>
+          To exercise these rights, write to <a href={mailto}>{SITE.email}</a>. You will receive a
+          reply within the legal deadlines.
+        </p>
+        <h2>Retention</h2>
+        <p>
+          Data is kept only as long as needed to handle your request and any relationship that
+          results from it.
+        </p>
+      </>
+    ) : (
+      <>
+        <p>
+          En cumplimiento de la Ley 1581 de 2012 y el Decreto 1377 de 2013 de Colombia, esta
+          política explica cómo se tratan los datos personales que envías a través de este sitio.
+        </p>
+        <h2>Responsable del tratamiento</h2>
+        <p>
+          {SITE.fullName}, {SITE.city}, Colombia. Correo de contacto:{' '}
+          <a href={mailto}>{SITE.email}</a>.
+        </p>
+        <h2>Datos que se recogen</h2>
+        <p>
+          Solo los que escribes en el formulario de contacto: nombre, correo electrónico, tipo de
+          perfil, servicio de interés, presupuesto aproximado y mensaje. El sitio no usa cookies de
+          seguimiento ni de publicidad.
+        </p>
+        <h2>Finalidad</h2>
+        <p>
+          Responder a tu solicitud: enviarte una propuesta, coordinar una conversación o atender una
+          oportunidad laboral. Tus datos no se venden ni se comparten con terceros para fines
+          comerciales.
+        </p>
+        <h2>Encargado del tratamiento</h2>
+        <p>
+          Los mensajes del formulario se procesan con Formspree, un servicio ubicado en Estados
+          Unidos que entrega el mensaje por correo electrónico. Al enviar el formulario autorizas
+          esta transferencia internacional con el único fin de recibir tu mensaje.
+        </p>
+        <h2>Tus derechos</h2>
+        <p>Como titular de los datos puedes, en cualquier momento:</p>
+        <ul>
+          <li>Conocer, actualizar y rectificar tus datos.</li>
+          <li>Solicitar prueba de la autorización que otorgaste.</li>
+          <li>Revocar la autorización o pedir que se eliminen tus datos.</li>
+          <li>Presentar quejas ante la Superintendencia de Industria y Comercio.</li>
+        </ul>
+        <p>
+          Para ejercerlos, escribe a <a href={mailto}>{SITE.email}</a>. Recibirás respuesta dentro
+          de los plazos que establece la ley.
+        </p>
+        <h2>Conservación</h2>
+        <p>
+          Los datos se conservan mientras sean necesarios para atender tu solicitud y la relación
+          que surja de ella.
+        </p>
+      </>
+    )}
+  </div>
+</BaseLayout>

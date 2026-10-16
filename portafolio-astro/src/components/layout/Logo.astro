@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import avatar from '@/assets/cristian-avatar.webp';
+import { SITE } from '@/config/site';
+import { getLangFromUrl, useTranslations } from '@/i18n';
+import { pathFor } from '@/i18n/routes';
+import { withBase } from '@/lib/url';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<a href={withBase(pathFor('home', lang))} class="group flex items-center gap-2.5">
+  <Image
+    src={avatar}
+    alt=""
+    width={40}
+    height={40}
+    densities={[1, 2]}
+    loading="eager"
+    class="size-10 rounded-full border border-line object-cover"
+  />
+  <span class="leading-tight">
+    <span class="block text-[0.95rem] font-bold text-ink">{SITE.name}</span>
+    <span class="hidden text-xs text-muted sm:block">{t.meta.role}</span>
+  </span>
+</a>

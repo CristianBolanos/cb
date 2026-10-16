@@ -1,0 +1,142 @@
+---
+import { Icon } from 'astro-icon/components';
+import Button from '@/components/ui/Button.astro';
+import ThemeToggle from '@/components/layout/ThemeToggle.astro';
+import LanguageSwitcher from '@/components/layout/LanguageSwitcher.astro';
+import Logo from '@/components/layout/Logo.astro';
+import { getLangFromUrl, stripBase, useTranslations } from '@/i18n';
+import { pathFor } from '@/i18n/routes';
+import { isCurrentPath, withBase } from '@/lib/url';
+import { whatsappUrl } from '@/lib/whatsapp';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const currentPath = stripBase(Astro.url.pathname);
+
+const links = [
+  { href: pathFor('services', lang), label: t.nav.services },
+  { href: pathFor('projects', lang), label: t.nav.projects },
+  { href: pathFor('cv', lang), label: t.nav.cv },
+  { href: pathFor('contact', lang), label: t.nav.contact },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-line/70 bg-bg/85 backdrop-blur-md">
+  <div class="container-page flex h-16 items-center justify-between gap-4">
+    <Logo />
+
+    <nav aria-label={t.a11y.mainNav} class="hidden md:block">
+      <ul class="flex items-center gap-1">
+        {links.map(({ href, label }) => {
+          const current = isCurrentPath(currentPath, href);
+          return (
+            <li>
+              <a
+                href={withBase(href)}
+                aria-current={current ? 'page' : undefined}
+                class:list={[
+                  'rounded-full px-3 py-2 text-sm font-medium transition-colors hover:text-ink',
+                  current ? 'text-ink' : 'text-muted',
+                ]}
+              >
+                {label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-1">
+      <LanguageSwitcher />
+      <ThemeToggle label={t.a11y.toggleTheme} />
+      <div class="ml-1 hidden sm:block">
+        <Button
+          href={whatsappUrl(t.whatsapp.default)}
+          external
+          track="click_whatsapp"
+          data-track-location="header"
+        >
+          {t.nav.quote}
+        </Button>
+      </div>
+      <button
+        type="button"
+        class="grid size-11 place-items-center rounded-full text-ink hover:bg-surface-muted md:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label={t.a11y.openMenu}
+        data-label-open={t.a11y.openMenu}
+        data-label-close={t.a11y.closeMenu}
+        data-menu-toggle
+      >
+        <Icon name="lucide:menu" class="size-6" aria-hidden="true" data-icon-open />
+        <Icon name="lucide:x" class="hidden size-6" aria-hidden="true" data-icon-close />
+      </button>
+    </div>
+  </div>
+
+  <nav id="mobile-menu" aria-label={t.a11y.mainNav} class="border-t border-line md:hidden" hidden>
+    <ul class="container-page flex flex-col py-3">
+      {links.map(({ href, label }) => (
+        <li>
+          <a
+            href={withBase(href)}
+            aria-current={isCurrentPath(currentPath, href) ? 'page' : undefined}
+            class="flex min-h-12 items-center text-lg font-medium text-ink aria-[current=page]:text-accent"
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+      <li class="pt-3 pb-2">
+        <Button
+          href={whatsappUrl(t.whatsapp.default)}
+          external
+          track="click_whatsapp"
+          data-track-location="mobile-menu"
+          size="lg"
+          icon="simple-icons:whatsapp"
+          class="w-full"
+        >
+          {t.cta.writeWhatsapp}
+        </Button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const menu = document.getElementById('mobile-menu');
+
+  if (toggle && menu) {
+    const setOpen = (open: boolean) => {
+      menu.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute(
+        'aria-label',
+        (open ? toggle.dataset.labelClose : toggle.dataset.labelOpen) ?? '',
+      );
+      toggle.querySelector('[data-icon-open]')?.classList.toggle('hidden', open);
+      toggle.querySelector('[data-icon-close]')?.classList.toggle('hidden', !open);
+    };
+
+    toggle.addEventListener('click', () => setOpen(Boolean(menu.hidden)));
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !menu.hidden) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    menu.addEventListener('click', (event) => {
+      if ((event.target as Element).closest('a')) setOpen(false);
+    });
+
+    window.matchMedia('(min-width: 768px)').addEventListener('change', (event) => {
+      if (event.matches) setOpen(false);
+    });
+  }
+</script>

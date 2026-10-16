@@ -1,0 +1,49 @@
+---
+import Faq from '@/components/sections/Faq.astro';
+import FeaturedProjects from '@/components/sections/FeaturedProjects.astro';
+import FinalCta from '@/components/sections/FinalCta.astro';
+import Hero from '@/components/sections/Hero.astro';
+import Process from '@/components/sections/Process.astro';
+import RecruiterCallout from '@/components/sections/RecruiterCallout.astro';
+import ServicesGrid from '@/components/sections/ServicesGrid.astro';
+import Testimonials from '@/components/sections/Testimonials.astro';
+import TrustBar from '@/components/sections/TrustBar.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getFaq, getProfile, getServices } from '@/lib/content';
+import { faqSchema, personSchema, professionalServiceSchema } from '@/lib/seo';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const [faq, services, profile] = await Promise.all([
+  getFaq(lang),
+  getServices(lang),
+  getProfile(lang),
+]);
+
+const jsonLd = [
+  personSchema(
+    Astro.site,
+    profile.headline,
+    profile.skills.flatMap((group) => group.items).slice(0, 12),
+  ),
+  professionalServiceSchema(Astro.site, {
+    role: profile.headline,
+    catalogName: t.services.eyebrow,
+    services: services.map(({ data }) => data),
+  }),
+  faqSchema(faq.map(({ data }) => data)),
+];
+---
+
+<BaseLayout title={t.meta.homeTitle} description={t.meta.homeDescription} jsonLd={jsonLd}>
+  <Hero />
+  <TrustBar />
+  <ServicesGrid />
+  <FeaturedProjects />
+  <Process />
+  <RecruiterCallout />
+  <Testimonials />
+  <Faq items={faq} />
+  <FinalCta />
+</BaseLayout>

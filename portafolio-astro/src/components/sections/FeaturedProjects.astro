@@ -1,0 +1,41 @@
+---
+import ProjectCard from '@/components/projects/ProjectCard.astro';
+import Button from '@/components/ui/Button.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n';
+import { pathFor } from '@/i18n/routes';
+import { getProjects } from '@/lib/content';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const featured = (await getProjects(lang)).filter((p) => p.data.featured).slice(0, 3);
+---
+
+<section class="section-y bg-surface-muted" aria-labelledby="featured-title">
+  <div class="container-page">
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+      <SectionHeading
+        id="featured-title"
+        eyebrow={t.featured.eyebrow}
+        title={t.featured.title}
+        intro={t.featured.intro}
+      />
+      <Button
+        href={pathFor('projects', lang)}
+        variant="secondary"
+        icon="lucide:arrow-right"
+        iconPosition="end"
+        class="self-start sm:self-auto"
+      >
+        {t.cta.viewAllProjects}
+      </Button>
+    </div>
+    <ul class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {featured.map((project) => (
+        <li>
+          <ProjectCard project={project} />
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

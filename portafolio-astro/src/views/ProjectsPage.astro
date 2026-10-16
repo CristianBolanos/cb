@@ -1,0 +1,94 @@
+---
+import ProjectCard from '@/components/projects/ProjectCard.astro';
+import FinalCta from '@/components/sections/FinalCta.astro';
+import PageHeader from '@/components/ui/PageHeader.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n';
+import { pathFor } from '@/i18n/routes';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getProjects, isShowcase } from '@/lib/content';
+import { breadcrumbSchema } from '@/lib/seo';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const projects = await getProjects(lang);
+const showcase = projects.filter(isShowcase);
+const lab = projects.filter((p) => !isShowcase(p));
+
+// Filtro sin JavaScript: radios + :has() (ver estilos al final).
+const categories = [...new Set(showcase.map((p) => p.data.category))];
+const filters = [
+  { value: 'todos', label: t.projects.all },
+  ...categories.map((c) => ({ value: c, label: t.projects.categories[c] })),
+];
+
+const jsonLd = [
+  breadcrumbSchema(Astro.site, [
+    { name: t.nav.home, path: pathFor('home', lang) },
+    { name: t.nav.projects, path: pathFor('projects', lang) },
+  ]),
+];
+---
+
+<BaseLayout
+  title={`${t.projects.pageTitle} | ${t.meta.titleSuffix}`}
+  description={t.projects.pageDescription}
+  jsonLd={jsonLd}
+>
+  <PageHeader eyebrow={t.nav.projects} title={t.featured.title} lead={t.projects.pageLead} />
+
+  <div class="projects-filter container-page pb-16 sm:pb-24">
+    <fieldset class="flex flex-wrap gap-2">
+      <legend class="sr-only">{t.projects.filterLabel}</legend>
+      {filters.map(({ value, label }) => (
+        <label class="cursor-pointer">
+          <input
+            type="radio"
+            name="filtro"
+            value={value}
+            class="peer sr-only"
+            checked={value === 'todos'}
+          />
+          <span class="inline-flex min-h-11 items-center rounded-full border border-line bg-surface px-4 text-sm font-medium text-muted transition-colors peer-checked:border-ink peer-checked:bg-ink peer-checked:text-bg peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent hover:text-ink">
+            {label}
+          </span>
+        </label>
+      ))}
+    </fieldset>
+
+    <ul class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {showcase.map((project) => (
+        <li data-category={project.data.category}>
+          <ProjectCard project={project} headingLevel="h2" />
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  {lab.length > 0 && (
+    <section class="section-y border-t border-line bg-surface-muted" aria-labelledby="lab-title">
+      <div class="container-page">
+        <SectionHeading id="lab-title" title={t.projects.labTitle} intro={t.projects.labIntro} />
+        <ul class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {lab.map((project) => (
+            <li>
+              <ProjectCard project={project} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <FinalCta />
+</BaseLayout>
+
+<style>
+  .projects-filter:has(input[value='ecommerce']:checked) li:not([data-category='ecommerce']),
+  .projects-filter:has(input[value='automatizacion']:checked)
+    li:not([data-category='automatizacion']),
+  .projects-filter:has(input[value='landing']:checked) li:not([data-category='landing']),
+  .projects-filter:has(input[value='web']:checked) li:not([data-category='web']) {
+    display: none;
+  }
+</style>

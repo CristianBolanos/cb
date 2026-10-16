@@ -1,0 +1,82 @@
+---
+import { SITE } from '@/config/site';
+import {
+  defaultLang,
+  getLangFromUrl,
+  locales,
+  publishedLangs,
+  stripBase,
+  useTranslations,
+} from '@/i18n';
+import { translatePath } from '@/i18n/routes';
+import { absoluteUrl } from '@/lib/url';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Ruta o URL absoluta de la imagen para compartir (1200×630). */
+  image?: string;
+  imageAlt?: string;
+  type?: 'website' | 'article' | 'profile';
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown>[];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const {
+  title,
+  description,
+  image = SITE.defaultOgImage,
+  imageAlt = t.meta.ogImageAlt,
+  type = 'website',
+  noindex = false,
+  jsonLd = [],
+} = Astro.props;
+
+const path = stripBase(Astro.url.pathname);
+const canonical = absoluteUrl(path, Astro.site);
+const alternates = publishedLangs.map((code) => ({
+  code,
+  href: absoluteUrl(translatePath(path, lang, code), Astro.site),
+}));
+const xDefault = absoluteUrl(translatePath(path, lang, defaultLang), Astro.site);
+const imageUrl = absoluteUrl(image, Astro.site);
+// Escapa "<" para que el contenido no pueda cerrar la etiqueta <script>.
+const serialize = (data: Record<string, unknown>) => JSON.stringify(data).replace(/</g, '\\u003c');
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{alternates.map(({ code, href }) => (
+  <link rel="alternate" hreflang={code} href={href} />
+))}
+<link rel="alternate" hreflang="x-default" href={xDefault} />
+{noindex && <meta name="robots" content="noindex, follow" />}
+
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:locale" content={locales[lang].og} />
+{publishedLangs
+  .filter((code) => code !== lang)
+  .map((code) => (
+    <meta property="og:locale:alternate" content={locales[code].og} />
+  ))}
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={imageAlt} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+<meta name="twitter:image:alt" content={imageAlt} />
+
+{jsonLd.map((data) => (
+  <script is:inline type="application/ld+json" set:html={serialize(data)} />
+))}

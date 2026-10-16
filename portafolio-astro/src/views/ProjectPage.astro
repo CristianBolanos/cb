@@ -1,0 +1,252 @@
+---
+import { getImage, Picture } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import ProjectCard from '@/components/projects/ProjectCard.astro';
+import ProjectCover from '@/components/projects/ProjectCover.astro';
+import FinalCta from '@/components/sections/FinalCta.astro';
+import Badge from '@/components/ui/Badge.astro';
+import Button from '@/components/ui/Button.astro';
+import type { CollectionEntry } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '@/i18n';
+import { pathFor, projectPath } from '@/i18n/routes';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getProjects, getServices, isShowcase, slugOf } from '@/lib/content';
+import { breadcrumbSchema } from '@/lib/seo';
+import { withBase } from '@/lib/url';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const data = project.data;
+
+const [projects, services] = await Promise.all([getProjects(lang), getServices(lang)]);
+const service = services.find((s) => s.data.serviceId === data.service);
+const others = projects
+  .filter((p) => p.id !== project.id && isShowcase(p) === isShowcase(project))
+  .slice(0, 3);
+
+const ogImage = data.cover
+  ? (
+      await getImage({
+        src: data.cover,
+        width: 1200,
+        height: 630,
+        fit: 'cover',
+        position: 'top',
+        format: 'jpeg',
+      })
+    ).src
+  : undefined;
+
+const path = projectPath(slugOf(project.id), lang);
+const breadcrumb = [
+  { name: t.nav.home, path: pathFor('home', lang) },
+  { name: t.nav.projects, path: pathFor('projects', lang) },
+  { name: data.title, path },
+];
+
+const story = [
+  { title: t.projects.problem, text: data.problem, icon: 'lucide:circle-alert' },
+  { title: t.projects.solution, text: data.solution, icon: 'lucide:sparkles' },
+  { title: t.projects.result, text: data.result, icon: 'lucide:badge-check' },
+];
+---
+
+<BaseLayout
+  title={`${data.title} | ${t.meta.titleSuffix}`}
+  description={data.summary}
+  image={ogImage}
+  imageAlt={data.coverAlt}
+  type="article"
+  jsonLd={[breadcrumbSchema(Astro.site, breadcrumb)]}
+  whatsappMessage={t.projects.ctaMessage(data.title)}
+>
+  <article>
+    <header class="container-page pt-10 sm:pt-16">
+      <nav aria-label={t.a11y.breadcrumb}>
+        <ol class="flex flex-wrap items-center gap-1 text-sm text-muted">
+          {breadcrumb.slice(0, -1).map((item) => (
+            <li class="flex items-center gap-1">
+              <a href={withBase(item.path)} class="hover:text-ink">
+                {item.name}
+              </a>
+              <Icon name="lucide:chevron-right" class="size-4" aria-hidden="true" />
+            </li>
+          ))}
+          <li aria-current="page" class="text-ink">
+            {data.title}
+          </li>
+        </ol>
+      </nav>
+
+      <div class="mt-8 flex flex-wrap gap-2">
+        <Badge tone={data.kind === 'real' ? 'accent' : 'neutral'}>
+          {t.projects.kind[data.kind]}
+        </Badge>
+        <Badge>{t.projects.categories[data.category]}</Badge>
+      </div>
+      <h1 class="text-fluid-hero mt-4 max-w-4xl font-extrabold">{data.title}</h1>
+      <p class="mt-5 max-w-2xl text-lg text-muted sm:text-xl">{data.summary}</p>
+
+      {(data.demoUrl || data.repoUrl) && (
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          {data.demoUrl && (
+            <Button
+              href={data.demoUrl}
+              external
+              icon="lucide:arrow-up-right"
+              iconPosition="end"
+              track="click_demo"
+              data-track-location={slugOf(project.id)}
+            >
+              {t.cta.viewDemo}
+            </Button>
+          )}
+          {data.repoUrl && (
+            <Button
+              href={data.repoUrl}
+              external
+              variant="secondary"
+              icon="simple-icons:github"
+              track="click_repo"
+              data-track-location={slugOf(project.id)}
+            >
+              {t.cta.viewCode}
+            </Button>
+          )}
+        </div>
+      )}
+    </header>
+
+    <div class="container-page mt-10 sm:mt-14">
+      <ProjectCover
+        project={project}
+        sizes="(min-width: 1152px) 1088px, calc(100vw - 2rem)"
+        priority
+        class="rounded-3xl border border-line"
+      />
+    </div>
+
+    <div class="container-page section-y grid gap-12 lg:grid-cols-[1.6fr_1fr]">
+      <div class="space-y-10">
+        {story.map((block) => (
+          <section>
+            <h2 class="flex items-center gap-3 text-2xl">
+              <Icon name={block.icon} class="size-6 text-accent" aria-hidden="true" />
+              {block.title}
+            </h2>
+            <p class="mt-3 text-lg text-muted">{block.text}</p>
+          </section>
+        ))}
+
+        {data.highlights.length > 0 && (
+          <section>
+            <h2 class="text-2xl">{t.projects.highlights}</h2>
+            <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+              {data.highlights.map((item) => (
+                <li class="flex gap-3 rounded-2xl border border-line bg-surface p-4">
+                  <Icon
+                    name="lucide:check"
+                    class="mt-0.5 size-5 shrink-0 text-accent"
+                    aria-hidden="true"
+                  />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {data.gallery.length > 0 && (
+          <section>
+            <h2 class="text-2xl">{t.projects.gallery}</h2>
+            <div class="mt-4 grid gap-4">
+              {data.gallery.map((image) => (
+                <Picture
+                  src={image.src}
+                  alt={image.alt}
+                  formats={['avif']}
+                  fallbackFormat="webp"
+                  widths={[400, 720, 922]}
+                  sizes="(min-width: 1024px) 640px, calc(100vw - 2rem)"
+                  class="w-full rounded-3xl border border-line"
+                />
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
+
+      <aside class="space-y-6 self-start lg:sticky lg:top-24">
+        <div class="rounded-3xl border border-line bg-surface p-6">
+          <h2 class="text-sm font-semibold tracking-wide text-muted uppercase">
+            {t.projects.stack}
+          </h2>
+          <ul class="mt-3 flex flex-wrap gap-2">
+            {data.stack.map((item) => (
+              <li class="rounded-full bg-surface-muted px-3 py-1 text-sm">{item}</li>
+            ))}
+          </ul>
+          {data.aiTools.length > 0 && (
+            <>
+              <h2 class="mt-6 text-sm font-semibold tracking-wide text-muted uppercase">
+                {t.projects.aiTools}
+              </h2>
+              <p class="mt-2 text-sm">{data.aiTools.join(', ')}</p>
+            </>
+          )}
+          {data.idealFor && (
+            <>
+              <h2 class="mt-6 text-sm font-semibold tracking-wide text-muted uppercase">
+                {t.projects.idealFor}
+              </h2>
+              <p class="mt-2 text-sm">{data.idealFor}</p>
+            </>
+          )}
+          {service && (
+            <>
+              <h2 class="mt-6 text-sm font-semibold tracking-wide text-muted uppercase">
+                {t.projects.relatedService}
+              </h2>
+              <a
+                href={withBase(`${pathFor('services', lang)}#${service.data.serviceId}`)}
+                class="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-accent hover:underline"
+              >
+                {service.data.title}
+                <Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" />
+              </a>
+            </>
+          )}
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  {others.length > 0 && (
+    <section class="section-y border-t border-line bg-surface-muted" aria-labelledby="more-title">
+      <div class="container-page">
+        <h2 id="more-title" class="text-fluid-h2">
+          {t.projects.more}
+        </h2>
+        <ul class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {others.map((p) => (
+            <li>
+              <ProjectCard project={p} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <FinalCta
+    title={t.projects.ctaTitle}
+    text={t.projects.ctaText}
+    whatsappMessage={t.projects.ctaMessage(data.title)}
+    location="project-cta"
+  />
+</BaseLayout>

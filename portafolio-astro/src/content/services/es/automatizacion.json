@@ -1,0 +1,16 @@
+{
+  "serviceId": "automatizacion",
+  "order": 3,
+  "icon": "lucide:workflow",
+  "title": "Automatización de pedidos e inventario",
+  "summary": "Convierto el trabajo manual de tus pedidos en un sistema simple con Google Sheets y Apps Script.",
+  "outcome": "Menos errores, más control y una vista clara de toda tu operación.",
+  "includes": [
+    "Registro y seguimiento de pedidos por estado",
+    "Control de despachos y rutas de entrega",
+    "Tablero con indicadores operativos",
+    "Acompañamiento para que tu equipo lo use"
+  ],
+  "idealFor": "Distribuidoras y comercios que llevan sus pedidos en cuadernos, chats u hojas de cálculo desordenadas.",
+  "whatsappMessage": "Hola Cristian, quiero organizar los pedidos e inventario de mi negocio."
+}

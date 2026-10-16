@@ -1,0 +1,86 @@
+---
+import { Icon } from 'astro-icon/components';
+import ContactForm from '@/components/contact/ContactForm.astro';
+import Button from '@/components/ui/Button.astro';
+import PageHeader from '@/components/ui/PageHeader.astro';
+import { SITE } from '@/config/site';
+import { getLangFromUrl, useTranslations } from '@/i18n';
+import { pathFor } from '@/i18n/routes';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { breadcrumbSchema } from '@/lib/seo';
+import { whatsappUrl } from '@/lib/whatsapp';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const jsonLd = [
+  breadcrumbSchema(Astro.site, [
+    { name: t.nav.home, path: pathFor('home', lang) },
+    { name: t.nav.contact, path: pathFor('contact', lang) },
+  ]),
+];
+---
+
+<BaseLayout
+  title={`${t.contact.pageTitle} | ${t.meta.titleSuffix}`}
+  description={t.contact.pageDescription}
+  jsonLd={jsonLd}
+>
+  <PageHeader eyebrow={t.nav.contact} title={t.contact.title} lead={t.contact.lead} />
+
+  <div class="container-page grid gap-10 pb-16 sm:pb-24 lg:grid-cols-[1.6fr_1fr]">
+    <div class="rounded-3xl border border-line bg-surface p-6 sm:p-10">
+      <ContactForm />
+    </div>
+
+    <aside class="space-y-6 self-start">
+      <div class="rounded-3xl bg-accent-soft p-6 sm:p-8">
+        <h2 class="text-xl">{t.contact.directTitle}</h2>
+        <p class="mt-2 text-muted">{t.contact.directText}</p>
+        <Button
+          href={whatsappUrl(t.whatsapp.default)}
+          external
+          size="lg"
+          icon="simple-icons:whatsapp"
+          track="click_whatsapp"
+          data-track-location="contact-page"
+          class="mt-6 w-full"
+        >
+          {t.cta.writeWhatsapp}
+        </Button>
+      </div>
+
+      <ul class="space-y-3 rounded-3xl border border-line bg-surface p-6 text-sm sm:p-8">
+        <li class="flex items-center gap-3">
+          <Icon name="lucide:mail" class="size-5 text-accent" aria-hidden="true" />
+          <span class="sr-only">{t.contact.emailLabel}:</span>
+          <a
+            href={`mailto:${SITE.email}`}
+            class="break-all hover:text-accent"
+            data-track="click_email"
+            data-track-location="contact-page"
+          >
+            {SITE.email}
+          </a>
+        </li>
+        <li class="flex items-center gap-3">
+          <Icon name="simple-icons:linkedin" class="size-5 text-accent" aria-hidden="true" />
+          <a
+            href={SITE.socials.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-accent"
+            data-track="click_linkedin"
+            data-track-location="contact-page"
+          >
+            LinkedIn
+          </a>
+        </li>
+        <li class="flex items-center gap-3">
+          <Icon name="lucide:map-pin" class="size-5 text-accent" aria-hidden="true" />
+          <span>{SITE.city}, Colombia</span>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</BaseLayout>

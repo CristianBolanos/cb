@@ -1,0 +1,120 @@
+---
+import { Icon } from 'astro-icon/components';
+import ProjectCard from '@/components/projects/ProjectCard.astro';
+import Faq from '@/components/sections/Faq.astro';
+import FinalCta from '@/components/sections/FinalCta.astro';
+import Process from '@/components/sections/Process.astro';
+import Button from '@/components/ui/Button.astro';
+import PageHeader from '@/components/ui/PageHeader.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n';
+import { pathFor } from '@/i18n/routes';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getFaq, getProjects, getServices } from '@/lib/content';
+import { breadcrumbSchema, faqSchema, professionalServiceSchema } from '@/lib/seo';
+import { whatsappUrl } from '@/lib/whatsapp';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const [services, projects, faq] = await Promise.all([
+  getServices(lang),
+  getProjects(lang),
+  getFaq(lang),
+]);
+
+const exampleFor = (serviceId: string) =>
+  projects.find((p) => p.data.service === serviceId && p.data.featured) ??
+  projects.find((p) => p.data.service === serviceId);
+
+const jsonLd = [
+  professionalServiceSchema(Astro.site, {
+    role: t.meta.role,
+    catalogName: t.services.eyebrow,
+    services: services.map(({ data }) => data),
+  }),
+  faqSchema(faq.map(({ data }) => data)),
+  breadcrumbSchema(Astro.site, [
+    { name: t.nav.home, path: pathFor('home', lang) },
+    { name: t.nav.services, path: pathFor('services', lang) },
+  ]),
+];
+---
+
+<BaseLayout
+  title={`${t.services.pageTitle} | ${t.meta.titleSuffix}`}
+  description={t.services.pageDescription}
+  jsonLd={jsonLd}
+>
+  <PageHeader eyebrow={t.nav.services} title={t.services.title} lead={t.services.pageLead} />
+
+  <div class="container-page space-y-6 pb-16 sm:pb-24">
+    {services.map(({ data }) => {
+      const example = exampleFor(data.serviceId);
+      return (
+        <section
+          id={data.serviceId}
+          aria-labelledby={`${data.serviceId}-title`}
+          class="grid scroll-mt-24 gap-8 rounded-3xl border border-line bg-surface p-6 sm:p-10 lg:grid-cols-[1.2fr_1fr]"
+        >
+          <div>
+            <span class="grid size-12 place-items-center rounded-2xl bg-accent-soft text-accent">
+              <Icon name={data.icon} class="size-6" aria-hidden="true" />
+            </span>
+            <h2 id={`${data.serviceId}-title`} class="mt-5 text-2xl sm:text-3xl">
+              {data.title}
+            </h2>
+            <p class="mt-3 text-lg text-muted">{data.summary}</p>
+
+            <h3 class="mt-8 text-sm font-semibold tracking-wide text-muted uppercase">
+              {t.services.includes}
+            </h3>
+            <ul class="mt-3 space-y-2">
+              {data.includes.map((item) => (
+                <li class="flex gap-3">
+                  <Icon
+                    name="lucide:check"
+                    class="mt-1 size-5 shrink-0 text-accent"
+                    aria-hidden="true"
+                  />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <dl class="mt-8 grid gap-4 sm:grid-cols-2">
+              <div class="rounded-2xl bg-surface-muted p-4">
+                <dt class="text-sm font-semibold">{t.services.idealFor}</dt>
+                <dd class="mt-1 text-sm text-muted">{data.idealFor}</dd>
+              </div>
+              <div class="rounded-2xl bg-accent-soft p-4">
+                <dt class="text-sm font-semibold">{t.services.outcome}</dt>
+                <dd class="mt-1 text-sm text-muted">{data.outcome}</dd>
+              </div>
+            </dl>
+
+            <Button
+              href={whatsappUrl(data.whatsappMessage)}
+              external
+              size="lg"
+              icon="simple-icons:whatsapp"
+              track="click_whatsapp"
+              data-track-location={`service-${data.serviceId}`}
+              class="mt-8"
+            >
+              {t.cta.quoteService}
+            </Button>
+          </div>
+
+          {example && (
+            <div class="self-start">
+              <ProjectCard project={example} />
+            </div>
+          )}
+        </section>
+      );
+    })}
+  </div>
+
+  <Process />
+  <Faq items={faq} />
+  <FinalCta />
+</BaseLayout>

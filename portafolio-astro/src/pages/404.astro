@@ -1,0 +1,35 @@
+---
+import Button from '@/components/ui/Button.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n';
+import { pathFor } from '@/i18n/routes';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const links = [
+  { href: pathFor('home', lang), label: t.nav.home, icon: 'lucide:house' },
+  { href: pathFor('services', lang), label: t.nav.services, icon: 'lucide:store' },
+  { href: pathFor('projects', lang), label: t.nav.projects, icon: 'lucide:folder-open' },
+  { href: pathFor('cv', lang), label: t.nav.cv, icon: 'lucide:file-text' },
+];
+---
+
+<BaseLayout
+  title={`${t.notFound.pageTitle} | ${t.meta.titleSuffix}`}
+  description={t.notFound.text}
+  noindex
+>
+  <section class="container-page py-24 text-center sm:py-32">
+    <p class="text-sm font-bold tracking-widest text-accent">404</p>
+    <h1 class="text-fluid-hero mt-3 font-extrabold">{t.notFound.title}</h1>
+    <p class="mx-auto mt-4 max-w-md text-lg text-muted">{t.notFound.text}</p>
+    <div class="mt-10 flex flex-wrap justify-center gap-3">
+      {links.map(({ href, label, icon }, index) => (
+        <Button href={href} icon={icon} variant={index === 0 ? 'primary' : 'secondary'}>
+          {label}
+        </Button>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

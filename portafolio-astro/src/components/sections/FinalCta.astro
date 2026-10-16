@@ -1,0 +1,49 @@
+---
+import Button from '@/components/ui/Button.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n';
+import { pathFor } from '@/i18n/routes';
+import { whatsappUrl } from '@/lib/whatsapp';
+
+interface Props {
+  title?: string;
+  text?: string;
+  whatsappMessage?: string;
+  location?: string;
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const {
+  title = t.finalCta.title,
+  text = t.finalCta.text,
+  whatsappMessage,
+  location = 'final-cta',
+} = Astro.props;
+---
+
+<section
+  class="section-y border-t border-line bg-accent-soft"
+  aria-labelledby={`${location}-title`}
+>
+  <div class="container-page text-center">
+    <h2 id={`${location}-title`} class="text-fluid-h2 mx-auto max-w-2xl">
+      {title}
+    </h2>
+    <p class="mx-auto mt-4 max-w-xl text-lg text-muted">{text}</p>
+    <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+      <Button
+        href={whatsappUrl(whatsappMessage ?? t.whatsapp.default)}
+        external
+        size="lg"
+        icon="simple-icons:whatsapp"
+        track="click_whatsapp"
+        data-track-location={location}
+      >
+        {t.cta.writeWhatsapp}
+      </Button>
+      <Button href={pathFor('contact', lang)} variant="secondary" size="lg" icon="lucide:mail">
+        {t.cta.sendMessage}
+      </Button>
+    </div>
+  </div>
+</section>

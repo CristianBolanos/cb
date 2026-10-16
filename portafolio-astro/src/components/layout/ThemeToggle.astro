@@ -1,0 +1,63 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<button
+  type="button"
+  class="grid size-11 place-items-center rounded-full text-muted transition-colors hover:bg-surface-muted hover:text-ink"
+  aria-label={label}
+  aria-pressed="false"
+  data-theme-toggle
+>
+  <Icon name="lucide:moon" class="size-5 dark:hidden" aria-hidden="true" />
+  <Icon name="lucide:sun" class="hidden size-5 dark:block" aria-hidden="true" />
+</button>
+
+<script>
+  const root = document.documentElement;
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+
+  const save = (theme: string) => {
+    try {
+      localStorage.setItem('theme', theme);
+    } catch {
+      /* almacenamiento bloqueado: el tema solo dura esta visita */
+    }
+  };
+
+  const hasStoredChoice = () => {
+    try {
+      return localStorage.getItem('theme') !== null;
+    } catch {
+      return false;
+    }
+  };
+
+  const apply = (theme: 'light' | 'dark') => {
+    root.dataset.theme = theme;
+    document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+      button.setAttribute('aria-pressed', String(theme === 'dark'));
+    });
+  };
+
+  apply(root.dataset.theme === 'dark' ? 'dark' : 'light');
+
+  document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      apply(next);
+      save(next);
+    });
+  });
+
+  // Si el usuario no ha elegido, seguimos los cambios del sistema operativo.
+  media.addEventListener('change', (event) => {
+    if (!hasStoredChoice()) apply(event.matches ? 'dark' : 'light');
+  });
+</script>

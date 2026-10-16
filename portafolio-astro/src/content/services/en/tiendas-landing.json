@@ -1,0 +1,17 @@
+{
+  "serviceId": "tiendas-landing",
+  "order": 2,
+  "icon": "lucide:shopping-bag",
+  "title": "Online stores and landing pages",
+  "summary": "I build fast, clear pages designed so visitors understand your offer and contact you or buy.",
+  "outcome": "A professional page that works for your business 24/7.",
+  "includes": [
+    "Mobile-first design",
+    "Copy and buttons focused on selling",
+    "WhatsApp button and contact form",
+    "Basic search engine optimization (SEO)",
+    "Publishing the site online"
+  ],
+  "idealFor": "Businesses that need an online presence, an online store or a page for a campaign or product.",
+  "whatsappMessage": "Hi Cristian, I'd like a quote for an online store or landing page for my business."
+}

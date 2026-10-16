@@ -1,0 +1,16 @@
+{
+  "serviceId": "gestion-ecommerce",
+  "order": 1,
+  "icon": "lucide:store",
+  "title": "E-commerce and marketplace management",
+  "summary": "I take care of your online catalog so your products look good, stay up to date and sell.",
+  "outcome": "An organized, complete catalog ready to sell on every channel.",
+  "includes": [
+    "Listing and updating products on marketplaces and your own store",
+    "Complete product listings: photos, descriptions, specs and prices",
+    "Promotional graphics for campaigns and special dates",
+    "Visual consistency across the whole catalog"
+  ],
+  "idealFor": "Businesses selling on Falabella, other marketplaces or their own store that don't have time to keep the catalog up to date.",
+  "whatsappMessage": "Hi Cristian, I'd like information about managing my catalog and marketplaces."
+}

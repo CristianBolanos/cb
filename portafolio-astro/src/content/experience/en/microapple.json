@@ -1,0 +1,14 @@
+{
+  "role": "IT Technician",
+  "company": "MicroApple",
+  "sector": "Technical support",
+  "area": "tecnologia",
+  "start": "2022-08",
+  "end": "2022-10",
+  "responsibilities": [
+    "Technical support and customer service.",
+    "Computer setup and network installation.",
+    "Resolution of technology incidents."
+  ],
+  "achievements": ["Reduced response times by 30%.", "Increased customer satisfaction by 25%."]
+}

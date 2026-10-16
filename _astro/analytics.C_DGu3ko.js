@@ -1,1 +1,0 @@
-function e(e,t={}){window.umami?.track(e,t),window.plausible?.(e,{props:t})}document.addEventListener(`click`,t=>{let n=t.target?.closest(`[data-track]`);n?.dataset.track&&e(n.dataset.track,{location:n.dataset.trackLocation??`unknown`,page:window.location.pathname})});export{e as t};

@@ -1,0 +1,16 @@
+{
+  "serviceId": "automatizacion",
+  "order": 3,
+  "icon": "lucide:workflow",
+  "title": "Order and inventory automation",
+  "summary": "I turn the manual work of handling orders into a simple system built on Google Sheets and Apps Script.",
+  "outcome": "Fewer errors, more control and a clear view of your whole operation.",
+  "includes": [
+    "Order tracking by status",
+    "Shipping and delivery route control",
+    "Dashboard with operational KPIs",
+    "Hands-on support so your team can use it"
+  ],
+  "idealFor": "Distributors and stores that track orders in notebooks, chats or messy spreadsheets.",
+  "whatsappMessage": "Hi Cristian, I'd like to organize my business's orders and inventory."
+}

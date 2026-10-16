@@ -1,0 +1,114 @@
+{
+  "headline": "Administrador de E-commerce",
+  "tagline": "Gestiono catálogos y marketplaces, y construyo las herramientas web que los hacen funcionar mejor.",
+  "location": "Cali, Colombia",
+  "availability": "Disponible para empleo y proyectos freelance",
+  "summary": [
+    "Soy Administrador de E-commerce y Tecnólogo en Análisis y Desarrollo de Sistemas de Información. Tengo experiencia gestionando catálogos y publicando productos en marketplaces como Falabella, AlCarrito y la app Brilla, administrando tiendas y páginas web, y apoyando la operación comercial y logística que hay detrás de cada venta en línea.",
+    "Combino conocimientos técnicos —desarrollo web y herramientas de IA— con experiencia en inventarios, despachos e indicadores comerciales. Eso me permite cuidar el ciclo completo del canal digital: desde cómo se presenta el producto hasta que llega al cliente."
+  ],
+  "targetRoles": [
+    "Administrador de E-commerce",
+    "Analista o coordinador de E-commerce",
+    "Especialista en marketplaces y catálogo"
+  ],
+  "skills": [
+    {
+      "title": "E-commerce",
+      "items": [
+        "Catálogos en marketplaces (Falabella, AlCarrito, Brilla)",
+        "Publicación y actualización de fichas de producto",
+        "Redacción comercial de productos",
+        "Diseño de piezas promocionales",
+        "Administración de tiendas online",
+        "Redes sociales y atención al cliente"
+      ]
+    },
+    {
+      "title": "Operación comercial",
+      "items": [
+        "Control de inventarios",
+        "Despachos y trazabilidad de pedidos",
+        "Indicadores y reportes para gerencia",
+        "Sistema DMS",
+        "Relación con proveedores"
+      ]
+    },
+    {
+      "title": "Desarrollo web",
+      "items": [
+        "HTML, CSS y JavaScript",
+        "React y TypeScript",
+        "Astro y Tailwind CSS",
+        "PHP y MySQL",
+        "Google Sheets y Apps Script",
+        "Git y GitHub"
+      ]
+    },
+    {
+      "title": "Desarrollo asistido por IA",
+      "items": ["Claude", "Cursor", "Windsurf", "Gemini", "Kilo Code"]
+    }
+  ],
+  "education": [
+    {
+      "title": "Tecnólogo en Análisis y Desarrollo de Sistemas de Información"
+    },
+    {
+      "title": "Técnico en Auxiliar de Sistemas Informáticos"
+    }
+  ],
+  "courses": [
+    {
+      "title": "Desarrollo con IA: programa con agentes",
+      "issuer": "BIG School",
+      "year": 2025
+    },
+    {
+      "title": "Desarrollo con IA",
+      "issuer": "BIG School",
+      "year": 2025
+    },
+    {
+      "title": "Domina la IA con Gemini",
+      "issuer": "Google",
+      "year": 2025
+    },
+    {
+      "title": "Competencias Digitales",
+      "issuer": "Google",
+      "year": 2025
+    },
+    {
+      "title": "Marketing Digital",
+      "issuer": "Google"
+    },
+    {
+      "title": "Fundamentos de Ingeniería de Software",
+      "issuer": "Platzi"
+    },
+    {
+      "title": "Frontend Developer",
+      "issuer": "Platzi"
+    },
+    {
+      "title": "Trabajo Remoto",
+      "issuer": "Platzi"
+    },
+    {
+      "title": "HTML y CSS",
+      "issuer": "Open Bootcamp"
+    },
+    {
+      "title": "Introducción a la Programación",
+      "issuer": "Open Bootcamp"
+    },
+    {
+      "title": "Conceptos de la Programación",
+      "issuer": "Open Bootcamp"
+    },
+    {
+      "title": "Instalación de Redes y Telecomunicaciones"
+    }
+  ]
+}

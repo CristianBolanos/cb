@@ -1,0 +1,25 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getLangFromUrl, useTranslations } from '@/i18n';
+import { whatsappUrl } from '@/lib/whatsapp';
+
+interface Props {
+  message?: string;
+}
+
+const t = useTranslations(getLangFromUrl(Astro.url));
+const { message } = Astro.props;
+---
+
+<a
+  href={whatsappUrl(message ?? t.whatsapp.default)}
+  target="_blank"
+  rel="noopener noreferrer"
+  data-track="click_whatsapp"
+  data-track-location="floating-button"
+  class="fixed right-4 bottom-4 z-30 grid size-14 place-items-center rounded-full bg-[#25D366] text-[#0b3d1f] shadow-lg shadow-black/20 transition-transform hover:scale-105 sm:right-6 sm:bottom-6"
+>
+  <Icon name="simple-icons:whatsapp" class="size-7" aria-hidden="true" />
+  {/* Texto real (no aria-label): así el enlace tiene nombre también en modo lectura, traductores y navegadores de texto. */}
+  <span class="sr-only">{t.a11y.whatsappFab}</span>
+</a>
