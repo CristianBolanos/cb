@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { withBase } from './base';
 
 const FORM_ENDPOINT = 'https://formspree.io/**';
 
@@ -20,7 +21,7 @@ test.describe('Formulario de contacto', () => {
       return route.fulfill({ status: 200, body: '{}' });
     });
 
-    await page.goto('/contacto');
+    await page.goto(withBase('/contacto'));
     await page.getByRole('button', { name: 'Enviar mensaje' }).click();
 
     const name = page.getByLabel('Nombre', { exact: true });
@@ -34,7 +35,7 @@ test.describe('Formulario de contacto', () => {
   });
 
   test('valida el formato del correo', async ({ page }) => {
-    await page.goto('/contacto');
+    await page.goto(withBase('/contacto'));
     await page.getByLabel('Correo electrónico', { exact: true }).fill('correo-invalido');
     await page.getByLabel('Correo electrónico', { exact: true }).blur();
     await expect(page.locator('#email-error')).toContainText('correo válido');
@@ -47,7 +48,7 @@ test.describe('Formulario de contacto', () => {
       await route.fulfill({ status: 200, contentType: 'application/json', body: '{"ok":true}' });
     });
 
-    await page.goto('/contacto');
+    await page.goto(withBase('/contacto'));
     await fillValidForm(page);
     await page.getByRole('button', { name: 'Enviar mensaje' }).click();
 
@@ -60,14 +61,14 @@ test.describe('Formulario de contacto', () => {
 
   test('informa si el envío falla', async ({ page }) => {
     await page.route(FORM_ENDPOINT, (route) => route.fulfill({ status: 500, body: '{}' }));
-    await page.goto('/contacto');
+    await page.goto(withBase('/contacto'));
     await fillValidForm(page);
     await page.getByRole('button', { name: 'Enviar mensaje' }).click();
     await expect(page.getByRole('status')).toContainText('No se pudo enviar');
   });
 
   test('desde el CV llega configurado para reclutadores', async ({ page }) => {
-    await page.goto('/contacto?perfil=reclutador');
+    await page.goto(withBase('/contacto?perfil=reclutador'));
     await expect(page.getByLabel('Soy reclutador o empresa')).toBeChecked();
     await expect(page.getByLabel('Oferta de empleo')).toBeChecked();
     await expect(page.locator('[data-budget-group]')).toBeHidden();
@@ -78,7 +79,7 @@ test.describe('Formulario de contacto', () => {
   });
 
   test('el campo trampa para bots no es visible', async ({ page }) => {
-    await page.goto('/contacto');
+    await page.goto(withBase('/contacto'));
     await expect(page.locator('input[name="_gotcha"]')).toBeHidden();
   });
 });

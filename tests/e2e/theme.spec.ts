@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { withBase } from './base';
 
 const theme = (page: import('@playwright/test').Page) =>
   page.evaluate(() => document.documentElement.dataset.theme);
@@ -6,7 +7,7 @@ const theme = (page: import('@playwright/test').Page) =>
 test.describe('Modo claro y oscuro', () => {
   test('sigue la preferencia del sistema cuando no hay elección guardada', async ({ page }) => {
     await page.emulateMedia({ colorScheme: 'dark' });
-    await page.goto('/');
+    await page.goto(withBase('/'));
     expect(await theme(page)).toBe('dark');
 
     await page.emulateMedia({ colorScheme: 'light' });
@@ -15,13 +16,13 @@ test.describe('Modo claro y oscuro', () => {
 
   test('arranca en claro si el sistema no indica preferencia', async ({ page }) => {
     await page.emulateMedia({ colorScheme: 'no-preference' as 'light' });
-    await page.goto('/');
+    await page.goto(withBase('/'));
     expect(await theme(page)).toBe('light');
   });
 
   test('la elección del usuario se guarda y tiene prioridad sobre el sistema', async ({ page }) => {
     await page.emulateMedia({ colorScheme: 'light' });
-    await page.goto('/');
+    await page.goto(withBase('/'));
     const toggle = page.getByRole('button', { name: 'Cambiar entre modo claro y oscuro' });
 
     await toggle.click();

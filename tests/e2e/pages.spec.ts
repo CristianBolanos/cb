@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { withBase } from './base';
 import { ROUTES } from './routes';
 
 test.describe('Todas las páginas', () => {
@@ -10,7 +11,7 @@ test.describe('Todas las páginas', () => {
         if (message.type() === 'error') errors.push(message.text());
       });
 
-      const response = await page.goto(route);
+      const response = await page.goto(withBase(route));
       expect(response?.status()).toBe(200);
 
       await expect(page.locator('h1')).toHaveCount(1);
@@ -36,25 +37,25 @@ test.describe('Todas las páginas', () => {
   test('los títulos de las páginas son únicos', async ({ page }) => {
     const titles = new Set<string>();
     for (const route of ROUTES) {
-      await page.goto(route);
+      await page.goto(withBase(route));
       titles.add(await page.title());
     }
     expect(titles.size).toBe(ROUTES.length);
   });
 
   test('una ruta inexistente muestra la página 404', async ({ page }) => {
-    const response = await page.goto('/esta-ruta-no-existe');
+    const response = await page.goto(withBase('/esta-ruta-no-existe'));
     expect(response?.status()).toBe(404);
     await expect(page.getByRole('heading', { level: 1 })).toContainText('No encontré esta página');
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
   });
 
   test('robots.txt y sitemap existen', async ({ request }) => {
-    const robots = await request.get('/robots.txt');
+    const robots = await request.get(withBase('/robots.txt'));
     expect(robots.ok()).toBeTruthy();
     expect(await robots.text()).toContain('Sitemap:');
 
-    const sitemap = await request.get('/sitemap-index.xml');
+    const sitemap = await request.get(withBase('/sitemap-index.xml'));
     expect(sitemap.ok()).toBeTruthy();
   });
 });
@@ -66,7 +67,7 @@ test.describe('Celulares angostos', () => {
   test('ninguna página se desborda a 360 px', async ({ page }) => {
     const overflowing: string[] = [];
     for (const route of ROUTES) {
-      await page.goto(route);
+      await page.goto(withBase(route));
       const overflow = await page.evaluate(
         () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
       );

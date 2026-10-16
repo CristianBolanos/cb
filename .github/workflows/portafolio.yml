@@ -20,8 +20,8 @@ jobs:
       cancel-in-progress: true
     env:
       SITE_URL: ${{ vars.SITE_URL || 'https://cristianbolanos.github.io' }}
-      # Las pruebas y Lighthouse recorren el sitio desde la raíz; la base de Pages se aplica en el job "deploy".
-      BASE_PATH: /
+      # Un solo build, con la base de Pages: las pruebas y Lighthouse revisan el mismo dist/ que se publica.
+      BASE_PATH: ${{ vars.BASE_PATH || '/cb' }}
     steps:
       - uses: actions/checkout@v7
 
@@ -48,17 +48,39 @@ jobs:
       - name: Tipos (astro check)
         run: pnpm check
 
-      - name: Build
+      - name: Build para GitHub Pages
         run: pnpm build
+
+      # Un build sin BASE_PATH ya publicó el sitio sin estilos ni enlaces: toda ruta interna debe llevar la base.
+      - name: Verificar rutas con la base
+        run: |
+          test -f dist/index.html
+          base="${BASE_PATH%/}"
+          [ -n "$base" ] || exit 0
+          bad=$( { grep -rhoE '(href|src|srcset|action|poster)="/[^"]*"' dist --include='*.html'; grep -rhoE 'url\(/[^)]*\)' dist --include='*.css'; } | grep -vE "(=\"|url\()$base(/|\"|\))" | grep -vE '(="|url\()//' | sort -u || true)
+          if [ -n "$bad" ]; then
+            echo "::error::Hay rutas internas sin el prefijo $base"
+            echo "$bad"
+            exit 1
+          fi
+          echo "Todas las rutas internas empiezan por $base"
 
       - name: Navegadores de Playwright
         run: pnpm exec playwright install --with-deps chromium firefox webkit
 
+      # Playwright y Lighthouse sirven este dist/ con `astro preview` en la misma base (BASE_PATH).
       - name: Pruebas E2E y accesibilidad (Chrome, Firefox, Safari)
         run: pnpm test:e2e
 
       - name: Lighthouse CI
         run: pnpm lighthouse
+
+      # Solo main publica: el artefacto de Pages es este mismo dist/, ya probado.
+      - name: Preparar artefacto de Pages
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
 
       - name: Reportes
         if: ${{ !cancelled() }}
@@ -90,43 +112,8 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    env:
-      SITE_URL: ${{ vars.SITE_URL || 'https://cristianbolanos.github.io' }}
-      BASE_PATH: ${{ vars.BASE_PATH || '/cb' }}
+    # No vuelve a compilar: publica el artefacto que preparó "quality".
     steps:
-      - uses: actions/checkout@v7
-
-      - uses: pnpm/action-setup@v6
-
-      - uses: actions/setup-node@v7
-        with:
-          node-version: 22
-          cache: pnpm
-
-      - name: Instalar dependencias
-        run: pnpm install --frozen-lockfile
-
-      - name: Build para GitHub Pages
-        run: pnpm build
-
-      # Un build sin BASE_PATH ya publicó el sitio sin estilos ni enlaces: toda ruta interna debe llevar la base.
-      - name: Verificar rutas con la base
-        run: |
-          test -f dist/index.html
-          base="${BASE_PATH%/}"
-          [ -n "$base" ] || exit 0
-          bad=$( { grep -rhoE '(href|src|srcset|action|poster)="/[^"]*"' dist --include='*.html'; grep -rhoE 'url\(/[^)]*\)' dist --include='*.css'; } | grep -vE "(=\"|url\()$base(/|\"|\))" | grep -vE '(="|url\()//' | sort -u || true)
-          if [ -n "$bad" ]; then
-            echo "::error::Hay rutas internas sin el prefijo $base"
-            echo "$bad"
-            exit 1
-          fi
-          echo "Todas las rutas internas empiezan por $base"
-
-      - uses: actions/upload-pages-artifact@v5
-        with:
-          path: dist
-
       - name: Publicar
         id: deployment
         uses: actions/deploy-pages@v5

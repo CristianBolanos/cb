@@ -33,7 +33,7 @@ pnpm install
 | `pnpm covers`     | Captura portadas 16:10 de las demos publicadas                                   |
 | `pnpm og`         | Regenera la imagen para redes, el favicon y el ícono de iOS desde la foto        |
 
-> Las pruebas corren contra el build: ejecuta `pnpm build` antes de `pnpm test:e2e`.
+> Las pruebas corren contra el build: ejecuta `pnpm build` antes de `pnpm test:e2e`, con la misma `BASE_PATH` (ver [Despliegue](#despliegue)).
 > La primera vez instala los navegadores con `pnpm exec playwright install`.
 
 ## Estructura
@@ -87,8 +87,8 @@ El sitio se publica en **GitHub Pages** (<https://cristianbolanos.github.io/cb/>
 
 El workflow [`.github/workflows/portafolio.yml`](.github/workflows/portafolio.yml) corre en cada push a `main` y en cada pull request:
 
-1. **Calidad**: auditoría de dependencias de producción, formato, lint, tipos, build, pruebas E2E con axe (Chrome, Firefox y Safari) y Lighthouse. Compila con `BASE_PATH=/` porque las pruebas recorren el sitio desde la raíz.
-2. **Publicación** (solo en `main` y solo si la etapa 1 pasa): vuelve a compilar con `SITE_URL=https://cristianbolanos.github.io` y `BASE_PATH=/cb`, comprueba que todas las rutas internas empiecen por `/cb` y publica `dist/` en Pages.
+1. **Calidad**: auditoría de dependencias de producción, formato, lint y tipos. Después compila **una sola vez**, ya con la base de Pages (`SITE_URL=https://cristianbolanos.github.io` y `BASE_PATH=/cb`), comprueba que todas las rutas internas empiecen por `/cb` y corre sobre ese `dist/` las pruebas E2E con axe (Chrome, Firefox y Safari) y Lighthouse. Las dos herramientas lo sirven con `astro preview` en `/cb`, igual que queda en Pages.
+2. **Publicación** (solo en `main` y solo si la etapa 1 pasa): publica en Pages ese mismo `dist/`, que llega como artefacto desde la etapa 1. No vuelve a compilar: se publica exactamente lo que pasó las pruebas.
 
 Si algo falla, el sitio publicado no cambia. Cada ejecución se ve en la pestaña **Actions** del repositorio; los reportes de Playwright y Lighthouse quedan 14 días en el artefacto `reportes`. Para publicar de nuevo sin cambios: Actions → Portafolio (Astro) → **Run workflow**.
 
@@ -99,19 +99,23 @@ Si algo falla, el sitio publicado no cambia. Cada ejecución se ve en la pestañ
 Ver `.env.example`:
 
 - `SITE_URL`: URL pública sin barra final (canonical, sitemap, Open Graph).
-- `BASE_PATH`: `/cb` en GitHub Pages dentro del repositorio `cb`; `/` con dominio propio.
+- `BASE_PATH`: `/cb` en GitHub Pages dentro del repositorio `cb`; `/` con dominio propio. Las pruebas E2E (`tests/e2e/base.ts`) y Lighthouse (`lighthouserc.cjs`) la leen igual que `astro.config.mjs`.
 
 En la CI se cambian sin tocar el workflow, con variables del repositorio (Settings → Secrets and variables → Actions → Variables). Por ejemplo, con dominio propio: `SITE_URL=https://tudominio.com` y `BASE_PATH=/`.
 
-Para revisar en local el sitio tal como queda en Pages (PowerShell):
+### Probar en local con la base de Pages
+
+Compila y prueba siempre con la misma `BASE_PATH`. Si no coinciden, `pnpm test:e2e` se detiene antes de empezar y lo avisa. En PowerShell:
 
 ```powershell
 $env:SITE_URL = 'https://cristianbolanos.github.io'; $env:BASE_PATH = '/cb'
-pnpm build; pnpm preview   # http://localhost:4321/cb/
-Remove-Item Env:SITE_URL, Env:BASE_PATH   # las pruebas esperan la raíz: vuelve a compilar sin base
+pnpm build; pnpm test:e2e; pnpm lighthouse   # o pnpm preview → http://localhost:4321/cb/
+Remove-Item Env:SITE_URL, Env:BASE_PATH       # de vuelta a la raíz, que es la que usa pnpm verify
 ```
 
 > En Git Bash, `BASE_PATH=/cb` se convierte en una ruta de Windows (`C:/Program Files/Git/cb`) y el build falla. Antepón `MSYS_NO_PATHCONV=1` al comando.
+
+Lighthouse lee `BASE_PATH` en vez de servir `dist/` desde la raíz: un build para `/cb` servido en la raíz pierde estilos, scripts e imágenes, y auditar la raíz exigiría un segundo build distinto del que se publica. Playwright (puerto 4330) y Lighthouse (puerto 4331) levantan su propia vista previa con `--ignore-lock`, porque Astro admite una sola vista previa por proyecto; así no chocan con un `pnpm preview` que tengas abierto.
 
 ### Cabeceras de seguridad
 
