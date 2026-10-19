@@ -43,7 +43,15 @@ const Heading = headingLevel;
       </a>
     </Heading>
     <p class="mt-2 flex-1 text-sm text-muted">{summary}</p>
-    <p class="mt-4 text-xs text-muted">{stack.join(' · ')}</p>
+    {/* Cada herramienta en una sola línea: la lista se parte entre nombres, no en "GitHub / Actions". */}
+    <p class="mt-4 text-xs text-muted">
+      {stack.map((item, i) => (
+        <>
+          {i > 0 && ' · '}
+          <span class="whitespace-nowrap">{item}</span>
+        </>
+      ))}
+    </p>
     <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent">
       {t.cta.viewCase}
       <Icon

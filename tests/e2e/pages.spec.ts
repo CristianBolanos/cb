@@ -22,6 +22,11 @@ test.describe('Todas las páginas', () => {
         'content',
         /^https?:\/\//,
       );
+      // La imagen para compartir debe existir. Su URL apunta al dominio publicado, así que se pide
+      // la misma ruta al servidor de pruebas.
+      const ogImage = await page.locator('meta[property="og:image"]').getAttribute('content');
+      const ogResponse = await page.request.get(new URL(ogImage ?? '').pathname);
+      expect(ogResponse.status(), `og:image ${ogImage}`).toBe(200);
       await expect(page.locator('meta[http-equiv="content-security-policy"]')).toHaveCount(1);
 
       // Ninguna página debe desbordar horizontalmente.

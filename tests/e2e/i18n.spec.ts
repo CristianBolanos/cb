@@ -32,7 +32,7 @@ test.describe('Idiomas (español por defecto e inglés)', () => {
     await page.getByRole('link', { name: 'English' }).click();
     await expect(page).toHaveURL(withBase('/en/projects/soat-ya'));
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('SOAT Ya');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('SOAT YA');
     await expect(page.getByRole('link', { name: 'English' })).toHaveAttribute(
       'aria-current',
       'true',

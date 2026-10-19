@@ -29,17 +29,22 @@ const others = projects
   .filter((p) => p.id !== project.id && isShowcase(p) === isShowcase(project))
   .slice(0, 3);
 
+// getImage() devuelve la ruta con la base incluida (/cb/_astro/…). Se pasa como URL absoluta para
+// que Seo no vuelva a anteponer la base.
 const ogImage = data.cover
-  ? (
-      await getImage({
-        src: data.cover,
-        width: 1200,
-        height: 630,
-        fit: 'cover',
-        position: 'top',
-        format: 'jpeg',
-      })
-    ).src
+  ? new URL(
+      (
+        await getImage({
+          src: data.cover,
+          width: 1200,
+          height: 630,
+          fit: 'cover',
+          position: 'top',
+          format: 'jpeg',
+        })
+      ).src,
+      Astro.site,
+    ).href
   : undefined;
 
 const path = projectPath(slugOf(project.id), lang);
